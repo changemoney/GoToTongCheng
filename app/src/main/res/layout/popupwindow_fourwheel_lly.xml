@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_myinfo_changebirth"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000"
+    android:gravity="bottom"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ly_myinfo_changebirth_child"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@color/white"
+            >
+            <RelativeLayout
+                android:id="@+id/rly_popup_fourwheel_cancel"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:text="@string/cancel"
+                    android:layout_centerInParent="true"
+                    />
+
+            </RelativeLayout>
+
+           <!-- <RelativeLayout
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:text="@string/getTime"
+                    android:layout_centerInParent="true"
+                    />
+
+            </RelativeLayout>-->
+
+            <RelativeLayout
+                android:id="@+id/rly_popup_fourwheel_query"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:text="@string/query"
+                    android:layout_centerInParent="true"
+                    />
+
+            </RelativeLayout>
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/the_split_line_height"
+            android:background="@color/gray"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:gravity="center_vertical">
+
+
+
+
+            <gototongcheng.zhyan.com.library.Widget.WheelView.WheelView
+                    android:id="@+id/wv_popup_fourwheel_day"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.5"
+                    />
+            <gototongcheng.zhyan.com.library.Widget.WheelView.WheelView
+                    android:id="@+id/wv_popup_fourwheel_ampm"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    />
+
+            <gototongcheng.zhyan.com.library.Widget.WheelView.WheelView
+                    android:id="@+id/wv_popup_fourwheel_hour"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    />
+            <gototongcheng.zhyan.com.library.Widget.WheelView.WheelView
+                    android:id="@+id/wv_popup_fourwheel_min"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    />
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

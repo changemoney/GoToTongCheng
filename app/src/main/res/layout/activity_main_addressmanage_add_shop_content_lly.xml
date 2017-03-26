@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
+
+    <!--名称 号码-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_main_addressmanage_add_shop_tabbar_height"
+        android:orientation="horizontal"
+
+        android:background="@color/color_activity_main_addressmanage_add_shop_content_white_bg"
+        >
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nameCall"
+                android:textColor="@color/color_activity_main_addressmanage_add_shop_content_gray_word_bg"
+                android:textSize="15sp"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="5.5"
+            >
+            <EditText
+                android:id="@+id/et_main_addressmanage_add_shop_content_namecall"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/addAddress"
+                android:textColor="@color/color_activity_main_addressmanage_add_shop_content_black_bg"
+                android:textSize="15sp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:imeOptions="actionSearch"
+                android:maxLines="1"
+                android:singleLine="true"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <!--名称 号码-->
+
+    <!--我是分割线-->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/the_split_line_height"
+        android:background="@color/color_activity_main_addressmanage_add_shop_content_gray_word_bg"
+        />
+    <!--我是分割线-->
+    <!--地址-->
+
+    <LinearLayout
+        android:id="@+id/lly_main_addressmanage_add_shop_searchaddress"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_main_addressmanage_add_shop_tabbar_height"
+        android:orientation="horizontal"
+
+        android:background="@color/color_activity_main_addressmanage_add_shop_content_white_bg"
+        >
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address"
+                android:textColor="@color/color_activity_main_addressmanage_add_shop_content_gray_word_bg"
+                android:textSize="15sp"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="4.5"
+            >
+            <EditText
+                android:id="@+id/et_main_addressmanage_add_shop_content_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/color_activity_main_addressmanage_add_shop_content_black_bg"
+                android:textSize="15sp"
+                android:background="@null"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:imeOptions="actionSearch"
+                android:maxLines="2"
+                android:inputType="text|textCapSentences"
+                />
+            <!--<EditText
+                android:id="@+id/et_main_addressmanage_add_shop_content_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/addressTest"
+                android:textColor="@color/color_activity_main_addressmanage_add_shop_content_black_bg"
+                android:textSize="15sp"
+                android:background="@null"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                />-->
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rly_main_addressmanage_add_shop_addresssearch"
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/activity_main_addressmanage_add_shop_contactbook_ico_width"
+                android:layout_height="@dimen/activity_main_addressmanage_add_shop_contactbook_ico_height"
+                android:background="@drawable/activity_main_addressmanage_add_shop_search_gray"
+                android:layout_centerInParent="true"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+    <!--地址-->
+    <!--百度地图-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:layout_weight="7.5"
+        >
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/mv_main_addressmanage_add_shop_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+        <!-- <com.baidu.mapapi.map.MapView
+             android:id="@+id/mv_addressmanageaddcontacter_content"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+         </com.baidu.mapapi.map.MapView>-->
+        <ImageView
+            android:id="@+id/iv_main_addressmanage_add_shop_content_centerloc"
+            android:layout_width="16dp"
+            android:layout_height="19dp"
+            android:background="@drawable/activity_main_addressmanage_add_shop_search_map"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+    <!--百度地图-->
+
+    <LinearLayout
+        android:id="@+id/lly_main_addressmanage_add_shop_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:layout_weight="2.5"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true"
+        android:background="@color/color_activity_main_addressmanage_add_shop_content_tabbar_black_bg"
+        >
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="fill_parent"
+            android:orientation="horizontal"
+            android:layout_height="@dimen/activity_main_addressmanage_add_shop_tabbar_height"
+            android:background="@color/color_activity_main_addressmanage_add_shop_content_black_bg" >
+
+
+            <!--收藏地址-->
+            <RelativeLayout
+                android:id="@+id/rly_main_addressmanage_add_shop_tabbar_nearaddress"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <TextView
+                    android:id="@+id/tv_main_addressmanage_add_shop_tabbar_nearaddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textSize="14sp"
+                    android:text="@string/nearAddress"
+                    android:textColor="@color/color_activity_main_addressmanage_add_shop_selected_green_word_bg" />
+                <!--<TextView
+                    android:id="@+id/tv_main_addressmanage_add_shop_tabbar_collectaddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textSize="14sp"
+                    android:text="@string/nearAddress"
+                    android:textColor="@color/colorActivityMyOrderTabSwitchSelectedWordGreenBg" />-->
+                <ImageView
+                    android:id="@+id/iv_main_addressmanage_add_shop_tabbar_nearaddress"
+                    android:layout_width="@dimen/activity_main_addressmanage_add_shop_tabbar_ico_nearby_width"
+                    android:layout_height="@dimen/activity_main_addressmanage_add_shop_tabbar_ico_nearby_height"
+                    android:src="@drawable/activity_main_addressmanage_add_shop_nearby_select"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/tv_main_addressmanage_add_shop_tabbar_nearaddress"
+                    android:layout_marginRight="@dimen/activity_main_addressmanage_add_shop_tabbar_ico_margin_left_right_size"
+                    />
+            </RelativeLayout>
+            <!--收藏地址-->
+            <!--向上拉-->
+            <RelativeLayout
+                android:id="@+id/rly_main_addressmanage_add_shop_content_up"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                >
+                <ImageView
+                    android:id="@+id/iv_main_addressmanage_add_shop_content_uparrow"
+                    android:layout_width="13dp"
+                    android:layout_height="8dp"
+                    android:background="@mipmap/up_arrow"
+                    android:layout_centerInParent="true"
+                    />
+
+            </RelativeLayout>
+            <!--向上拉-->
+            <!--历史记录-->
+
+            <RelativeLayout
+                android:id="@+id/rly_main_addressmanage_add_shop_tabbar_history"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/tv_main_addressmanage_add_shop_tabbar_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/historyRecord"
+                    android:textSize="14sp"
+                    android:textColor="@color/color_activity_main_addressmanage_add_shop_unselected_gray_word_bg" />
+                <ImageView
+                    android:id="@+id/iv_main_addressmanage_add_shop_tabbar_history"
+                    android:layout_width="@dimen/activity_main_addressmanage_add_shop_tabbar_ico_width"
+                    android:layout_height="@dimen/activity_main_addressmanage_add_shop_tabbar_ico_height"
+                    android:src="@drawable/activity_main_addressmanage_add_shop_historyrecord_normal"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/tv_main_addressmanage_add_shop_tabbar_history"
+                    android:layout_marginRight="@dimen/activity_main_addressmanage_add_shop_tabbar_ico_margin_left_right_size"
+                    />
+            </RelativeLayout>
+            <!--历史记录-->
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_main_addressmanage_add_shop_tab_greenbottom"
+            android:layout_width="@dimen/activity_main_addressmanage_add_shop_tabbar_bottom_green_width"
+            android:layout_height="@dimen/activity_main_addressmanage_add_shop_tabbar_bottom_green_height"
+            android:scaleType="matrix"
+            android:src="@color/color_activity_main_addressmanage_add_shop_tab_switch_green_bg"
+            android:layout_marginLeft="50dp"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/the_split_line_height"
+            android:background="@color/color_activity_main_addressmanage_add_shop_content_spliteline_light_black_bg"
+            />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_main_addressmanage_add_shop_content"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:background="@color/color_activity_main_addressmanage_add_shop_content_black_bg"
+            android:flipInterval="30"
+            android:persistentDrawingCache="animation" />
+    </LinearLayout>
+</LinearLayout>

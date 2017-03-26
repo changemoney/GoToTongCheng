@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgray"
+    >
+    <include layout="@layout/activity_main_addressmanage_topbar_lly"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        >
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            <RadioButton
+                android:id="@+id/rb_addressmanage_adduser"
+                style="@style/AddressManageTab"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:text="添加联系人"
+                android:checked="true"
+                />
+            <RadioButton
+                android:id="@+id/rb_addressmanage_addshop"
+                style="@style/AddressManageTab"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:text="添加商家"
+                />
+
+        </RadioGroup>
+
+    </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+        >
+        <gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView
+            android:id="@+id/xrv_addressmanage_useraddrlist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        </gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView>
+
+        <gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView
+            android:id="@+id/xrv_addressmanage_shopaddrlist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            >
+
+        </gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView>
+    </FrameLayout>
+</LinearLayout>

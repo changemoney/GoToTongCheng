@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="@dimen/activity_main_helpmesend_topbar_height"
+
+    >
+    <RelativeLayout
+        android:id="@+id/rly_main_helpmesend_topbar_leftmenu"
+        android:layout_width="@dimen/zero"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="1"
+
+        >
+        <ImageView
+            android:id="@+id/iv_helpmesend_topbar_leftmenu"
+            android:layout_width="@dimen/activity_main_helpmesend_topbar_leftmenu_width"
+            android:layout_height="@dimen/activity_main_helpmesend_topbar_leftmenu_height"
+            android:background="@drawable/topbar_green_return_arrow"
+            android:layout_centerInParent="true"
+
+            android:layout_marginLeft="@dimen/activity_main_helpmesend_topbar_title_margin_size"
+            />
+    </RelativeLayout>
+    <!--
+        style="@style/main_activity_topbar_title_text_style"
+        android:text="@string/main_activity_topbar_title"-->
+    <!--标题-->
+    <RelativeLayout
+        android:layout_width="@dimen/zero"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        >
+        <TextView
+            android:id="@+id/tv_helpmesend_topbar_title"
+            android:layout_width="@dimen/activity_main_helpmesend_topbar_center_title_width"
+            android:layout_height="@dimen/activity_main_helpmesend_topbar_center_title_height"
+            android:background="@drawable/activity_main_helpmesend_helpmesend"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+    <!--标题-->
+    <RelativeLayout
+        android:layout_width="@dimen/zero"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+    </RelativeLayout>
+</LinearLayout>

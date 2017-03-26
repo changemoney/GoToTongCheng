@@ -1,0 +1,316 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!--common-->
+    <dimen name="zero">0dp</dimen>
+    <!--common-->
+    <!--main fragment-->
+    <dimen name="activity_main_fragment_ad_gray_bg_margin_size">15dp</dimen>
+    <dimen name="activity_main_fragment_four_item_word_size">14sp</dimen>
+    <dimen name="activity_main_fragment_service_item_margin_size">10dp</dimen>
+    <dimen name="activity_main_fragment_four_item_linear_padding_left_right_top_size">10dp</dimen>
+    <dimen name="activity_main_fragment_four_item_linear_padding_bottom_size">5dp</dimen>
+    <dimen name="activity_main_fragment_four_item_each_other_margin_size">5dp</dimen>
+    <dimen name="activity_main_fragment_content_ad_margin_left_right_size">10dp</dimen>
+    <!--main fragment-->
+
+    <!--main leftmenu-->
+    <dimen name="activity_main_leftmenu_headImage_size">65dp</dimen>
+    <dimen name="activity_main_leftmenu_paddingleft_right_size">10dp</dimen>
+    <dimen name="activity_main_leftmenu_menu_margintop">25dp</dimen>
+    <dimen name="activity_main_leftmenu_menu_word_bottom_size">15dp</dimen>
+    <dimen name="activity_main_leftmenu_ico_width">16dp</dimen>
+    <dimen name="activity_main_leftmenu_ico_height">17dp</dimen>
+    <dimen name="activity_main_leftmenu_menu_word_textsize">13sp</dimen>
+    <dimen name="activity_main_leftmenu_menu_green_small_word_textsize">11sp</dimen>
+
+    <!--main leftmenu-->
+
+    <!--main topbar-->
+    <dimen name="activity_main_topbar_center_title_width">70dp</dimen>
+    <dimen name="activity_main_topbar_center_title_height">15dp</dimen>
+    <dimen name="activity_main_topbar_left_ico_width">20dp</dimen>
+    <dimen name="activity_main_topbar_left_ico_height">16dp</dimen>
+    <dimen name="activity_main_topbar_title_margin_size">20dp</dimen>
+    <dimen name="activity_main_topbar_height">54dp</dimen>
+    <!--main topbar-->
+
+    <!--main login-->
+    <dimen name="activity_main_login_head_ico_width">75dp</dimen>
+    <dimen name="activity_main_login_head_ico_height">75dp</dimen>
+    <dimen name="activity_main_login_input_margin_tab_size">20dp</dimen>
+    <dimen name="activity_main_login_input_margin_left_right_size">40dp</dimen>
+    <dimen name="activity_main_login_input_item_height">40dp</dimen>
+<!--    <dimen name="activity_main_login_input_word_size">17sp</dimen>-->
+    <dimen name="activity_main_login_input_word_size">13sp</dimen>
+    <dimen name="activity_main_login_agree_service_margin_top_size">10dp</dimen>
+    <dimen name="activity_main_login_serviceitem_underline_width">75dp</dimen>
+    <dimen name="activity_main_login_submit_width">120dp</dimen>
+    <dimen name="activity_main_login_submit_word_size">14sp</dimen>
+    <dimen name="activity_main_login_register_word_margin_top_size">15dp</dimen>
+    <dimen name="activity_main_login_register_word_rly_width">120dp</dimen>
+    <dimen name="activity_main_login_third_login_rly_padding_left_right_size">10dp</dimen>
+    <dimen name="activity_main_login_third_login_ico_width">65dp</dimen>
+    <dimen name="activity_main_login_third_login_ico_height">65dp</dimen>
+    <dimen name="activity_main_login_topbar_leftmenu_width">10dp</dimen>
+    <dimen name="activity_main_login_topbar_leftmenu_height">15dp</dimen>
+    <dimen name="activity_main_login_title_margin_size">20dp</dimen>
+    <dimen name="activity_main_login_topbar_height">54dp</dimen>
+    <!--main login-->
+
+    <!--main login reg-->
+    <dimen name="activity_main_login_reg_topbar_leftmenu_width">10dp</dimen>
+    <dimen name="activity_main_login_reg_topbar_leftmenu_height">15dp</dimen>
+    <dimen name="activity_main_login_reg_title_margin_size">20dp</dimen>
+    <dimen name="activity_main_login_reg_topbar_height">54dp</dimen>
+    <dimen name="activity_main_login_reg_head_rly_margin_top_size">20dp</dimen>
+    <dimen name="activity_main_login_reg_head_ico_width">75dp</dimen>
+    <dimen name="activity_main_login_reg_head_ico_height">75dp</dimen>
+    <dimen name="activity_main_login_reg_input_margin_top_size">20dp</dimen>
+    <dimen name="activity_main_login_reg_input_margin_left_right_size">40dp</dimen>
+    <dimen name="activity_main_login_reg_input_item_height">40dp</dimen>
+    <dimen name="activity_main_login_reg_input_word_size">14sp</dimen>
+    <dimen name="activity_main_login_reg_agree_service_margin_top_size">10dp</dimen>
+    <dimen name="activity_main_login_reg_serviceitem_underline_width">75dp</dimen>
+    <dimen name="activity_main_login_reg_loginsubmit_margin_top_size">10dp</dimen>
+    <dimen name="activity_main_login_reg_submit_width">120dp</dimen>
+    <dimen name="activity_main_login_reg_submit_word_size">14sp</dimen>
+    <!--main login reg-->
+
+    <!--main addressmanage-->
+    <dimen name="activity_main_addressmanage_topbar_leftmenu_width">10dp</dimen>
+    <dimen name="activity_main_addressmanage_topbar_leftmenu_height">15dp</dimen>
+    <dimen name="activity_main_addressmanage_topbar_title_margin_size">20dp</dimen>
+    <dimen name="activity_main_addressmanage_topbar_center_title_width">100dp</dimen>
+    <dimen name="activity_main_addressmanage_topbar_center_title_height">15dp</dimen>
+    <dimen name="activity_main_addressmanage_topbar_height">54dp</dimen>
+    <dimen name="activity_main_addressmanage_rv_item_height">100dp</dimen>
+    <dimen name="activity_main_addressmanage_rv_item_margin">8dp</dimen>
+    <dimen name="activity_main_addressmanage_ico_head_width">25dp</dimen>
+    <dimen name="activity_main_addressmanage_ico_head_height">30dp</dimen>
+    <dimen name="activity_main_addressmanage_ico_rightarrow_width">10dp</dimen>
+    <dimen name="activity_main_addressmanage_ico_rightarrow_height">15dp</dimen>
+    <dimen name="activity_main_addressmanage_icomo_width">25dp</dimen>
+    <dimen name="activity_main_addressmanage_icomo_height">25dp</dimen>
+    <!--main addressmanage-->
+
+    <!--main addressmanage add user-->
+    <dimen name="activity_main_addressmanage_add_user_topbar_leftmenu_width">10dp</dimen>
+    <dimen name="activity_main_addressmanage_add_user_topbar_leftmenu_height">15dp</dimen>
+    <dimen name="activity_main_addressmanage_add_user_topbar_title_margin_size">20dp</dimen>
+    <dimen name="activity_main_addressmanage_add_user_topbar_center_title_width">70dp</dimen>
+    <dimen name="activity_main_addressmanage_add_user_topbar_center_title_height">15dp</dimen>
+    <dimen name="activity_main_addressmanage_add_user_topbar_height">54dp</dimen>
+    <dimen name="activity_main_addressmanage_add_user_contactbook_ico_width">20dp</dimen>
+    <dimen name="activity_main_addressmanage_add_user_contactbook_ico_height">20dp</dimen>
+    <dimen name="activity_main_addressmanage_add_user_search_ico_width">20dp</dimen>
+    <dimen name="activity_main_addressmanage_add_user_search_ico_height">20dp</dimen>
+    <dimen name="activity_main_addressmanage_add_user_tabbar_height">45.0dip</dimen>
+    <dimen name="activity_main_addressmanage_add_user_tabbar_ico_width">12dip</dimen>
+    <dimen name="activity_main_addressmanage_add_user_tabbar_ico_height">15dip</dimen>
+    <dimen name="activity_main_addressmanage_add_user_tabbar_ico_margin_left_right_size">5dp</dimen>
+    <dimen name="activity_main_addressmanage_add_user_tabbar_ico_nearby_width">15dip</dimen>
+    <dimen name="activity_main_addressmanage_add_user_tabbar_ico_nearby_height">15dip</dimen>
+    <dimen name="activity_main_addressmanage_add_user_tabbar_bottom_green_width">80dp</dimen>
+    <dimen name="activity_main_addressmanage_add_user_tabbar_bottom_green_height">3dp</dimen>
+    <dimen name="activity_main_addressmanage_add_user_tabbar_vp_rv_item_height">45dp</dimen>
+    <!--main addressmanage add user-->
+
+    <!--main addressmanage add shop-->
+    <dimen name="activity_main_addressmanage_add_shop_topbar_leftmenu_width">10dp</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_topbar_leftmenu_height">15dp</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_title_margin_size">20dp</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_topbar_center_title_width">70dp</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_topbar_center_title_height">15dp</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_topbar_height">54dp</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_tabbar_height">45.0dp</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_contactbook_ico_width">20dp</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_contactbook_ico_height">20dp</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_tabbar_ico_nearby_width">15dip</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_tabbar_ico_nearby_height">15dip</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_tabbar_ico_margin_left_right_size">5dp</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_tabbar_ico_width">12dip</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_tabbar_ico_height">15dip</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_tabbar_bottom_green_height">3dp</dimen>
+    <dimen name="activity_main_addressmanage_add_shop_tabbar_bottom_green_width">80dp</dimen>
+    <!--main addressmanage add shop-->
+
+
+    <!--main baidumap common baiduaddress search suggest-->
+    <dimen name="activity_main_baidumap_common_baiduaddress_search_suggest_topbar_leftmenu_width">10dp</dimen>
+    <dimen name="activity_main_baidumap_common_baiduaddress_search_suggest_topbar_leftmenu_height">15dp</dimen>
+    <dimen name="activity_main_baidumap_common_baiduaddress_search_suggest_common_title_margin_size">20dp</dimen>
+    <dimen name="activity_main_baidumap_common_baiduaddress_search_suggest_topbar_search_margin_top_bottom_size">10dp</dimen>
+    <dimen name="activity_main_baidumap_common_baiduaddress_search_suggest_topbar_search_ico_width">20dp</dimen>
+    <dimen name="activity_main_baidumap_common_baiduaddress_search_suggest_topbar_search_ico_height">20dp</dimen>
+    <dimen name="activity_main_baidumap_common_baiduaddress_search_suggest_topbar_search_ico_margin_left">10dp</dimen>
+    <dimen name="activity_main_baidumap_common_baiduaddress_search_suggest_topbar_search_ico_margin_right">15dp</dimen>
+    <dimen name="activity_main_baidumap_common_baiduaddress_search_suggest_topbar_height">54dp</dimen>
+    <dimen name="activity_main_baidumap_common_baiduaddress_search_suggest_rv_item">50dp</dimen>
+    <!--main baidumap common baiduaddress search suggest-->
+
+
+    <!--main helpmebuy-->
+    <dimen name="activity_main_helpmebuy_topbar_leftmenu_width">10dp</dimen>
+    <dimen name="activity_main_helpmebuy_topbar_leftmenu_height">15dp</dimen>
+    <dimen name="activity_main_helpmebuy_title_margin_size">20dp</dimen>
+    <dimen name="activity_main_helpmebuy_topbar_center_title_width">70dp</dimen>
+    <dimen name="activity_main_helpmebuy_topbar_center_title_height">15dp</dimen>
+    <dimen name="activity_main_helpmebuy_topbar_height">54dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_addressitem_height">100dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_point_width">10dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_point_height">10dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_point_margin_top_size">15dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_item_right_arrow_width">10dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_item_right_arrow_height">15dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_item_name_margin_tel_size">15dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_shoppinglist_item_height">140dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_shoppinglist_item_margin_top_size">15dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_shoppingorder_width">15dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_shoppingorder_height">18dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_shoppingorder_margin_right_size">10dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_shoppingorder_margin_top_bottom_size">0dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_remark_item_height">140dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_remark_item_margin_top_size">15dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_orderremark_width">18dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_orderremark_height">15dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_lastitem_height">40dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_last_item_margin_top_size">15dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_lastitem_margin_bottom_size">20dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_goodsprice_width">18dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_goodsprice_height">18dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_lastitem_goodsprice_margin_right">10dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_lastitem_priceselect_width">13dp</dimen>
+    <dimen name="activity_main_helpmebuy_content_lastitem_priceselect_height">13dp</dimen>
+    <dimen name="activity_main_helpmebuy_bottom_paymark_width">20dp</dimen>
+    <dimen name="activity_main_helpmebuy_bottom_paymark_height">20dp</dimen>
+    <dimen name="activity_main_helpmebuy_bottom_paymark_marginleft_size">10dp</dimen>
+    <dimen name="activity_main_helpmebuy_bottom_paymark_marginright_size">10dp</dimen>
+    <dimen name="activity_main_helpmebuy_bottom_zhifu_height">46dp</dimen>
+    <!--main helpmebuy-->
+
+    <!--main helpmebuy shoppinglist-->
+    <dimen name="activity_main_helpmebuy_shoppinglist_topbar_leftmenu_width">10dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_topbar_leftmenu_height">15dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_topbar_title_margin_size">20dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_topbar_center_title_width">70dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_topbar_center_title_height">15dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_topbar_height">54dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_content_margin_left_right_size">10dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_head_ico_img_width">35dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_head_ico_img_height">35dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_content_lastitem_priceselect_width">13dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_content_lastitem_priceselect_height">13dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_content_lastitem_goodsprice_margin_right">10dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_splitline_item_height">15dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_splitline_point_black_width">7dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_splitline_point_black_height">14dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_content_item_height">45dp</dimen>
+    <dimen name="activity_main_helpmebuy_shoppinglist_content_item_margin_left_right_size">15dp</dimen>
+    <!--main helpmebuy shoppinglist-->
+
+
+    <!--main common shoufeibiaozhun-->
+    <dimen name="activity_main_common_shoufeibiaozhun_topbar_leftmenu_width">10dp</dimen>
+    <dimen name="activity_main_common_shoufeibiaozhun_topbar_leftmenu_height">15dp</dimen>
+    <dimen name="activity_main_common_shoufeibiaozhun_title_margin_size">20dp</dimen>
+    <dimen name="activity_main_common_shoufeibiaozhun_topbar_title_text_size">16sp</dimen>
+    <dimen name="activity_main_common_shoufeibiaozhun_topbar_height">54dp</dimen>
+    <!--main common shoufeibiaozhun-->
+
+    <!--main helpmesend-->
+    <dimen name="activity_main_helpmesend_topbar_leftmenu_width">10dp</dimen>
+    <dimen name="activity_main_helpmesend_topbar_leftmenu_height">15dp</dimen>
+    <dimen name="activity_main_helpmesend_topbar_title_margin_size">20dp</dimen>
+    <dimen name="activity_main_helpmesend_topbar_center_title_width">70dp</dimen>
+    <dimen name="activity_main_helpmesend_topbar_center_title_height">15dp</dimen>
+    <dimen name="activity_main_helpmesend_topbar_height">54dp</dimen>
+    <dimen name="activity_main_helpmesend_bottom_paymark_width">20dp</dimen>
+    <dimen name="activity_main_helpmesend_bottom_paymark_height">20dp</dimen>
+    <dimen name="activity_main_helpmesend_bottom_paymark_marginleft_size">10dp</dimen>
+    <dimen name="activity_main_helpmesend_bottombar_zhifu_height">46dp</dimen>
+
+
+
+
+
+
+
+
+
+    <!--<dimen name="activity_helpmesend_content_normalitem_height">85dp</dimen>-->
+    <dimen name="activity_main_helpmesend_content_item_height">85dp</dimen>
+    <dimen name="activity_main_helpmesend_content_sendaddress_margin_top_size">5dp</dimen>
+    <dimen name="activity_main_helpmesend_content_addressitem_height">100dp</dimen>
+    <dimen name="activity_main_helpmesend_content_point_width">10dp</dimen>
+    <dimen name="activity_main_helpmesend_content_point_height">10dp</dimen>
+    <dimen name="activity_main_helpmesend_content_point_margin_top_size">15dp</dimen>
+    <dimen name="activity_main_helpmesend_content_item_right_arrow_width">10dp</dimen>
+    <dimen name="activity_main_helpmesend_content_item_right_arrow_height">15dp</dimen>
+    <dimen name="activity_main_helpmesend_content_item_name_margin_tel_size">15dp</dimen>
+    <dimen name="activity_main_helpmesend_content_shoppinglist_item_height">140dp</dimen>
+    <dimen name="activity_main_helpmesend_content_shoppinglist_item_margin_top_size">15dp</dimen>
+    <dimen name="activity_main_helpmesend_content_shoppingorder_width">15dp</dimen>
+    <dimen name="activity_main_helpmesend_content_shoppingorder_height">18dp</dimen>
+    <dimen name="activity_main_helpmesend_content_shoppingorder_margin_right_size">10dp</dimen>
+    <dimen name="activity_main_helpmesend_content_shoppingorder_margin_top_bottom_size">0dp</dimen>
+    <dimen name="activity_main_helpmesend_content_remark_item_height">140dp</dimen>
+    <dimen name="activity_main_helpmesend_content_remark_item_margin_top_size">15dp</dimen>
+    <dimen name="activity_main_helpmesend_content_orderremark_width">18dp</dimen>
+    <dimen name="activity_main_helpmesend_content_orderremark_height">15dp</dimen>
+    <dimen name="activity_main_helpmesend_content_lastitem_height">40dp</dimen>
+    <dimen name="activity_main_helpmesend_content_last_item_margin_top_size">15dp</dimen>
+    <dimen name="activity_main_helpmesend_content_lastitem_margin_bottom_size">20dp</dimen>
+    <dimen name="activity_main_helpmesend_content_goodsprice_width">18dp</dimen>
+    <dimen name="activity_main_helpmesend_content_goodsprice_height">18dp</dimen>
+    <dimen name="activity_main_helpmesend_content_lastitem_goodsprice_margin_right">10dp</dimen>
+    <dimen name="activity_main_helpmesend_content_lastitem_priceselect_width">13dp</dimen>
+    <dimen name="activity_main_helpmesend_content_lastitem_priceselect_height">13dp</dimen>
+    <dimen name="activity_main_helpmesend_content_goodsinfo_margin_left_right_size">15dp</dimen>
+    <dimen name="activity_main_helpmesend_content_item_margin_top_size">25dp</dimen>
+    <dimen name="activity_main_helpmesend_content_item_margin_item_size">15dp</dimen>
+    <dimen name="activity_main_helpmesend_content_edittext_item_height">140dp</dimen>
+    <dimen name="activity_main_helpmesend_content_buyorder_item_margin_top_size">15dp</dimen>
+    <dimen name="activity_main_helpmesend_content_margin_bottom_size">70dp</dimen>
+
+
+
+    <!--main helpmesend-->
+
+    <!--main myorder-->
+    <dimen name="activity_main_myorder_topbar_leftmenu_width">10dp</dimen>
+    <dimen name="activity_main_myorder_topbar_leftmenu_height">15dp</dimen>
+    <dimen name="activity_main_myorder_topbar_title_margin_size">20dp</dimen>
+    <dimen name="activity_main_myorder_topbar_search_margin_top_bottom_size">10dp</dimen>
+    <dimen name="activity_main_myorder_topbar_search_ico_width">20dp</dimen>
+    <dimen name="activity_main_myorder_topbar_search_ico_height">20dp</dimen>
+    <dimen name="activity_main_myorder_topbar_search_ico_margin_left">10dp</dimen>
+    <dimen name="activity_main_myorder_topbar_search_ico_margin_right">15dp</dimen>
+    <dimen name="activity_main_myorder_topbar_timeselect_width">23dp</dimen>
+    <dimen name="activity_main_myorder_topbar_timeselect_height">25dp</dimen>
+    <dimen name="activity_main_myorder_topbar_height">54dp</dimen>
+    <dimen name="activity_main_myorder_tabbar_height">45.0dip</dimen>
+    <dimen name="activity_main_myorder_tabbar_bottom_green_height">3dp</dimen>
+    <dimen name="activity_main_myorder_tabbar_bottom_green_width">80dp</dimen>
+    <dimen name="activity_main_myorder_tabbar_vp_item_lv_item_height">130dp</dimen>
+    <dimen name="activity_main_myorder_rv_item_margin">8dp</dimen>
+    <!--main myorder-->
+
+
+    <!--widget popup payconfirmpopup-->
+    <dimen name="widget_popupwindow_payconfirmpopup_height">370dp</dimen>
+    <dimen name="widget_popupwindow_payconfirmpopup_rly_cancel_width">40dp</dimen>
+    <dimen name="widget_popupwindow_payconfirmpopup_rly_cancel_height">20dp</dimen>
+    <dimen name="widget_popupwindow_payconfirmpopup_payconfirm_word_margin_top_bottom_size">5dp</dimen>
+    <dimen name="widget_popupwindow_payconfirmpopup_payconfirm_pay_ico_width">30dp</dimen>
+    <dimen name="widget_popupwindow_payconfirmpopupp_payconfirm_pay_ico_height">25dp</dimen>
+    <dimen name="widget_popupwindow_payconfirmpopupp_payconfirm_pay_word_margin_top_bottom_size">12dp</dimen>
+    <dimen name="widget_popupwindow_payconfirmpopupp_payconfirm_pay_second_word_margin_top_bottom_size">6dp</dimen>
+    <dimen name="widget_popupwindow_payconfirmpopupp_payconfirm_pay_way_ico_width">15dp</dimen>
+    <dimen name="widget_popupwindow_payconfirmpopupp_payconfirm_pay_way_ico_height">15dp</dimen>
+    <dimen name="widget_popupwindow_payconfirmpopupp_bottombar_zhifu_height">46dp</dimen>
+    <dimen name="widget_popupwindow_payconfirmpopupp_payconfirm_cancel_ico_width">10dp</dimen>
+    <dimen name="widget_popupwindow_payconfirmpopupp_payconfirm_cancel_ico_height">10dp</dimen>
+    <!--widget popup payconfirmpopup-->
+</resources>

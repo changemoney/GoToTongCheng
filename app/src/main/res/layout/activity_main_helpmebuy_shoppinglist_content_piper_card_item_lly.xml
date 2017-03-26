@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lly_shoppinglist_content_piper_card_item_paperthree"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/activity_main_helpmebuy_shoppinglist_content_margin_left_right_size"
+    android:layout_marginRight="@dimen/activity_main_helpmebuy_shoppinglist_content_margin_left_right_size"
+
+    android:layout_marginTop="29dp"
+    android:orientation="vertical"
+    android:background="@drawable/activity_main_helpmebuy_shoppinglist_white_bg_shadow">
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+                <ImageView
+                    android:layout_width="@dimen/activity_main_helpmebuy_shoppinglist_head_ico_img_width"
+                    android:layout_height="@dimen/activity_main_helpmebuy_shoppinglist_head_ico_img_height"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/activity_main_helpmebuy_shoppinglist_shoppingcarfinal"
+                    />
+
+        </RelativeLayout>
+
+        <!--请务必详细填写物品规格和数量-->
+
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/writeCarefulTheGoodsNumAndType"
+                    android:textColor="@color/color_activity_main_helpmebuy_shoppinglist_content_black_bg"
+                    android:textSize="10sp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    />
+            </LinearLayout>
+            <!--请务必详细填写物品规格和数量-->
+            <!--凭购物小票。。。价格未知-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight="1"
+                >
+                <LinearLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_shoppinglist_content_piper_card_item_test"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/payBySmallTicket"
+                        android:textColor="@color/color_activity_main_helpmebuy_shoppinglist_content_shopping_by_tickets_red_bg"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    >
+                    <ImageView
+                        android:layout_width="@dimen/activity_main_helpmebuy_shoppinglist_content_lastitem_priceselect_width"
+                        android:layout_height="@dimen/activity_main_helpmebuy_shoppinglist_content_lastitem_priceselect_height"
+                        android:background="@drawable/activity_main_helpmebuy_shoppinglist_pricselected"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="@dimen/activity_main_helpmebuy_shoppinglist_content_lastitem_goodsprice_margin_right"
+                        android:visibility="gone"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/unknowPrice"
+                        android:textStyle="normal"
+                        android:textSize="10sp"
+                        android:textColor="@color/color_activity_main_helpmebuy_shoppinglist_content_buyaddress_gray_bg"
+                        android:layout_gravity="center_vertical"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--凭购物小票。。。价格未知-->
+        </LinearLayout>
+    </LinearLayout>
+    <!--请务必详细填写物品规格和数量-->
+    <!--我是分割线-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_main_helpmebuy_shoppinglist_splitline_item_height">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/activity_main_helpmebuy_shoppinglist_dashed_line"
+                android:layout_centerVertical="true"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="@dimen/activity_main_helpmebuy_shoppinglist_splitline_point_black_width"
+                android:layout_height="@dimen/activity_main_helpmebuy_shoppinglist_splitline_point_black_height"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/activity_main_helpmebuy_shoppinglist_leftround"
+                />
+            <ImageView
+                android:layout_width="@dimen/activity_main_helpmebuy_shoppinglist_splitline_point_black_width"
+                android:layout_height="@dimen/activity_main_helpmebuy_shoppinglist_splitline_point_black_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/activity_main_helpmebuy_shoppinglist_rightround"
+                />
+        </RelativeLayout>
+    </FrameLayout>
+
+        <!--我是分割线-->
+
+
+        <!--    <gototongcheng.zhyan.com.library.Widget.ScrollView.SpringScrollView
+                android:id="@+id/ssv_shoppinglist_content_piper_card_item_scrol"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight="5"
+                android:fillViewport="true"
+                >
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:orientation="vertical"
+                    >
+                <include layout="@layout/activity_main_helpmebuy_shoppinglist_content_piper_card_item_rv_headview_lly"
+                    />-->
+                <gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView
+                    android:id="@+id/xrv_shoppinglist_content_piper_card_item_goods"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/zero"
+                    android:layout_weight="5"
+
+
+                    >
+                    <!--android:layout_height="match_parent"-->
+                </gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView>
+  <!--          </LinearLayout>
+            </gototongcheng.zhyan.com.library.Widget.ScrollView.SpringScrollView>-->
+
+
+
+        <!--我是分割线-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_main_helpmebuy_shoppinglist_splitline_item_height">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/activity_main_helpmebuy_shoppinglist_dashed_line"
+                android:layout_centerVertical="true"
+                />
+        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="@dimen/activity_main_helpmebuy_shoppinglist_splitline_point_black_width"
+                    android:layout_height="@dimen/activity_main_helpmebuy_shoppinglist_splitline_point_black_height"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/activity_main_helpmebuy_shoppinglist_leftround"
+                    />
+                <ImageView
+                    android:layout_width="@dimen/activity_main_helpmebuy_shoppinglist_splitline_point_black_width"
+                    android:layout_height="@dimen/activity_main_helpmebuy_shoppinglist_splitline_point_black_height"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/activity_main_helpmebuy_shoppinglist_rightround"
+                    />
+            </RelativeLayout>
+        </FrameLayout>
+        <!--我是分割线-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        >
+        <!--商品种类和商品金额-->
+        <LinearLayout
+        android:layout_width="@dimen/zero"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        ></LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/goodsTypes"
+                    android:textColor="@color/color_activity_main_helpmebuy_shoppinglist_content_gray_word_bg"
+                    android:textSize="11sp"
+                    android:layout_marginBottom="5dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_shoppinglist_content_piper_card_item_goodstypenum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_activity_main_helpmebuy_shoppinglist_content_red_word_bg"
+                    android:textSize="15sp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="0"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+        </LinearLayout>
+        <!--商品种类和商品金额-->
+    </LinearLayout>
+
+</LinearLayout>

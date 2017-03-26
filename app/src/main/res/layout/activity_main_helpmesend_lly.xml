@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/lly_main_helpmesend_total"
+    >
+    <include layout="@layout/activity_main_helpmesend_topbar_lly"/>
+
+    <!--ScrollView 只有设置fillViewPort为true时候 子元素才能填满整个sv-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        >
+        <include layout="@layout/activity_main_helpmesend_content_lly"/>
+    </ScrollView>
+
+    <include layout="@layout/activity_main_helpmesend_bottombar_zhifu_lly"/>
+</LinearLayout>

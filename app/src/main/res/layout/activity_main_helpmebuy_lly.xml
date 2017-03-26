@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/lly_main_helpmebuy_total"
+    >
+    <include layout="@layout/activity_main_helpmebuy_topbar_lly"/>
+    <gototongcheng.zhyan.com.library.Widget.ScrollView.SpringScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:layout_weight="1"
+        >
+
+    <include layout="@layout/activity_main_helpmebuy_content_lly"/>
+
+    </gototongcheng.zhyan.com.library.Widget.ScrollView.SpringScrollView>
+    <include layout="@layout/activity_main_helpmebuy_bottombar_zhifu_lly"/>
+</LinearLayout>

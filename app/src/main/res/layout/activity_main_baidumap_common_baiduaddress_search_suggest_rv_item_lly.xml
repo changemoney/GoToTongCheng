@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="@dimen/activity_main_baidumap_common_baiduaddress_search_suggest_rv_item"
+    android:background="@color/white"
+    android:id="@+id/rly_main_baidumap_common_baiduaddress_search_suggest_rv_item_total"
+    >
+    <TextView
+        android:id="@+id/tv_main_baidumap_common_baiduaddress_search_suggest_rv_item_contentname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/the_split_line_height"
+        android:background="@color/grey"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>

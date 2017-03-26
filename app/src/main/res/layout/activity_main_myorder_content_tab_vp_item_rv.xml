@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_activity_main_myorder_content_black_bg"
+    android:orientation="vertical">
+
+        <gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView
+            android:id="@+id/xrv_main_myorder_content_tab_vp_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+                <!--//insideOverlay or insideInset or outsideOverlay or outsideInsetapp:scrollbars="none"-->
+        </gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView>
+                        <!--<tianhao.agoto.Common.Widget.RecyclerView.EasyRecyclerView.EasyRecyclerView
+            android:id="@+id/erv_myorder_content_tab_vp_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scrollbars="vertical"
+            android:nestedScrollingEnabled="true"
+            app:layout_progress="@layout/view_progress"
+            app:layout_error="@layout/view_error"
+            app:recyclerClipToPadding="true"
+            app:recyclerPadding="8dp"
+            app:recyclerPaddingTop="8dp"
+            app:recyclerPaddingBottom="8dp"
+            app:recyclerPaddingLeft="8dp"
+            app:recyclerPaddingRight="8dp"
+            app:scrollbarStyle="insideOverlay"
+            >
+                &lt;!&ndash;//insideOverlay or insideInset or outsideOverlay or outsideInsetapp:scrollbars="none"&ndash;&gt;
+        </tianhao.agoto.Common.Widget.RecyclerView.EasyRecyclerView.EasyRecyclerView>-->
+
+        <!--        <Button
+                android:id="@+id/btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="事件测试" />-->
+</LinearLayout>

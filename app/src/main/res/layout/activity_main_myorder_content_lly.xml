@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:umadsdk="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/color_activity_main_myorder_content_black_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/lly_main_myorder_content"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal"
+        android:layout_height="@dimen/activity_main_myorder_tabbar_height"
+        android:background="@color/color_activity_main_myorder_content_black_bg" >
+        <RelativeLayout
+            android:id="@+id/rly_main_myorder_allorder"
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+        <TextView
+            android:id="@+id/tv_main_myorder_allorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/allOrder"
+            android:textSize="14sp"
+            android:textColor="@color/color_activity_main_myorder_tabar_switch_selected_green_bg" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rly_main_myorder_waitforsay"
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+        <TextView
+            android:id="@+id/tv_main_myorder_waitforsay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="14sp"
+            android:text="@string/waitForSay"
+            android:textColor="@color/color_activity_main_myorder_tabar_switch_unselect_gray_bg" />
+        </RelativeLayout>
+    </LinearLayout>
+
+<!--    <ImageView
+        android:id="@+id/iv_main_myorder_tab_greenbottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="matrix"
+        android:background="@color/transparent"
+        android:src="@drawable/icon_tab_winter_a" />-->
+    <ImageView
+        android:id="@+id/iv_main_myorder_tab_greenbottom"
+        android:layout_width="@dimen/activity_main_myorder_tabbar_bottom_green_width"
+        android:layout_height="@dimen/activity_main_myorder_tabbar_bottom_green_height"
+        android:scaleType="matrix"
+        android:src="@color/color_activity_main_myorder_tabar_switch_selected_green_bg"
+        android:layout_marginLeft="50dp"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/the_split_line_height"
+        android:background="@color/color_activity_main_myorder_tabar_switch_unselect_gray_bg"
+        />
+
+
+
+    <gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView
+        android:id="@+id/xrv_main_myorder_content_tab_vp_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <!--//insideOverlay or insideInset or outsideOverlay or outsideInsetapp:scrollbars="none"-->
+    </gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_main_myorder"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1.0"
+        android:background="@color/color_activity_main_myorder_content_black_bg"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation"
+        android:visibility="gone"
+        />
+
+</LinearLayout>

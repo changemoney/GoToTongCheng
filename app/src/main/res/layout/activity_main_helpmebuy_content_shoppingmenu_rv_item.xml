@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/activity_main_helpmebuy_gray_bg_half_round_radius"
+    android:textColor="@color/black"
+    android:textSize="7sp"
+    android:id="@+id/tv_main_helpmebuy_content_shoppingmenu_rv_item"
+    android:padding="5dp"
+    >
+
+</TextView>

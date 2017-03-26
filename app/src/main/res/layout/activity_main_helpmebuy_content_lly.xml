@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/color_activity_main_helpmebuy_dark_white_content_bg"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
+        <!--购买地址项--><!--android:layout_weight="1.8"       android:layout_height="@dimen/activity_helpmebuy_content_the_first_second_item_height"-->
+        <LinearLayout
+            android:id="@+id/lly_main_helpmebuy_shopdetail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_main_helpmebuy_content_addressitem_height"
+            android:background="@color/color_activity_main_helpmebuy_content_item_white_bg"
+            android:orientation="horizontal"
+            >
+                <RelativeLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    >
+                        <ImageView
+                            android:layout_width="@dimen/activity_main_helpmebuy_content_point_width"
+                            android:layout_height="@dimen/activity_main_helpmebuy_content_point_height"
+                            android:background="@drawable/point_green"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/activity_main_helpmebuy_content_point_margin_top_size"
+                            />
+
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:orientation="vertical"
+                    >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/zero"
+                            android:layout_weight="1"
+                            >
+                                <!--android:layout_marginTop="@dimen/activity_main_helpmebuy_content_buyaddress_margin_top_size"-->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="11sp"
+                                    android:text="@string/buyAddress"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_gray_word_bg"
+                                    android:layout_centerVertical="true"
+                                    />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/zero"
+                            android:layout_weight="1"
+                            >
+                        <TextView
+                            android:id="@+id/tv_main_helpmebuy_content_shop_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            />
+                               <!-- <TextView
+                                    android:id="@+id/tv_main_helpmebuy_content_address"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:text="@string/addressNameTest"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:visibility="invisible"
+                                    />-->
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/zero"
+                            android:layout_weight="1"
+                            >
+                                <TextView
+                                    android:id="@+id/tv_main_helpmebuy_content_shop_address"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerVertical="true"
+                                    android:textSize="12sp"
+                                    android:textStyle="normal"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_gray_word_bg"
+
+                                    />
+                                <!--<TextView
+                                    android:id="@+id/tv_main_helpmebuy_content_addressdetail"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:textSize="12sp"
+                                    android:textStyle="normal"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_gray_word_bg"
+                                    android:text="@string/addressTest"
+                                    android:visibility="invisible"
+                                    />-->
+                        </RelativeLayout>
+
+
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    >
+                        <ImageView
+                            android:layout_width="@dimen/activity_main_helpmebuy_content_item_right_arrow_width"
+                            android:layout_height="@dimen/activity_main_helpmebuy_content_item_right_arrow_height"
+                            android:background="@mipmap/right_gray_arrow"
+                            android:layout_centerInParent="true"
+                            />
+
+                </RelativeLayout>
+
+        </LinearLayout>
+        <!--购买地址项-->
+        <!--收件人信息android:layout_weight="1.6"  android:layout_height="@dimen/activity_main_helpmebuy_content_the_first_second_item_height"-->
+        <LinearLayout
+            android:id="@+id/lly_main_helpmebuy_userdetail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_main_helpmebuy_content_addressitem_height"
+
+            android:background="@color/color_activity_main_helpmebuy_content_item_white_bg"
+
+            android:layout_marginTop="1dp"
+            >
+                <RelativeLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    >
+                        <ImageView
+                            android:layout_width="@dimen/activity_main_helpmebuy_content_point_width"
+                            android:layout_height="@dimen/activity_main_helpmebuy_content_point_height"
+                            android:background="@drawable/point_red"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/activity_main_helpmebuy_content_point_margin_top_size"
+                            />
+
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:orientation="vertical"
+                    >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/zero"
+                            android:layout_weight="1"
+                            >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="11sp"
+                                    android:text="@string/receiverInfo"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_gray_word_bg"
+                                    android:layout_centerVertical="true"
+                                    />
+                        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/zero"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            >
+                                <TextView
+                                    android:id="@+id/tv_main_helpmebuy_content_username"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginRight="@dimen/activity_main_helpmebuy_content_item_name_margin_tel_size"
+
+                                    />
+                                <!--<TextView
+                                    android:id="@+id/tv_helpmebuy_content_receivename"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:text="@string/nameTest"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginRight="@dimen/activity_main_helpmebuy_content_item_name_margin_tel_size"
+                                    android:visibility="invisible"
+                                    />-->
+                                <TextView
+                                    android:id="@+id/tv_main_helpmebuy_content_usertel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+
+                                    />
+                                <!--<TextView
+                                    android:id="@+id/tv_main_helpmebuy_content_receivetel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:text="@string/telTest"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:visibility="invisible"
+                                    />-->
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/zero"
+                            android:layout_weight="1"
+                            >
+                                <TextView
+                                    android:id="@+id/tv_main_helpmebuy_content_useraddressdetail"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:textSize="12sp"
+                                    android:textStyle="normal"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_gray_word_bg"
+
+                                    />
+                                <!--<TextView
+                                    android:id="@+id/tv_main_helpmebuy_content_receiveaddressdetail"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:textSize="12sp"
+                                    android:textStyle="normal"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_gray_word_bg"
+                                    android:text="@string/addressTest"
+                                    android:visibility="invisible"
+                                    />-->
+                        </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    >
+                        <ImageView
+                            android:layout_width="@dimen/activity_main_helpmebuy_content_item_right_arrow_width"
+                            android:layout_height="@dimen/activity_main_helpmebuy_content_item_right_arrow_height"
+                            android:background="@mipmap/right_gray_arrow"
+                            android:layout_centerInParent="true"
+                            />
+
+                </RelativeLayout>
+        </LinearLayout>
+        <!--收件人信息-->
+
+        <!--购物清单--><!--android:layout_weight="2.35"-->
+        <LinearLayout
+            android:id="@+id/lly_main_helpmebuy_shoppinglist"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_main_helpmebuy_content_shoppinglist_item_height"
+
+            android:background="@color/color_activity_main_helpmebuy_content_item_white_bg"
+
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/activity_main_helpmebuy_content_shoppinglist_item_margin_top_size"
+            >
+                <RelativeLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    >
+                        <ImageView
+                            android:layout_width="@dimen/activity_main_helpmebuy_content_shoppingorder_width"
+                            android:layout_height="@dimen/activity_main_helpmebuy_content_shoppingorder_height"
+                            android:background="@drawable/activity_main_helpmebuy_shoppingorder"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/activity_main_helpmebuy_content_point_margin_top_size"
+                            />
+
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:orientation="vertical"
+                    >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/zero"
+                            android:layout_weight="1.3"
+                            >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/shoppingOrder"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="@dimen/activity_main_helpmebuy_content_point_margin_top_size"
+                                    />
+                        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/zero"
+                            android:layout_weight="2"
+                            android:orientation="horizontal"
+                            >
+
+                                <android.support.v7.widget.RecyclerView
+                                    android:id="@+id/rv_main_helpmebuy_content_shoppingmenu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="@dimen/activity_main_helpmebuy_content_shoppingorder_margin_right_size"
+                                    android:layout_marginTop="@dimen/activity_main_helpmebuy_content_shoppingorder_margin_top_bottom_size"
+                                    android:layout_marginBottom="@dimen/activity_main_helpmebuy_content_shoppingorder_margin_top_bottom_size"
+                                    >
+
+
+                                </android.support.v7.widget.RecyclerView>
+                                <!--edittext焦点问题就是在父控件里假如focusable 和focusableintouchmod属性 输入从开始处开始必须gravity=start-->
+                                <!--<EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="@dimen/activity_helpmebuy_content_shoppingorder_edittext_margin_right_size"
+                                    android:layout_marginTop="@dimen/activity_main_helpmebuy_content_shoppingorder_margin_top_bottom_size"
+                                    android:layout_marginBottom="@dimen/activity_main_helpmebuy_content_shoppingorder_margin_top_bottom_size"
+                                    android:gravity="start"
+                                    android:background="@null"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_gray_word_bg"
+                                    android:windowSoftInputMode="stateHidden|adjustResize"
+                                    />-->
+                                <!--edittext焦点问题就是在父控件里假如focusable 和focusableintouchmod属性 输入从开始处开始必须gravity=start-->
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/zero"
+                            android:layout_weight="0.9"
+                            >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="10sp"
+                                    android:textStyle="normal"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_gray_word_bg"
+                                    android:text="@string/writeTheBestInfoForTheGoodsPlease"
+                                    />
+                        </RelativeLayout>
+
+
+                </LinearLayout>
+        </LinearLayout>
+        <!--购物清单-->
+        <!--订单备注--><!-- android:layout_weight="2.1" android:layout_height="@dimen/activity_main_helpmebuy_content_the_three_fouth_item_height"-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_main_helpmebuy_content_remark_item_height"
+
+            android:background="@color/color_activity_main_helpmebuy_content_item_white_bg"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/activity_main_helpmebuy_content_remark_item_margin_top_size"
+            >
+                <RelativeLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    >
+                        <ImageView
+                            android:layout_width="@dimen/activity_main_helpmebuy_content_orderremark_width"
+                            android:layout_height="@dimen/activity_main_helpmebuy_content_orderremark_height"
+                            android:background="@drawable/activity_main_helpmebuy_orderremark"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/activity_main_helpmebuy_content_point_margin_top_size"
+                            />
+
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:orientation="vertical"
+                    >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/zero"
+                            android:layout_weight="0.85"
+                            >
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/orderRemark"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_centerVertical="true"/>
+                        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/zero"
+                            android:layout_weight="2"
+                            android:orientation="vertical"
+                            >
+                                <!--放辣椒-->
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/zero"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal"
+                                    >
+                                        <CheckBox
+                                           android:id="@+id/cb_main_helpmebuy_content_nochilli"
+                                            android:layout_width="@dimen/zero"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:text="@string/noChilli"
+                                            android:background="@drawable/activity_main_helpmebuy_gray_bg_half_round_radius"
+                                            android:gravity="center_horizontal"
+                                            android:button="@null"
+                                            android:textSize="10sp"
+                                            android:paddingLeft="2dp"
+                                            android:paddingRight="2dp"
+                                            android:paddingTop="6dp"
+                                            android:paddingBottom="6dp"
+                                            android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+
+                                            />
+                                        <CheckBox
+                                            android:id="@+id/cb_main_helpmebuy_content_smallchilli"
+                                            android:layout_width="@dimen/zero"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:text="@string/smallChilli"
+                                            android:background="@drawable/activity_main_helpmebuy_gray_bg_half_round_radius"
+                                            android:gravity="center_horizontal"
+                                            android:button="@null"
+                                            android:textSize="10sp"
+                                            android:paddingLeft="2dp"
+                                            android:paddingRight="2dp"
+                                            android:paddingTop="6dp"
+                                            android:paddingBottom="6dp"
+                                            android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+
+                                            />
+                                        <CheckBox
+                                            android:id="@+id/cb_main_helpmebuy_content_mediachilli"
+                                            android:layout_width="@dimen/zero"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:text="@string/mediaChilli"
+                                            android:background="@drawable/activity_main_helpmebuy_gray_bg_half_round_radius"
+                                            android:gravity="center_horizontal"
+                                            android:button="@null"
+                                            android:textSize="10sp"
+                                            android:paddingLeft="2dp"
+                                            android:paddingRight="2dp"
+                                            android:paddingTop="6dp"
+                                            android:paddingBottom="6dp"
+                                            android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+
+                                            />
+                                        <CheckBox
+                                            android:id="@+id/cb_main_helpmebuy_content_specialchilli"
+                                            android:layout_width="@dimen/zero"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:text="@string/specialChilli"
+                                            android:background="@drawable/activity_main_helpmebuy_gray_bg_half_round_radius"
+                                            android:gravity="center_horizontal"
+                                            android:button="@null"
+                                            android:textSize="10sp"
+                                            android:paddingLeft="2dp"
+                                            android:paddingRight="2dp"
+                                            android:paddingTop="6dp"
+                                            android:paddingBottom="6dp"
+                                            android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+
+                                            />
+                                        <CheckBox
+                                            android:id="@+id/cb_main_helpmebuy_content_haveonion"
+                                            android:layout_width="@dimen/zero"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:text="@string/haveOnion"
+                                            android:background="@drawable/activity_main_helpmebuy_gray_bg_half_round_radius"
+                                            android:gravity="center_horizontal"
+                                            android:button="@null"
+                                            android:textSize="10sp"
+                                            android:paddingLeft="2dp"
+                                            android:paddingRight="2dp"
+                                            android:paddingTop="6dp"
+                                            android:paddingBottom="6dp"
+                                            android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+
+                                            />
+
+                                </LinearLayout>
+                                <!--放辣椒-->
+                                <!--放香菜-->
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/zero"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal"
+                                    >
+                                        <CheckBox
+                                            android:id="@+id/cb_main_helpmebuy_content_noonion"
+                                            android:layout_width="@dimen/zero"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="3"
+                                            android:text="@string/noOnion"
+                                            android:background="@drawable/activity_main_helpmebuy_gray_bg_half_round_radius"
+                                            android:gravity="center_horizontal"
+                                            android:button="@null"
+                                            android:textSize="10sp"
+                                            android:paddingLeft="2dp"
+                                            android:paddingRight="2dp"
+                                            android:paddingTop="6dp"
+                                            android:paddingBottom="6dp"
+                                            android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+
+                                            />
+                                        <CheckBox
+                                            android:id="@+id/cb_main_helpmebuy_content_havecaraway"
+                                            android:layout_width="@dimen/zero"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="3"
+                                            android:text="@string/haveCaraway"
+                                            android:background="@drawable/activity_main_helpmebuy_gray_bg_half_round_radius"
+                                            android:gravity="center_horizontal"
+                                            android:button="@null"
+                                            android:textSize="10sp"
+                                            android:paddingLeft="2dp"
+                                            android:paddingRight="2dp"
+                                            android:paddingTop="6dp"
+                                            android:paddingBottom="6dp"
+                                            android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+
+                                            />
+                                        <CheckBox
+                                            android:id="@+id/cb_main_helpmebuy_content_nocaraway"
+                                            android:layout_width="@dimen/zero"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="4"
+                                            android:text="@string/noCaraway"
+                                            android:background="@drawable/activity_main_helpmebuy_gray_bg_half_round_radius"
+                                            android:gravity="center_horizontal"
+                                            android:button="@null"
+                                            android:textSize="10sp"
+                                            android:paddingLeft="2dp"
+                                            android:paddingRight="2dp"
+                                            android:paddingTop="6dp"
+                                            android:paddingBottom="6dp"
+                                            android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+
+                                            />
+                                        <CheckBox
+                                            android:id="@+id/cb_main_helpmebuy_content_havevinegar"
+                                            android:layout_width="@dimen/zero"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:text="@string/haveVinegar"
+                                            android:background="@drawable/activity_main_helpmebuy_gray_bg_half_round_radius"
+                                            android:gravity="center_horizontal"
+                                            android:button="@null"
+                                            android:textSize="10sp"
+                                            android:paddingLeft="2dp"
+                                            android:paddingRight="2dp"
+                                            android:paddingTop="6dp"
+                                            android:paddingBottom="6dp"
+                                            android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+                                            />
+
+
+                                </LinearLayout>
+                                <!--放香菜-->
+                                <!--手动输入-->
+
+                                <LinearLayout
+                                    android:id="@+id/lly_main_helpmebuy_content_orderremark"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/zero"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal"
+                                    >
+                                        <CheckBox
+                                            android:id="@+id/cb_main_helpmebuy_content_novinegar"
+                                            android:layout_width="50dp"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/noVinegar"
+                                            android:background="@drawable/activity_main_helpmebuy_gray_bg_half_round_radius"
+                                            android:gravity="center_horizontal"
+                                            android:button="@null"
+                                            android:textSize="10sp"
+                                            android:paddingLeft="2dp"
+                                            android:paddingRight="2dp"
+                                            android:paddingTop="6dp"
+                                            android:paddingBottom="6dp"
+                                            android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+
+                                            />
+                                        <LinearLayout
+                                            android:id="@+id/lly_main_helpmebuy_content_newadd"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:orientation="horizontal"
+                                            >
+
+
+                                        </LinearLayout>
+                                        <CheckBox
+                                            android:id="@+id/cb_main_helpmebuy_content_manualinput"
+                                            android:layout_width="60dp"
+                                            android:layout_height="wrap_content"
+
+                                            android:text="@string/manualInput"
+                                            android:background="@drawable/activity_main_helpmebuy_gray_bg_half_round_radius"
+                                            android:gravity="center_horizontal"
+                                            android:button="@null"
+                                            android:textSize="10sp"
+                                            android:paddingLeft="2dp"
+                                            android:paddingRight="2dp"
+                                            android:paddingTop="6dp"
+                                            android:paddingBottom="6dp"
+                                            android:textColor="@color/color_activity_main_helpmebuy_content_black_word_bg"
+
+                                            />
+
+
+
+                                </LinearLayout>
+                                <!--手动输入-->
+                                <!--edittext焦点问题就是在父控件里假如focusable 和focusableintouchmod属性 输入从开始处开始必须gravity=start-->
+                             <!--   <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="@dimen/activity_helpmebuy_content_shoppingorder_edittext_margin_right_size"
+                                    android:layout_marginTop="@dimen/activity_main_helpmebuy_content_shoppingorder_margin_top_bottom_size"
+                                    android:layout_marginBottom="@dimen/activity_helpmebuy_content_shoppingorder_edittext_margin_right_size"
+                                    android:gravity="start"
+                                    android:background="@null"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/color_activity_main_helpmebuy_content_gray_word_bg"
+                                    android:windowSoftInputMode="stateHidden|adjustResize"
+
+                                    />-->
+                                <!--edittext焦点问题就是在父控件里假如focusable 和focusableintouchmod属性 输入从开始处开始必须gravity=start-->
+                        </LinearLayout>
+
+
+
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    >
+
+
+                </RelativeLayout>
+        </LinearLayout>
+        <!--订单备注--> <!--android:layout_weight="0.8" android:layout_height="@dimen/activity_helpmebuy_content_lastitem_height"-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_main_helpmebuy_content_lastitem_height"
+            android:background="@color/color_activity_main_helpmebuy_content_item_white_bg"
+            android:layout_marginTop="@dimen/activity_main_helpmebuy_content_last_item_margin_top_size"
+            android:layout_marginBottom="@dimen/activity_main_helpmebuy_content_lastitem_margin_bottom_size"
+            >
+                <RelativeLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    >
+                        <ImageView
+                            android:layout_width="@dimen/activity_main_helpmebuy_content_goodsprice_width"
+                            android:layout_height="@dimen/activity_main_helpmebuy_content_goodsprice_height"
+                            android:background="@drawable/activity_main_helpmebuy_goodsprice"
+                            android:layout_centerInParent="true"
+                            android:layout_marginTop="@dimen/activity_main_helpmebuy_content_point_margin_top_size"
+                            />
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/goodsPrice"
+                            android:textColor="@color/color_activity_main_helpmebuy_bottom_pay_black_word_bg"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="@dimen/activity_main_helpmebuy_content_lastitem_goodsprice_margin_right"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/payBySmallTicket"
+                            android:textColor="@color/color_activity_main_helpmebuy_content_shopping_by_tickets_red_bg"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/lly_main_helpmebuy_content_price"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:visibility="invisible"
+                    >
+                        <CheckBox
+                            android:id="@+id/cb_main_helpmebuy_content_pricecheck"
+                            android:layout_width="@dimen/activity_main_helpmebuy_content_lastitem_priceselect_width"
+                            android:layout_height="@dimen/activity_main_helpmebuy_content_lastitem_priceselect_height"
+                            android:background="@drawable/activity_main_helpmebuy_red_checked_selector"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="@dimen/activity_main_helpmebuy_content_lastitem_goodsprice_margin_right"
+                            android:button="@null"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/unknowPrice"
+                            android:textStyle="normal"
+                            android:textSize="14sp"
+                            android:textColor="@color/color_activity_main_helpmebuy_content_gray_word_bg"
+                            android:layout_gravity="center_vertical"
+                            />
+
+                </LinearLayout>
+        </LinearLayout>
+
+
+
+</LinearLayout>

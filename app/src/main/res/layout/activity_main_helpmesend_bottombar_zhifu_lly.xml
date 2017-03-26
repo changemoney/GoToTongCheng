@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="@dimen/activity_main_helpmesend_bottombar_zhifu_height">
+    <RelativeLayout
+        android:id="@+id/rly_main_helpmesend_bottombar_feecontent"
+        android:layout_width="@dimen/zero"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        >
+        <ImageView
+            android:id="@+id/iv_main_helpmesend_bottombar_paymark"
+            android:layout_width="@dimen/activity_main_helpmesend_bottom_paymark_width"
+            android:layout_height="@dimen/activity_main_helpmesend_bottom_paymark_height"
+            android:background="@drawable/activity_main_helpmesend_pricemark"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_main_helpmesend_bottom_paymark_marginleft_size"
+            android:layout_marginRight="@dimen/activity_main_helpmesend_bottom_paymark_marginleft_size"
+            />
+        <TextView
+            android:id="@+id/tv_main_helpmesend_bottombar_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_main_helpmesend_bottombar_paymark"
+            android:text="@string/moneyTest"
+            android:textColor="@color/color_activity_main_helpmesend_bottom_green_pay_bg"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="@dimen/zero"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        ></RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rly_main_helpmesend_bottombar_payconfirm"
+        android:layout_width="@dimen/zero"
+        android:layout_height="match_parent"
+        android:background="@color/color_activity_main_helpmesend_bottom_green_pay_bg"
+        android:layout_weight="1.1"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/color_activity_main_helpmesend_bottom_pay_word_black_bg"
+            android:text="@string/toPay"
+            android:textSize="15sp"
+            />
+
+    </RelativeLayout>
+</LinearLayout>

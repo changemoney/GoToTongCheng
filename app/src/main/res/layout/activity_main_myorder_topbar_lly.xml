@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="@dimen/activity_main_myorder_topbar_height"
+
+    >
+    <RelativeLayout
+        android:id="@+id/rly_main_myorder_topbar_leftmenu"
+        android:layout_width="@dimen/zero"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="1"
+
+        >
+        <ImageView
+            android:id="@+id/iv_main_myorder_topbar_leftmenu"
+            android:layout_width="@dimen/activity_main_myorder_topbar_leftmenu_width"
+            android:layout_height="@dimen/activity_main_myorder_topbar_leftmenu_height"
+            android:background="@drawable/topbar_green_return_arrow"
+            android:layout_centerInParent="true"
+
+            android:layout_marginLeft="@dimen/activity_main_myorder_topbar_title_margin_size"
+            />
+    </RelativeLayout>
+    <!--
+        style="@style/main_activity_topbar_title_text_style"
+        android:text="@string/main_activity_topbar_title"-->
+    <!--标题-->
+    <LinearLayout
+        android:layout_width="@dimen/zero"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="6"
+        android:background="@drawable/activity_main_myorder_search_half_round_shape"
+        android:layout_marginTop="@dimen/activity_main_myorder_topbar_search_margin_top_bottom_size"
+        android:layout_marginBottom="@dimen/activity_main_myorder_topbar_search_margin_top_bottom_size"
+        >
+        <ImageView
+            android:layout_width="@dimen/activity_main_myorder_topbar_search_ico_width"
+            android:layout_height="@dimen/activity_main_myorder_topbar_search_ico_height"
+            android:background="@drawable/activity_main_myorder_topbar_search_white"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/activity_main_myorder_topbar_search_ico_margin_left"
+            android:layout_marginRight="@dimen/activity_main_myorder_topbar_search_ico_margin_right"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_activity_main_myorder_topbar_title_search_gray_black_word_bg"
+            android:text="@string/searchforinputordernumorkeyword"
+            android:textSize="12sp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+    <!--标题-->
+    <RelativeLayout
+        android:id="@+id/rly_main_myorder_topbar_rightmenu"
+        android:layout_width="@dimen/zero"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+        <ImageView
+            android:layout_width="@dimen/activity_main_myorder_topbar_timeselect_width"
+            android:layout_height="@dimen/activity_main_myorder_topbar_timeselect_height"
+            android:background="@drawable/activity_main_myorder_topbar_timeselect"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+</LinearLayout>

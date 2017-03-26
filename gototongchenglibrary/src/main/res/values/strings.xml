@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">GoToTongChengLibrary</string>
+
+
+    <!--custome dialog-->
+    <string name="addgoods">添加商品名称</string>
+    <string name="goodsname">商品名称</string>
+    <string name="goodsnum">商品数量</string>
+    <!--custome dialog-->
+
+    <!--companycustomtel dialog-->
+    <string name="companyCustomTel">0577-62670222</string>
+    <!--companycustomtel dialog-->
+
+    <string name="cancel">取消</string>
+    <string name="query">确认</string>
+    <string name="goodsName">商品名称</string>
+
+
+
+
+    <!--XRecycleView-->
+    <string name="listview_header_hint_normal">下拉刷新</string>
+    <string name="listview_header_hint_release">释放立即刷新</string>
+    <string name="listview_loading">正在加载...</string>
+    <string name="nomore_loading">没有了</string>
+    <string name="refreshing">正在刷新...</string>
+    <string name="refresh_done">刷新完成</string>
+    <string name="loading_done">加载完成</string>
+    <string name="listview_header_last_time">上次更新时间：</string>
+    <!--XRecycleView-->
+
+
+    <!--AddAddressInAddressManageDialog-->
+    <string name="input_address_type">请选择要添加的地址类型</string>
+    <string name="addContacterAddress">添加联系人地址</string>
+    <string name="addSellerAddress">添加商家地址</string>
+    <!--<string name="cancel">取消</string>-->
+    <!--AddAddressInAddressManageDialog-->
+
+
+
+    <!--dialog shoudongshuru -->
+    <string name="manualInput">手动输入</string>
+    <!--dialog shoudongshuru -->
+</resources>
