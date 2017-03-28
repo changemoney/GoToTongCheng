@@ -1,8 +1,11 @@
 package com.zhyan.gototongcheng.Main.HelpMeBuy;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.baidu.mapapi.bikenavi.params.BikeNaviLauchParam;
@@ -224,10 +227,54 @@ public class HelpMeBuyActivityController extends BaseController {
     }
     /*不放醋*/
     /*手动输入*/
-    @BindView(R.id.cb_main_helpmebuy_content_manualinput)
-    CheckBox cbMainHelpMeBuyContentManualinput;
+    int i = 0;
+    public List<TextView> addRemarkList = new ArrayList<TextView>();
+    @BindView(R.id.lly_main_helpmebuy_content_remark)
+    LinearLayout llyMainHelpMeBuyContentRemark;
+    @BindView(R.id.lly_main_helpmebuy_content_remark_child)
+    LinearLayout llyMainHelpMeBuyContentRemarkChild;
+    @BindView(R.id.tv_main_helpmebuy_content_manualinput)
+    TextView tvMainHelpMeBuyContentManualinput;
+    @OnClick(R.id.tv_main_helpmebuy_content_manualinput)
+    public void tvMainHelpMeBuyContentManualinputOnclick(){
+        shouDongShuRuDialog = new ShouDongShuRuDialog(activity).Build.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dissmissDialog();
+            }
+        }).setPositiveButton("确认",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dissmissDialog();
+            }
+        }).setCallBackListener(new ShouDongShuRuDialog.DialogCallBackListener() {
+            @Override
+            public void callBack(String msgName) {
+                TextView textView = new TextView(activity);
+                textView.setText(msgName);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                layoutParams.setMargins(3,0,3,0);
+                textView.setLayoutParams(layoutParams);
+                textView.setPadding(2, 6, 2, 6);
+                textView.setTextColor(activity.getResources().getColor(R.color.red));
+                textView.setTextSize(12);
 
+                textView.setBackgroundResource(R.drawable.activity_main_helpmebuy_gray_bg_half_round_radius);
+                addRemarkList.add(textView);
+                llyMainHelpMeBuyContentRemarkChild.addView(textView);
+            }
+        }).build(activity);
+        showDialog();
+    }
+    public void showDialog() {
+        if (shouDongShuRuDialog != null && !shouDongShuRuDialog.isShowing())
+            shouDongShuRuDialog.show();
+    }
 
+    public void dissmissDialog() {
+        if (shouDongShuRuDialog != null && shouDongShuRuDialog.isShowing())
+            shouDongShuRuDialog.dismiss();
+    }
 
 
     @BindView(R.id.tv_main_helpmebuy_bottombar_fee)

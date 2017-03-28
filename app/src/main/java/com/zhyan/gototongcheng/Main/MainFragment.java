@@ -153,12 +153,12 @@ public class MainFragment extends Fragment {
     public void onResume(){
         super.onResume();
         tvMainAd.startScroll();
-        initLoop.setStart();
+
     }
     public void onStop(){
         super.onStop();
         tvMainAd.stopScroll();
-        initLoop.setStop();
+       /* initLoop.setStop();*/
        /* tvMainAd.destroyDrawingCache();*/
     }
     public void onPause(){
@@ -179,6 +179,7 @@ public class MainFragment extends Fragment {
     private void cicleWheelInit(View view){
         initLoop = new InitLoop(view,mLoopViewPager,ll_dots);
         initLoop.init();
+        initLoop.setStart();
     }
 
     /*跑马灯的实现初始化*/

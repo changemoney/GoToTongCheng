@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="MyDialogStyle">
-        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/transparent</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
@@ -55,4 +55,11 @@
         <attr name="minDistance" format="integer" />
     </declare-styleable>
     <!--card-->
+    <!--roundedimageview-->
+    <declare-styleable name="roundedimageview">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color"></attr>
+    </declare-styleable>
+    <!--roundedimageview-->
 </resources>

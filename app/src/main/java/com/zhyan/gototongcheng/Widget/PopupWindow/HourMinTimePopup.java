@@ -82,8 +82,8 @@ public class HourMinTimePopup extends PopupWindow {
     private CalendarTextAdapter minAdapter;
     /*数据填充器 adapter*/
     /*字体大小*/
-    private int maxTextSize = 24;
-    private int minTextSize = 14;
+    private int maxTextSize = 19;
+    private int minTextSize = 9;
     /*字体大小*/
 
     public HourMinTimePopup(final Activity activity1){

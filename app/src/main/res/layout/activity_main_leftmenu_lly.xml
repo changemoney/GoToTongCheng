@@ -26,8 +26,8 @@
                 android:scaleType="fitXY"
 
                 />-->
-            <gototongcheng.zhyan.com.library.Widget.ImageView.CircleImageView
-                android:id="@+id/civ_main_leftmenu_headimg"
+            <gototongcheng.zhyan.com.library.Widget.ImageView.RoundImageView
+                android:id="@+id/riv_main_leftmenu_headimg"
                 android:layout_width="@dimen/activity_main_leftmenu_headImage_size"
                 android:layout_height="@dimen/activity_main_leftmenu_headImage_size"
                 android:src="@drawable/activity_main_leftmenu_goto_head"

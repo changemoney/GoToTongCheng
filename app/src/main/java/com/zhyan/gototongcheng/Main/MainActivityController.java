@@ -27,6 +27,7 @@ import gototongcheng.zhyan.com.library.Bean.BaseBean;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import gototongcheng.zhyan.com.library.Utils.PhoneFormatCheckUtils;
 import gototongcheng.zhyan.com.library.Widget.ImageView.CircleImageView;
+import gototongcheng.zhyan.com.library.Widget.ImageView.RoundImageView;
 import rx.Observer;
 
 /**
@@ -162,8 +163,8 @@ public class MainActivityController extends BaseController{
    /* @BindView(R.id.civ_main_leftmenu_headimg)
     ImageView civMainLeftMenuHeadImg;*/
     /*登录头像 名称*/
-    @BindView(R.id.civ_main_leftmenu_headimg)
-    CircleImageView civMainLeftMenuHeadImg;
+    @BindView(R.id.riv_main_leftmenu_headimg)
+    RoundImageView rivMainLeftMenuHeadImg;
     @BindView(R.id.tv_main_leftmenu_name)
     TextView tvMainLeftMenuName;
     /*登录头像 名称*/
@@ -222,7 +223,7 @@ public class MainActivityController extends BaseController{
 
                         FinalBitmap finalBitMap = null;
                         finalBitMap = FinalBitmap.create(activity);
-                        finalBitMap.display(civMainLeftMenuHeadImg, headImgUrl);
+                        finalBitMap.display(rivMainLeftMenuHeadImg, headImgUrl);
 
 
                     }
@@ -240,7 +241,7 @@ public class MainActivityController extends BaseController{
         xcCacheManager.writeCache("loginStatus","no");
         xcCacheManager.writeCache("usid","");
         tvMainLeftMenuName.setText("请登录");
-        civMainLeftMenuHeadImg.setImageResource(R.drawable.activity_main_leftmenu_goto_head);
+        rivMainLeftMenuHeadImg.setImageResource(R.drawable.activity_main_leftmenu_goto_head);
     }
     /*退出登录后的名字和头像*/
 }

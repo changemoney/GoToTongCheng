@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,99 +39,14 @@ import rx.Observer;
  * http://download.csdn.net/download/donkor_/9700844
  */
 
-public class LoginActivity extends BaseActivity implements Handler.Callback, PlatformActionListener {
-
-    private XCCacheManager mCacheManager;
-    /*缓存*/
-
-    /*注册页面*/
-    @BindView(R.id.rly_login_content_reg)
-    RelativeLayout rlyLoginContentReg;
-    @OnClick(R.id.rly_login_content_reg)
-    public void rlyLoginContentRegOnclick(){
-        Intent intent = new Intent(this,UserRegActivity.class);
-        startActivity(intent);
-    }
-    /*注册页面*/
-    /*返回页面*/
-    @BindView(R.id.rly_login_topbar_leftmenu_back)
-    RelativeLayout rlyLoginTopBarLeftMenuBack;
-    @OnClick(R.id.rly_login_topbar_leftmenu_back)
-    public void rlyLoginTopBarLeftMenuBackOnclick(){
-        this.finish();
-    }
-    /*返回页面*/
-    /*手机号码*/
-    @BindView(R.id.et_login_content_tel)
-    EditText etLoginContentTel;
-    /*手机号码*/
-    /*密码*/
-    @BindView(R.id.et_login_content_pass)
-    EditText etLoginContentPass;
-    /*密码*/
-    /*服务条款*/
-    @BindView(R.id.tv_login_content_serviceitem)
-    TextView tvLoginContentServiceItem;
-    @OnClick(R.id.tv_login_content_serviceitem)
-    public void tvLoginContentServiceItemOnclick(){
-        /*Intent intent = new Intent(this,ServiceItemActivity.class);
-        startActivity(intent);*/
-    }
-    /*服务条款*/
-    /*登录*/
-    /*正常登录*/
-    @BindView(R.id.rly_login_content_loginsubmit)
-    RelativeLayout rlyLoginContentLoginSubmit;
-    @OnClick(R.id.rly_login_content_loginsubmit)
-    public void rlyLoginContentLoginSubmitOnclick(){
-        loginSubmit();
-    }
-
-      /*登录提交*/
-
-    private void loginSubmit(){
-
-        String tel = etLoginContentTel.getText().toString();
-        String pass = etLoginContentPass.getText().toString();
-
-        UserSettingNetWorks userSettingNetWorks = new UserSettingNetWorks();
-        userSettingNetWorks.userLoginToNet(tel, pass, new Observer<UserLoginBean>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Toast.makeText(getBaseContext(),"网络君凯旋失败啦！！快检查你的账号和密码吧",Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onNext(UserLoginBean userLogin) {
-                String name = "userName";
-                String usid = "usid";
-                String phone = "phone";
-                String loginStatus = "loginStatus";
-                /*Toast.makeText(getBaseContext(),"usid"+userLogin.getUserUsid(),Toast.LENGTH_LONG).show();*/
-                if(userLogin.getUserName() != null){
-                    mCacheManager.writeCache(name,userLogin.getUserName());
-                    mCacheManager.writeCache(phone,userLogin.getUserName());
-                    mCacheManager.writeCache(usid,userLogin.getUserUsid());
-                    System.out.println("usid:"+userLogin.getUserUsid());
-                    mCacheManager.writeCache(loginStatus,"yes");
-                    Toast.makeText(getBaseContext(),""+userLogin.getResult(),Toast.LENGTH_LONG).show();
-                    finish();
-                }else{
-
-                    Toast.makeText(getBaseContext(),""+userLogin.getResult(),Toast.LENGTH_LONG).show();
-                }
-
-            }
-        });
-    }
+public class LoginActivity extends BaseActivity  implements Handler.Callback, PlatformActionListener{
 
 
-    /*正常登录*/
+    private  final int MSG_USERID_FOUND = 1;
+    private  final int MSG_LOGIN = 2;
+    private  final int MSG_AUTH_CANCEL = 3;
+    private  final int MSG_AUTH_ERROR = 4;
+    private  final int MSG_AUTH_COMPLETE = 5;
     /*第三方登录 qq 微信*/
     @BindView(R.id.rly_login_content_qqlogin)
     RelativeLayout rlyLoginContentQQLogin;
@@ -145,26 +61,40 @@ public class LoginActivity extends BaseActivity implements Handler.Callback, Pla
     public void rlyLoginContentWXLoginOnclick(){
         authorize(new Wechat(this));
     }
-    private  final int MSG_USERID_FOUND = 1;
-    private  final int MSG_LOGIN = 2;
-    private  final int MSG_AUTH_CANCEL = 3;
-    private  final int MSG_AUTH_ERROR = 4;
-    private  final int MSG_AUTH_COMPLETE = 5;
     //执行授权,获取用户信息
     private void authorize(Platform plat) {
+        /*Toast.makeText(activity,plat.getName()+" "+plat.getDb().getUserName()+" "+plat.getDb().getPlatformNname()+" "+plat.getDb().getUserIcon(),Toast.LENGTH_LONG).show();*/
         if (plat.isValid()) {
             String userId = plat.getDb().getUserId();
             if (!TextUtils.isEmpty(userId)) {
                 UIHandler.sendEmptyMessage(MSG_USERID_FOUND, this);
                 login(plat.getName(), userId, null);
+                /*Toast.makeText(this,"this is in plat ",Toast.LENGTH_LONG).show();*/
+
+                String name = mCacheManager.readCache("userName");
+                String usid = mCacheManager.readCache("usid");
+                String headUrl = mCacheManager.readCache("headUrl");
+                String loginStatus = mCacheManager.readCache("loginStatus");
+
+                Toast.makeText(this,name+" "+usid+" "+headUrl+" "+loginStatus,Toast.LENGTH_LONG).show();
                 return;
             }
         }
+
+
+        String name = mCacheManager.readCache("userName");
+        String usid = mCacheManager.readCache("usid");
+        String headUrl = mCacheManager.readCache("headUrl");
+        String loginStatus = mCacheManager.readCache("loginStatus");
+
+        Toast.makeText(this,name+" "+usid+" "+headUrl+" "+loginStatus,Toast.LENGTH_LONG).show();
+        /*Toast.makeText(this,"this is out plat ",Toast.LENGTH_LONG).show();*/
         plat.setPlatformActionListener(this);
         //true不使用SSO授权，false使用SSO授权
         plat.SSOSetting(false);
         plat.showUser(null);
     }
+
     //发送登陆信息
     private void login(String plat, String userId, HashMap<String, Object> userInfo) {
         Message msg = new Message();
@@ -174,10 +104,15 @@ public class LoginActivity extends BaseActivity implements Handler.Callback, Pla
     }
     /*第三方登录 qq 微信*/
 
+
+    private XCCacheManager mCacheManager;
+    LoginActivityController loginActivityController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+             /*友盟第三方登录*/
+        ShareSDK.initSDK(this);
+        /*友盟第三方登录*/
         setContentView(R.layout.activity_main_login_lly);
         init();
     }
@@ -185,20 +120,11 @@ public class LoginActivity extends BaseActivity implements Handler.Callback, Pla
     @Override
     public void init() {
         ButterKnife.bind(this);
+
         mCacheManager = XCCacheManager.getInstance(this);
-        /*友盟第三方登录*/
-        ShareSDK.initSDK(this);
-        /*友盟第三方登录*/
+        loginActivityController = new LoginActivityController(this);
+
     }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -234,11 +160,13 @@ public class LoginActivity extends BaseActivity implements Handler.Callback, Pla
 
     @Override
     public void onComplete(Platform platform, int action, HashMap<String, Object> res) {
+
+        Toast.makeText(this,"this is out complete",Toast.LENGTH_LONG).show();
         if (action == Platform.ACTION_USER_INFOR) {
             //登录成功,获取需要的信息
             UIHandler.sendEmptyMessage(MSG_AUTH_COMPLETE, this);
             login(platform.getName(), platform.getDb().getUserId(), res);
-
+            /*finish();*/
             String openid = platform.getDb().getUserId() + "";
             String gender = platform.getDb().getUserGender();
             String head_url = platform.getDb().getUserIcon();
@@ -251,9 +179,10 @@ public class LoginActivity extends BaseActivity implements Handler.Callback, Pla
             mCacheManager.writeCache(name,nickname);
             mCacheManager.writeCache(headUrl,head_url);
             mCacheManager.writeCache(loginStatus,loginStatus);
-
+            Toast.makeText(this,openid+" "+gender+" "+head_url+" "+nickname,Toast.LENGTH_LONG).show();
+            Log.i("third login",openid+" "+gender+" "+head_url+" "+nickname);
+            System.out.println(openid+" "+gender+" "+head_url+" "+nickname);
             finish();
-
         }
     }
 
@@ -270,10 +199,14 @@ public class LoginActivity extends BaseActivity implements Handler.Callback, Pla
         if (action == Platform.ACTION_USER_INFOR) {
             UIHandler.sendEmptyMessage(MSG_AUTH_CANCEL, this);
         }
+
+
     }
 
+
+    @Override
     protected void onDestroy() {
-        //释放资源
+//释放资源
         ShareSDK.stopSDK(this);
         Platform qq = ShareSDK.getPlatform(this, QQ.NAME);
         Platform wechat = ShareSDK.getPlatform(this, Wechat.NAME);
@@ -289,4 +222,5 @@ public class LoginActivity extends BaseActivity implements Handler.Callback, Pla
         }
         super.onDestroy();
     }
+
 }

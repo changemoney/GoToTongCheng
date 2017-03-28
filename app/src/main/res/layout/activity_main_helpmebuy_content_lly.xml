@@ -408,7 +408,11 @@
                                     android:textStyle="bold"
                                     android:layout_centerVertical="true"/>
                         </RelativeLayout>
+                        <gototongcheng.zhyan.com.library.Widget.ScrollView.SpringScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
                         <LinearLayout
+                            android:id="@+id/lly_main_helpmebuy_content_remark"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/zero"
                             android:layout_weight="2"
@@ -592,7 +596,7 @@
                                 <!--手动输入-->
 
                                 <LinearLayout
-                                    android:id="@+id/lly_main_helpmebuy_content_orderremark"
+                                    android:id="@+id/lly_main_helpmebuy_content_remark_child"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/zero"
                                     android:layout_weight="1"
@@ -623,8 +627,8 @@
 
 
                                         </LinearLayout>
-                                        <CheckBox
-                                            android:id="@+id/cb_main_helpmebuy_content_manualinput"
+                                        <TextView
+                                            android:id="@+id/tv_main_helpmebuy_content_manualinput"
                                             android:layout_width="60dp"
                                             android:layout_height="wrap_content"
 
@@ -661,7 +665,7 @@
                                     />-->
                                 <!--edittext焦点问题就是在父控件里假如focusable 和focusableintouchmod属性 输入从开始处开始必须gravity=start-->
                         </LinearLayout>
-
+                        </gototongcheng.zhyan.com.library.Widget.ScrollView.SpringScrollView>
 
 
                 </LinearLayout>

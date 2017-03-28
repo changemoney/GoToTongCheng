@@ -130,6 +130,7 @@ public class PayConfirmPopup extends PopupWindow {
     private ZhiFuBaoUtil zhiFuBaoUtil;
     private String goodsName;
     private Double dPrice =  0.0;
+    String tempPrice ="";
     private OrderDetailBean orderDetailBean;
     public PayConfirmPopup(Activity activity, OrderDetailBean orderDetailBean1){
 
@@ -192,7 +193,12 @@ public class PayConfirmPopup extends PopupWindow {
         this.setContentView(mPopView);
         this.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         this.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
-        tvPopupThirdPayPayConfirmFee.setText(""+dPrice);
+        tempPrice = dPrice+"";
+        int indexof = tempPrice.indexOf(".");
+        if(indexof > 0){
+            tempPrice = tempPrice.substring(0,indexof);
+        }
+        tvPopupThirdPayPayConfirmFee.setText(tempPrice);
         // 设置SelectPicPopupWindow弹出窗体可点击
         this.setFocusable(true);
         // 点击外面的控件也可以使得PopUpWindow dimiss
@@ -206,9 +212,9 @@ public class PayConfirmPopup extends PopupWindow {
 
     /*微信支付*/
     public void wxPay(final HelpMeBuyBean helpMeBuyBean){
-        Toast.makeText(activity,"this is wxpay",Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(activity,"this is wxpay",Toast.LENGTH_SHORT).show();*/
         String body = "测试商品不描述";
-        WeChatPayService weChatPay = new WeChatPayService(activity,type, helpMeBuyBean.getOrderNo(), goodsName, ""+dPrice);
+        WeChatPayService weChatPay = new WeChatPayService(activity,type, helpMeBuyBean.getOrderNo(), goodsName, tempPrice);
         weChatPay.pay();
     }
     /*微信支付*/

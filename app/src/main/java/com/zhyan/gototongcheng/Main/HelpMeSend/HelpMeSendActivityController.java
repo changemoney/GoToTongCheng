@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.navi.BaiduMapNavigation;
@@ -191,15 +192,16 @@ public class HelpMeSendActivityController extends BaseController{
                     List<BikingRouteLine> bikingRouteLineList = bikingRouteResult.getRouteLines();
                     if(bikingRouteLineList != null) {
                         int count = bikingRouteLineList.size();
-                        int min = bikingRouteLineList.get(0).getDistance();
+                        float min = bikingRouteLineList.get(0).getDistance();
                         for (int i = 0; i < count; i++) {
                             if (min > bikingRouteLineList.get(i).getDistance()) {
                                 min = bikingRouteLineList.get(i).getDistance();
                             }
                             continue;
                         }
+                     /*   Toast.makeText(activity,"两地骑行距离onGetBikingRouteResult:"+min,Toast.LENGTH_LONG).show();*/
                         dis = min/1000;
-
+                        tvMainHelpMeSendContentSendDis.setText(""+dis+"km");
                         /*Toast.makeText(getBaseContext(),"两地骑行距离onGetBikingRouteResult:"+min,Toast.LENGTH_LONG).show();*/
                         getPrice();
                         /*Toast.makeText(getBaseContext(),"here is onGetBikingRouteResult:"+dis,Toast.LENGTH_SHORT).show();*/
@@ -214,7 +216,7 @@ public class HelpMeSendActivityController extends BaseController{
     private void getPrice(){
         PriceUtil priceUtil = new PriceUtil(activity);
 
-        tvMainHelpMeSendContentSendDis.setText(""+dis+"km");
+
         price = priceUtil.gotoHelpMeSendlFee(dis);
 
         if(!price.isEmpty()) {

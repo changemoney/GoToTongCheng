@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -50,7 +51,9 @@ public class HelpMeBuyActivity extends BaseActivity {
         finish();
     }
     /*后退到主界面*/
-
+ /*   *//*手动输入*//*
+    @BindView(R.id.cb_main_helpmebuy_content_manualinput)
+    Button cbHelpMeBuyContentManualinput;*/
     /*价格计算方式*/
     @BindView(R.id.rly_main_helpmebuy_bottombar_fee)
     RelativeLayout rlyHelpMeBuyBottomBarFee;
@@ -68,7 +71,7 @@ public class HelpMeBuyActivity extends BaseActivity {
     private final int RESULT_RECE = 11;//收件人信息
     private final int RESULT_FOODSMENU = 12;//菜单
     private final int RESULT_SHOP = 10;//购买地址
-    private List<TextView> addRemarkList = new ArrayList<TextView>();
+
     /*商家名称*/
     @BindView(R.id.tv_main_helpmebuy_content_shop_name)
     TextView tvMainHelpMeBuyContentShopName;
@@ -230,9 +233,9 @@ public class HelpMeBuyActivity extends BaseActivity {
         orderDetailBean.setClientaddrAddr(tvMainHelpMeBuyContentShopName.getText().toString() + ";"+tvMainHelpMeBuyContentShopAddress.getText().toString());
         orderDetailBean.setClientaddrAddr1(tvMainHelpMeBuyContentUserName.getText().toString()+";"+tvMainHelpMeBuyContentUserTel.getText().toString()+";"+tvMainHelpMeBuyContentUserAddressDetail.getText().toString());
         String remark = "";
-        if((addRemarkList != null)&&(addRemarkList.size() > 0)) {
-            for (int i=0; i<addRemarkList.size();i++){
-                remark += addRemarkList.get(i).getText().toString()+";";
+        if((helpMeBuyActivityController.addRemarkList != null)&&(helpMeBuyActivityController.addRemarkList.size() > 0)) {
+            for (int i=0; i<helpMeBuyActivityController.addRemarkList.size();i++){
+                remark += helpMeBuyActivityController.addRemarkList.get(i).getText().toString()+";";
             }
         }
         if((helpMeBuyActivityController.checkList != null)&&(helpMeBuyActivityController.checkList.size() > 0)){

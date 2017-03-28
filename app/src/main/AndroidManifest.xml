@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zhyan.gototongcheng">
+    package="com.zhyan.gototongcheng"
+    android:versionCode="2"
+    android:versionName="1.1"
+    >
 
 
     <!--权限-->
@@ -275,6 +278,7 @@
 
 
         <!--友盟分享，第三方登录-->
+
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
@@ -283,9 +287,9 @@
             android:windowSoftInputMode="stateHidden|adjustResize" >
             <intent-filter>
                 <!-- ※这里需要将1105785901改成你在腾讯申请后得到的AppId
-                http://blog.csdn.net/little_shengsheng/article/details/51558473
+                http://blog.csdn.net/little_shengsheng/article/details/51558473    100371282     1106012040
                 -->
-                <data android:scheme="tencent1105986962" />
+                <data android:scheme="tencent1106012040" />
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -295,6 +299,7 @@
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
         </activity>
         <!--微信分享回调 -->
         <!--友盟分享，第三方登录-->
@@ -310,7 +315,14 @@
             android:screenOrientation="behind" >
         </activity>
         <!-- 微信支付回调界面 -->
-
+        <!--微信登陆-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <!--微信登陆-->
 
         <!--支付宝-->
         <activity

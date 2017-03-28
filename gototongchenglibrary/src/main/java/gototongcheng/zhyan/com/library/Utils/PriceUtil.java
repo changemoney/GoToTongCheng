@@ -17,8 +17,17 @@ public class PriceUtil {
     }
    /* 走兔代购价格表:时间10点-21点  代购数量为1件物品的时候:3km以内10元、3+n km价格10+2n ：n小于等于17km、超20km价格为2*(10+2n)。代购数量为1+m件的时候：3km以内10+3m元、3+n km价格10+3m+2n ：n小于等于17km、超20km价格为2*(10+3m+2n)
                     时间为21点到临晨1点  代购数量为1件物品的时候:3km以内10*2元、3+n km价格（10+2n）*2 ：n小于等于17km、超20km价格为2*(10+2n)*2。代购数量为1+m件的时候：3km以内（10+3m）*2元、3+n km价格（10+3m+2n）*2 ：n小于等于17km、超20km价格为2*(10+3m+2n)*2*/
-    public String gotoHelpMeBuylFee(float dis,int num){
+    public String gotoHelpMeBuylFee(float dis1,int num){
         /*String price = "￥";*/
+        String temp = ""+dis1;
+        int indexOf = temp.indexOf(".");
+        int dis = 0;
+        if(indexOf >0){
+            temp = temp.substring(0,indexOf);
+            dis = Integer.parseInt(temp);
+            dis += 1;
+        }
+
         String price = "";
         TimeUtil timeUtil = new TimeUtil();
         int hour = timeUtil.getHour(new Date());
@@ -80,7 +89,12 @@ public class PriceUtil {
         if(price.length() < 2){
             price = "";
         }
-        return price;
+        String tempPrice = price;
+        int index = tempPrice.indexOf(".");
+        if(index > 0){
+            tempPrice = tempPrice.substring(0,index);
+        }
+        return tempPrice;
     }
 
 /*
@@ -92,8 +106,16 @@ public class PriceUtil {
 
 
 
-    public String gotoHelpMeSendlFee(float dis/*,float weight*/){
+    public String gotoHelpMeSendlFee(float dis1/*,float weight*/){
         /*String price = "￥";*/
+        String temp = ""+dis1;
+        int indexOf = temp.indexOf(".");
+        int dis = 0;
+        if(indexOf >0){
+            temp = temp.substring(0,indexOf);
+            dis = Integer.parseInt(temp);
+            dis += 1;
+        }
         String price = "";
         TimeUtil timeUtil = new TimeUtil();
         int hour = timeUtil.getHour(new Date());
@@ -161,6 +183,11 @@ public class PriceUtil {
         /*if(price.length() < 2){
             price = "";
         }*/
-        return price;
+        String tempPrice = price;
+        int index = tempPrice.indexOf(".");
+        if(index > 0){
+            tempPrice = tempPrice.substring(0,index);
+        }
+        return tempPrice;
     }
 }
