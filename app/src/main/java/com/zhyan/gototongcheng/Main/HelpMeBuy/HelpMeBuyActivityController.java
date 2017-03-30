@@ -342,14 +342,14 @@ public class HelpMeBuyActivityController extends BaseController {
                     List<BikingRouteLine> bikingRouteLineList = bikingRouteResult.getRouteLines();
                     if(bikingRouteLineList != null) {
                         int count = bikingRouteLineList.size();
-                        int min = bikingRouteLineList.get(0).getDistance();
+                        int max = bikingRouteLineList.get(0).getDistance();
                         for (int i = 0; i < count; i++) {
-                            if (min > bikingRouteLineList.get(i).getDistance()) {
-                                min = bikingRouteLineList.get(i).getDistance();
+                            if (max < bikingRouteLineList.get(i).getDistance()) {
+                                max = bikingRouteLineList.get(i).getDistance();
                             }
                             continue;
                         }
-                        dis = min;
+                        dis = max;
                     /*Toast.makeText(getBaseContext(),"两地骑行距离onGetBikingRouteResult:"+min,Toast.LENGTH_LONG).show();*/
                         getPrice();
                     }
@@ -390,5 +390,6 @@ public class HelpMeBuyActivityController extends BaseController {
     public void onDestroy(){
         BaiduMapNavigation.finish(activity);
         mSearch.destroy();
+
     }
 }

@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -490,19 +491,26 @@ public class AddressManageAddShopActivity extends BaseActivity{
         }
         @Override
         public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-
+            String keyword = "";
+            keyword = v.getText().toString();
+            Log.i("editlistener","begin");
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                Log.i("editlistener","search");
                 if(isNameCall) {
+                    Log.i("editlistener","isNameCall");
                     blat = addressManageAddShopController.blat;
                     blon = addressManageAddShopController.blon;
                     LatLng latLng = new LatLng(blat,blon);
-                    String keyword = "";
-                    keyword = v.getText().toString();
+
                     if((!keyword.isEmpty())&&(latLng != null)) {
+                        /*Toast.makeText(getBaseContext(),"keyword"+keyword,Toast.LENGTH_SHORT).show();*/
                         addressManageAddShopController.isAddress = false;
                         addressManageAddShopController.poiSearchNearBy(keyword, latLng);
+                        /*addressManageAddShopController.poiSearchInCity(keyword);*/
+                        Log.i("editlistener","key have value");
                     }else {
                         addressManageAddShopController.mBaiduMap.clear();
+                        Log.i("editlistener","key is empty");
                     }
                     //写你要做的事情
                     /*Toast.makeText(getBaseContext(), "" + keyword, Toast.LENGTH_SHORT).show();*/
@@ -514,12 +522,17 @@ public class AddressManageAddShopActivity extends BaseActivity{
 
                 }else{
                     addressManageAddShopController.isAddress = true;
-                    String address = "";
-                    address = v.getText().toString();
-                    addressManageAddShopController.beginSearchLalByAddress(address);
+                    Log.i("editlistener","address");
+                    /*String address = "";
+                    address = v.getText().toString();*/
+                    if(addressManageAddShopController.isAddress) {
+                        Log.i("editlistener","beginSearchLalByAddress");
+                        addressManageAddShopController.beginSearchLalByAddress(keyword);
+                    }
 
                     /*beginSearchLalByAddress(address);*/
                 }
+                Log.i("editlistener","hideInput");
                 hideInput(AddressManageAddShopActivity.this);//隐藏软键盘
                 return true;
             }
@@ -532,10 +545,13 @@ public class AddressManageAddShopActivity extends BaseActivity{
         if(manager==null){
             manager = ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE));
         }
+
         manager.hideSoftInputFromWindow(( activity)
                         .getCurrentFocus().getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
+
     }
+
     /*软键盘监听*/
 
 

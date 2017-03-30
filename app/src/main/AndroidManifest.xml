@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zhyan.gototongcheng"
-    android:versionCode="2"
-    android:versionName="1.1"
     >
 
 
@@ -289,7 +287,7 @@
                 <!-- ※这里需要将1105785901改成你在腾讯申请后得到的AppId
                 http://blog.csdn.net/little_shengsheng/article/details/51558473    100371282     1106012040
                 -->
-                <data android:scheme="tencent1106012040" />
+                <data android:scheme="tencent100371282" />
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />

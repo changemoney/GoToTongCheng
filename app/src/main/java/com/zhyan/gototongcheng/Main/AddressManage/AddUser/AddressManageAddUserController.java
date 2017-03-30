@@ -127,14 +127,22 @@ public class AddressManageAddUserController extends BaseController  implements O
     /*根据地名开始查找经纬度*/
     public void beginSearchLalByAddress(String address){
        /* String address = etHelpMeBuyAddSellerAddressContentAddress.getText().toString();*/
+
+
+        int indexBlank = address.indexOf(" ");
+        if(indexBlank > 0) {
+            address = address.substring(0, indexBlank+1);
+        }
         int index = address.indexOf("市");
+
+
         try {
             if (index > 0) {
-                String city = address.substring(0, index);
-                address = address.substring(index, address.length());
+                String city = address.substring(0, index+1);
+                address = address.substring(index+1,address.length());
                 search.geocode(new GeoCodeOption().city(city).address(address));
             } else {
-                search.geocode(new GeoCodeOption().city("温州市").address(address));
+                search.geocode(new GeoCodeOption().city("浙江省温州市").address(address));
             }
         }catch (Exception e){
 
@@ -178,17 +186,21 @@ public class AddressManageAddUserController extends BaseController  implements O
                 /*滑动动作的时候设置为滑动状态*/
             /*Toast.makeText(getBaseContext(),"here is ontouch",Toast.LENGTH_SHORT).show();*/
                 //http://blog.csdn.net/sjf0115/article/details/7306284 获取控件在屏幕上的坐标
-                int[] location = new int[2];
+            /*    int[] location = new int[2];
                 ivMainAddressManageAddUserCenterLoc.getLocationOnScreen(location);
                 int x = location[0];
-                int y = location[1];
+                int y = location[1];*/
+                int x = (int) ivMainAddressManageAddUserCenterLoc.getX();
+                int y = (int) ivMainAddressManageAddUserCenterLoc.getY();
                 Point point = new Point(x,y);
                 /*Toast.makeText(getBaseContext(),"x:"+x+"y:"+y,Toast.LENGTH_SHORT).show();*/
                 //http://blog.csdn.net/sjf0115/article/details/7306284 获取控件在屏幕上的坐标
-                currentPt = mBaiduMap.getProjection().fromScreenLocation(point);
-                search.reverseGeoCode(new ReverseGeoCodeOption().location(currentPt));
-                rlat = currentPt.latitude;
-                rlon = currentPt.longitude;
+                if(point != null) {
+                    currentPt = mBaiduMap.getProjection().fromScreenLocation(point);
+                    search.reverseGeoCode(new ReverseGeoCodeOption().location(currentPt));
+                    rlat = currentPt.latitude;
+                    rlon = currentPt.longitude;
+                }
             }
         };
         mBaiduMap.setOnMapTouchListener(mapTouchListener);
@@ -273,10 +285,18 @@ public class AddressManageAddUserController extends BaseController  implements O
 
     /*poi附近检索*/
     public void poiSearchNearBy(String keyword,LatLng latLng){
+
+
+                /*Toast.makeText(activity," keyword:"+keyword,Toast.LENGTH_SHORT).show();*/
+
         int indexBlank = keyword.indexOf(" ");
         if(indexBlank > 0){
             if((latLng != null)&&(keyword!=null)) {
-                keyword = keyword.substring(0, indexBlank);
+                keyword = keyword.substring(0, indexBlank+1);
+                int indexCity = keyword.indexOf("市");
+                if(indexCity > 0){
+                    keyword = keyword.substring(indexCity+1,keyword.length());
+                }
                 poiSearch.searchNearby((new PoiNearbySearchOption())
                         .location(latLng)
                         .radius(9000)
@@ -301,6 +321,7 @@ public class AddressManageAddUserController extends BaseController  implements O
         if (geoCodeResult.getLocation() != null) {
             location(geoCodeResult.getLocation());
             /*搜索附近地址*/
+
             poiSearchNearBy(geoCodeResult.getAddress(),geoCodeResult.getLocation());
             /*搜索附近地址*/
         }

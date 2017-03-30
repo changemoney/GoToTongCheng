@@ -39,6 +39,7 @@ import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
+import com.baidu.mapapi.search.poi.PoiCitySearchOption;
 import com.baidu.mapapi.search.poi.PoiDetailResult;
 import com.baidu.mapapi.search.poi.PoiIndoorResult;
 import com.baidu.mapapi.search.poi.PoiNearbySearchOption;
@@ -86,7 +87,7 @@ public class AddressManageAddShopController extends BaseController  implements O
     private  final int accuracyCircleFillColor = 0xAAFFFF88;
     private  final int accuracyCircleStrokeColor = 0xAA00FF00;
     private MyLocationConfiguration.LocationMode mCurrentMode;
-    private LatLng currentPt = new LatLng(0,0);
+    private LatLng currentPt;
     private EditText etMainAddressManageAddShopContentAddress;
     private String addressLocation = "";
     public boolean isAddress = true;
@@ -142,20 +143,27 @@ public class AddressManageAddShopController extends BaseController  implements O
                 /*滑动动作的时候设置为滑动状态*/
             /*Toast.makeText(getBaseContext(),"here is ontouch",Toast.LENGTH_SHORT).show();*/
                 //http://blog.csdn.net/sjf0115/article/details/7306284 获取控件在屏幕上的坐标
-                int[] location = new int[2];
-                ivMainAddressManageAddShopContentCenterLoc.getLocationOnScreen(location);
-                int x = location[0];
-                int y = location[1];
+               /* int[] location = new int[2];
+                ivMainAddressManageAddShopContentCenterLoc.getLocationOnScreen(location);*/
+
+             /*   int x = location[0];
+                int y = location[1];*/
+                int x = (int) ivMainAddressManageAddShopContentCenterLoc.getX();
+                int y = (int) ivMainAddressManageAddShopContentCenterLoc.getY();
                 Point point = new Point(x, y);
             /*Toast.makeText(getBaseContext(),"x:"+x+"y:"+y,Toast.LENGTH_SHORT).show();*/
                 //http://blog.csdn.net/sjf0115/article/details/7306284 获取控件在屏幕上的坐标
-                currentPt = mBaiduMap.getProjection().fromScreenLocation(point);
-                mSearch.reverseGeoCode(new ReverseGeoCodeOption().location(currentPt));
-                blat = currentPt.latitude;
-                blon = currentPt.longitude;
+                if(point != null) {
+                    currentPt = mBaiduMap.getProjection().fromScreenLocation(point);
+
+                    mSearch.reverseGeoCode(new ReverseGeoCodeOption().location(currentPt));
+                    blat = currentPt.latitude;
+                    blon = currentPt.longitude;
+                }
             }
         };
         mBaiduMap.setOnMapTouchListener(mapTouchListener);
+
 
     }
     /*地图移动坐标不动*/
@@ -220,36 +228,72 @@ public class AddressManageAddShopController extends BaseController  implements O
     /*根据地名开始查找经纬度*/
     public void beginSearchLalByAddress(String address){
        /* String address = etHelpMeBuyAddSellerAddressContentAddress.getText().toString();*/
+        int indexBlank = address.indexOf(" ");
+        if(indexBlank > 0) {
+            address = address.substring(0, indexBlank+1);
+        }
         int index = address.indexOf("市");
         try {
             if (index > 0) {
-                String city = address.substring(0, index);
-                address = address.substring(index, address.length());
-                mSearch.geocode(new GeoCodeOption().city(city).address(address));
+                String city = address.substring(0, index+1);
+                address = address.substring(index+1,address.length());
+                mSearch.geocode((new GeoCodeOption()).city(city).address(address));
             } else {
-                mSearch.geocode(new GeoCodeOption().city("温州市").address(address));
+                mSearch.geocode((new GeoCodeOption()).city("浙江省温州市").address(address));
             }
         }catch (Exception e){
 
         }
+    }
+
+    public void poiSearchInCity(String keyword){
+        String address = etMainAddressManageAddShopContentAddress.getText().toString();
+        Log.i("poiSearchInCity","address");
+        int indexOfBlank = address.indexOf(" ");
+        if(indexOfBlank > 0){
+            Log.i("poiSearchInCity","have blank");
+            address = address.substring(0,indexOfBlank+1);
+        }
+        int indexOfCity = address.indexOf("市");
+        if(indexOfCity > 0){
+            Log.i("poiSearchInCity","city");
+            String city = address.substring(0,indexOfCity+1);
+            /*Toast.makeText(activity,"city:"+city+" keyword:"+keyword,Toast.LENGTH_SHORT).show();*/
+            isAddress = false;
+            poiSearch.searchInCity((new PoiCitySearchOption()).city(city).keyword(keyword).pageNum(0).pageCapacity(30));
+        }else{
+            Log.i("poiSearchInCity","default");
+            /*Toast.makeText(activity," keyword:"+keyword,Toast.LENGTH_SHORT).show();*/
+            isAddress = false;
+            poiSearch.searchInCity((new PoiCitySearchOption()).city("浙江省温州市").keyword(keyword).pageNum(0).pageCapacity(30));
+        }
+
     }
     /*poi附近检索*/
     public void poiSearchNearBy(String keyword,LatLng latLng){
         int indexBlank = keyword.indexOf(" ");
         if(indexBlank > 0){
             if((latLng != null)&&(keyword!=null)) {
-                keyword = keyword.substring(0, indexBlank);
+                keyword = keyword.substring(0,indexBlank+1);
+                int indexCity = keyword.indexOf("市");
+                if(indexCity > 0){
+                    keyword = keyword.substring(indexCity+1,keyword.length());
+                }
+
+                /*Toast.makeText(activity," keyword:"+keyword,Toast.LENGTH_SHORT).show();*/
+
                 poiSearch.searchNearby((new PoiNearbySearchOption())
                         .location(latLng)
-                        .radius(9000)
-                        .keyword(keyword)
-                        .pageNum(0).pageCapacity(30));
+                        .radius(90000)
+                        .keyword(keyword).pageNum(0).pageCapacity(30));
             }
         }else{
             if((latLng != null)&&(keyword!=null)) {
+                /*Toast.makeText(activity," keyword:"+keyword,Toast.LENGTH_SHORT).show();*/
+
                 poiSearch.searchNearby((new PoiNearbySearchOption())
                         .location(latLng)
-                        .radius(9000)
+                        .radius(90000)
                         .keyword(keyword)
                         .pageNum(0).pageCapacity(30));
             }
@@ -275,11 +319,11 @@ public class AddressManageAddShopController extends BaseController  implements O
     /*搜索附近的关键词*/
     private void getPoisFromKeyWordSearch(final List<PoiInfo> poiInfoList){
         /*ArrayList<MarkerOptions> markerOptionsList = new ArrayList<MarkerOptions>();*/
-
+        Log.i("getPois","begin");
         final List<Marker> markerList = new ArrayList<>();
         mBaiduMap.clear();
         if((poiInfoList != null)&&(poiInfoList.size() > 0)) {
-
+            Log.i("getPois","poiInfoList not null");
             for(int i =0;i<poiInfoList.size();i++) {
                 TextView textView = new TextView(activity);
                 Drawable drawable1 = activity.getResources().getDrawable(R.drawable.activity_main_addressmanage_add_shop_nearby);
@@ -296,28 +340,34 @@ public class AddressManageAddShopController extends BaseController  implements O
 
                 /*markerOptionsList.add(markerOptions);*/
             }
-
+            Log.i("getPois","poiInfoList not null");
             mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker) {
-                    for(int i=0;i<markerList.size();i++) {
+                    int pos = 0;
+                    for(int i=0;i<markerList.size();i++){
+                        if(markerList.get(i) == marker) {
+                            pos = i   ;
+                            break;
+                        }
+                    }
+                    Button button = new Button(activity);
+                    button.setText(poiInfoList.get(pos).address);
+                    LatLng ll = marker.getPosition();
+                    button.setOnClickListener(new MyOnclickListener(poiInfoList.get(pos)));
+                    InfoWindow mInfoWindow = new InfoWindow(button, ll, -47);
+                    mBaiduMap.showInfoWindow(mInfoWindow);
+                   /* for(int i=0;i<markerList.size();i++) {
                         if(((Marker)markerList.get(i)) == marker) {
                             Button button = new Button(activity);
                             button.setText(poiInfoList.get(i).address);
-                            button.setOnClickListener(new View.OnClickListener() {
-                                public void onClick(View v) {
-
-                                    mBaiduMap.hideInfoWindow();
-                                }
-                            });
                             LatLng ll = marker.getPosition();
-                            blat = poiInfoList.get(i).location.latitude;
-                            blon = poiInfoList.get(i).location.longitude;
+                            button.setOnClickListener(new MyOnclickListener(poiInfoList.get(i)));
                             InfoWindow mInfoWindow = new InfoWindow(button, ll, -47);
-                            etMainAddressManageAddShopContentAddress.setText(poiInfoList.get(i).address);
+
                             mBaiduMap.showInfoWindow(mInfoWindow);
                         }
-                    }
+                    }*/
                     return false;
                 }
             });
@@ -325,14 +375,51 @@ public class AddressManageAddShopController extends BaseController  implements O
 
     }
 
+    public class MyOnclickListener implements View.OnClickListener{
+        PoiInfo  poiInfo;
+        public MyOnclickListener(PoiInfo poiInfo1){
+            poiInfo = poiInfo1;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if(poiInfo != null) {
+                blat = poiInfo.location.latitude;
+                blon = poiInfo.location.longitude;
+                etMainAddressManageAddShopContentAddress.setText(poiInfo.address);
+            }
+            mBaiduMap.hideInfoWindow();
+        }
+    }/*
+    public class MyOnclickListener implements View.OnClickListener{
+        PoiInfo poiInfo;
+        public MyOnclickListener(PoiInfo poiInfo1){
+            poiInfo = poiInfo1;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if(poiInfo != null) {
+                blat = poiInfo.location.latitude;
+                blon = poiInfo.location.longitude;
+                etMainAddressManageAddShopContentAddress.setText(poiInfo.address);
+            }
+            mBaiduMap.hideInfoWindow();
+        }
+    }*/
     @Override
     public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
+        Log.i("onGetGeoCodeResult","begin");
         if (geoCodeResult.getLocation() != null) {
             /*直接定位到具体地址*/
             location( geoCodeResult.getLocation());
             /*直接定位到具体地址*/
+  /*          addressLocation = geoCodeResult.getAddress();
+            etMainAddressManageAddShopContentAddress.setText(addressLocation );*/
             /*搜索附近地址*/
-            poiSearchNearBy(geoCodeResult.getAddress(),geoCodeResult.getLocation());
+            if(isAddress) {
+                poiSearchNearBy(geoCodeResult.getAddress(), geoCodeResult.getLocation());
+            }
             /*搜索附近地址*/
             /*Toast.makeText(getBaseContext(),"onGetGeoCodeResult",Toast.LENGTH_SHORT).show();*/
         }
@@ -344,12 +431,14 @@ public class AddressManageAddShopController extends BaseController  implements O
             Toast.makeText(activity, "抱歉，未能找到结果", Toast.LENGTH_LONG).show();
             return;
         }
-
+        Log.i("onGetReverseGeo","begin");
         LatLng latLng = result.getLocation();
         addressLocation = result.getAddress()+ "  " + result.getSematicDescription();
         etMainAddressManageAddShopContentAddress.setText(addressLocation );
      /*   location(latLng);*/
-        poiSearchNearBy(addressLocation,latLng);
+        if(isAddress) {
+            poiSearchNearBy(addressLocation, latLng);
+        }
     }
 
     @Override
@@ -358,12 +447,17 @@ public class AddressManageAddShopController extends BaseController  implements O
             return;
         }
         if(result.getAllPoi() != null) {
+            Log.i("onGetPoiResult","begin");
+            /*Toast.makeText(activity," isAddress:"+isAddress,Toast.LENGTH_SHORT).show();*/
             if(!isAddress) {
+                Log.i("onGetPoiResult","isAddress");
+                /*Toast.makeText(activity,"PoiNum:"+result.getTotalPoiNum(),Toast.LENGTH_SHORT).show();*/
             /*找到关键词所标注的地方*/
                 getPoisFromKeyWordSearch(result.getAllPoi());
             /*找到关键词所标注的地方*/
             }
             isAddress = true;
+            Log.i("onGetPoiResult","isAddress true");
 /*
             Toast.makeText(this,"this is onGetPoiResult"+result.getAllAddr().get(0).address,Toast.LENGTH_LONG).show();*/
             initRecycleView.adapter.setDataList(result.getAllPoi());

@@ -80,8 +80,6 @@ public class LoginActivity extends BaseActivity  implements Handler.Callback, Pl
                 return;
             }
         }
-
-
         String name = mCacheManager.readCache("userName");
         String usid = mCacheManager.readCache("usid");
         String headUrl = mCacheManager.readCache("headUrl");
@@ -107,6 +105,7 @@ public class LoginActivity extends BaseActivity  implements Handler.Callback, Pl
 
     private XCCacheManager mCacheManager;
     LoginActivityController loginActivityController;
+    private Handler handler;//定义handler进行登陆结果的回调
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,7 +119,8 @@ public class LoginActivity extends BaseActivity  implements Handler.Callback, Pl
     @Override
     public void init() {
         ButterKnife.bind(this);
-
+        //注册handler
+        handler = new Handler(this);
         mCacheManager = XCCacheManager.getInstance(this);
         loginActivityController = new LoginActivityController(this);
 
@@ -161,7 +161,7 @@ public class LoginActivity extends BaseActivity  implements Handler.Callback, Pl
     @Override
     public void onComplete(Platform platform, int action, HashMap<String, Object> res) {
 
-        Toast.makeText(this,"this is out complete",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"this is out complete"+action,Toast.LENGTH_LONG).show();
         if (action == Platform.ACTION_USER_INFOR) {
             //登录成功,获取需要的信息
             UIHandler.sendEmptyMessage(MSG_AUTH_COMPLETE, this);
@@ -188,6 +188,9 @@ public class LoginActivity extends BaseActivity  implements Handler.Callback, Pl
 
     @Override
     public void onError(Platform platform, int action, Throwable t) {
+        Log.e("thirdLoginAction",""+action);
+        Log.e("thirdLoginPlatform",""+platform);
+        Log.e("thirdLoginError",""+t);
         if(action==Platform.ACTION_USER_INFOR){
             UIHandler.sendEmptyMessage(MSG_AUTH_ERROR,this);
         }
