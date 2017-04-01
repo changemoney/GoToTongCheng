@@ -17,6 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 
 /**
@@ -44,7 +45,8 @@ public class SplashController {
 
     /*判断是否第一次加载*/
     public void isFirstLoad(Handler handler){
-        if(xcCacheManager.readCache("isNewApp")== null) {
+        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        if(xcCacheManager.readCache(xcCacheSavename.isNewApp)== null) {
             initViewPage();
         }else{
             closeSplash(handler,vpSplashContent,lly_dots);
@@ -104,7 +106,8 @@ public class SplashController {
                 viewList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        xcCacheManager.writeCache("isNewApp","yes");
+                        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+                        xcCacheManager.writeCache(xcCacheSavename.isNewApp,"yes");
                         startMainActivity();
                         activity.finish();
                     }

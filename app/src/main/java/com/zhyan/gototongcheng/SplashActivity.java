@@ -41,8 +41,9 @@ public class SplashActivity extends Activity {
                 case 0:
                     if(splashController != null) {
                         splashController.startMainActivity();
+                        finish();
                     }
-                    finish();
+
                 default:
             }
         }

@@ -13,9 +13,14 @@ import com.tencent.mm.sdk.modelbase.BaseResp;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
+import com.zhyan.gototongcheng.NetWork.HelpMeSendBuyNetWorks;
 import com.zhyan.gototongcheng.R;
 
+import gototongcheng.zhyan.com.library.Bean.BaseBean;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
+import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import gototongcheng.zhyan.com.library.ThirdPay.WX.WeChatConstans;
+import rx.Observer;
 
 
 public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler{
@@ -79,13 +84,16 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler{
 
 		switch (resp.errCode) {
 			case BaseResp.ErrCode.ERR_OK:
-				result = R.string.errcode_success;
+				result = R.string.pay_success;
+					paySuccess();
+
+
 				break;
 			case BaseResp.ErrCode.ERR_USER_CANCEL:
-				result = R.string.errcode_cancel;
+				result = R.string.pay_cancel;
 				break;
 			case BaseResp.ErrCode.ERR_AUTH_DENIED:
-				result = R.string.errcode_deny;
+				result = R.string.pay_deny;
 				break;
 			case BaseResp.ErrCode.ERR_UNSUPPORT:
 				result = R.string.errcode_unsupported;
@@ -95,7 +103,32 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler{
 				break;
 		}
 
-		/*Toast.makeText(this, result+resp.errCode, Toast.LENGTH_LONG).show();*/
+		Toast.makeText(this, result+resp.errCode, Toast.LENGTH_LONG).show();
 		finish();
+	}
+
+	private void paySuccess(){
+		XCCacheManager xcCacheManager = XCCacheManager.getInstance(this);
+		XCCacheSavename xcCacheSavename = new XCCacheSavename();
+		String orderNo = xcCacheManager.readCache(xcCacheSavename.WXPayTempOrderNo);
+		if(orderNo != null) {
+			HelpMeSendBuyNetWorks helpMeSendBuyNetWorks = new HelpMeSendBuyNetWorks();
+			helpMeSendBuyNetWorks.orderPay(1, orderNo, new Observer<BaseBean>() {
+				@Override
+				public void onCompleted() {
+
+				}
+
+				@Override
+				public void onError(Throwable e) {
+
+				}
+
+				@Override
+				public void onNext(BaseBean baseBean) {
+					Toast.makeText(WXPayEntryActivity.this, "" + baseBean.getResult(), Toast.LENGTH_SHORT).show();
+				}
+			});
+		}
 	}
 }

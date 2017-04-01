@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +25,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import gototongcheng.zhyan.com.library.Widget.Dialog.CompanyCustomTelDialog;
 import gototongcheng.zhyan.com.library.Widget.TextView.MarqueeText;
-import gototongcheng.zhyan.com.library.Widget.ViewPage.InitLoop.InitLoop;
-import gototongcheng.zhyan.com.library.Widget.ViewPage.InitLoop.LoopViewPager;
+import gototongcheng.zhyan.com.library.Widget.ViewPage.LoopViewPage.LoopViewPage;
+import gototongcheng.zhyan.com.library.Widget.ViewPage.imageindicator.AutoPlayManager;
+import gototongcheng.zhyan.com.library.Widget.ViewPage.imageindicator.ImageIndicatorView;
 
 /**
  * Created by admin on 2017/2/22.
@@ -35,8 +37,15 @@ public class MainFragment extends Fragment {
 
     @BindView(R.id.tv_main_ad)
     MarqueeText tvMainAd;
+    @BindView(R.id.rly_main_content_loop)
+    RelativeLayout rlyMainContentLoop;
+    @BindView(R.id.vp_main_content)
+    ViewPager vpMainContent;
+    @BindView(R.id.lly_main_content_points)
+    LinearLayout llyMainContentPoints;
+    /*
     @BindView(R.id.lvp_main_content)
-    LoopViewPager mLoopViewPager;
+    LoopViewPager mLoopViewPager;*/
     @BindView(R.id.lly_main_content)
     LinearLayout ll_dots;
     private CompanyCustomTelDialog companyCustomTelDialog ;
@@ -137,12 +146,12 @@ public class MainFragment extends Fragment {
             companyCustomTelDialog.dismiss();
     }
     private View view ;
-    InitLoop initLoop;
+    /*InitLoop initLoop;*/
+    private AutoPlayManager mAutoPlayManager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_main_content_sv,container,false);
-
         init(view);
         return view;
     }
@@ -172,14 +181,15 @@ public class MainFragment extends Fragment {
     private void init(View view1){
         this.view = view1;
         ButterKnife.bind(this,view1);
-        cicleWheelInit(view1);
+        /*cicleWheelInit(view1);*/
+        initView();
         initTVRunHorse("即日起，走兔跑腿全面改为线上下单！咨询电话0577-62670222");
 
     }
     private void cicleWheelInit(View view){
-        initLoop = new InitLoop(view,mLoopViewPager,ll_dots);
+   /*     initLoop = new InitLoop(view,mLoopViewPager,ll_dots);
         initLoop.init();
-        initLoop.setStart();
+        initLoop.setStart();*/
     }
 
     /*跑马灯的实现初始化*/
@@ -195,6 +205,9 @@ public class MainFragment extends Fragment {
     }
 
 
-
+    private void initView() {
+   /*     LoopViewPage loopViewPage = new LoopViewPage(view.getContext());*/
+        LoopViewPage loopViewPage = new LoopViewPage(view.getContext(),vpMainContent,llyMainContentPoints);
+    }
 
 }

@@ -1,6 +1,8 @@
 package com.zhyan.gototongcheng.Main;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -33,12 +35,42 @@ public class MainActivity extends BaseActivity {
     @Override
     public void init() {
         mainActivityController = new MainActivityController(this);
+        initFragment();
     }
+
+
+
+
+
+
+
+    /*初始化fragment*/
+    private void initFragment(){
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        // 动态增加Fragment
+        MainFragment mainFragment = new MainFragment();
+    /*    if(mainFragment != null){
+            transaction.show(mainFragment);
+        }else {
+            transaction.add(R.id.main_content_lly, mainFragment, "content");
+        }*/
+        transaction.add(R.id.main_content_lly, mainFragment, "content");
+        transaction.commit();
+    }
+
+    /*初始化fragment*/
+
+
+
+
+
 
     protected void onResume(){
         super.onResume();
-        Thread1 thread = new Thread1();
-        thread.start();
+        mainActivityController.initAfterLogin();
+/*        Thread1 thread = new Thread1();
+        thread.start();*/
 
  /*       MemoryUtils memoryUtils = new MemoryUtils();
         memoryUtils.cleanMemoryNoText(this);*/

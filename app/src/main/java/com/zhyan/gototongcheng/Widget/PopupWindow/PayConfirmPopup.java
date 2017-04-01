@@ -21,6 +21,8 @@ import butterknife.OnClick;
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
 import gototongcheng.zhyan.com.library.Bean.HelpMeBuyBean;
 import gototongcheng.zhyan.com.library.Bean.OrderDetailBean;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
+import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import gototongcheng.zhyan.com.library.ThirdPay.WX.WeChatPayService;
 import gototongcheng.zhyan.com.library.ThirdPay.ZFB.ZhiFuBaoUtil;
 import rx.Observer;
@@ -215,6 +217,9 @@ public class PayConfirmPopup extends PopupWindow {
         /*Toast.makeText(activity,"this is wxpay",Toast.LENGTH_SHORT).show();*/
         String body = "测试商品不描述";
         WeChatPayService weChatPay = new WeChatPayService(activity,type, helpMeBuyBean.getOrderNo(), goodsName, tempPrice);
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        xcCacheManager.writeCache(xcCacheSavename.WXPayTempOrderNo,helpMeBuyBean.getOrderNo());
         weChatPay.pay();
     }
     /*微信支付*/
@@ -230,8 +235,24 @@ public class PayConfirmPopup extends PopupWindow {
                 HelpMeSendBuyNetWorks helpMeSendBuyNetWorks = new HelpMeSendBuyNetWorks();
                     /*Toast.makeText(activity," 我成功啦 isSuccessful:"+isSuccessful,Toast.LENGTH_LONG).show();*/
                 if (isSuccessful) {
-                    if (helpMeBuyBean.getPaystatusPaystatus().equals("有待支付")) {
-                        helpMeSendBuyNetWorks.orderPay(3, helpMeBuyBean.getOrderNo(), new Observer<BaseBean>() {
+                    helpMeSendBuyNetWorks.orderPay(1,helpMeBuyBean.getOrderNo(), new Observer<BaseBean>() {
+                        @Override
+                        public void onCompleted() {
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onNext(BaseBean baseBean) {
+                            Toast.makeText(activity, "" + baseBean.getResult(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    /*if (helpMeBuyBean.getPaystatusPaystatus().equals("有待支付")) {
+                        helpMeSendBuyNetWorks.orderPay(1,helpMeBuyBean.getOrderNo(), new Observer<BaseBean>() {
                             @Override
                             public void onCompleted() {
 
@@ -248,7 +269,7 @@ public class PayConfirmPopup extends PopupWindow {
                             }
                         });
                     } else if (helpMeBuyBean.getPaystatusPaystatus().equals("支付失败")) {
-                        helpMeSendBuyNetWorks.orderPay(2, helpMeBuyBean.getOrderNo(), new Observer<BaseBean>() {
+                        helpMeSendBuyNetWorks.orderPay(1, helpMeBuyBean.getOrderNo(), new Observer<BaseBean>() {
                             @Override
                             public void onCompleted() {
 
@@ -264,7 +285,7 @@ public class PayConfirmPopup extends PopupWindow {
                                 Toast.makeText(activity, "" + baseBean.getResult(), Toast.LENGTH_SHORT).show();
                             }
                         });
-                    }
+                    }*/
                 }
 
             }
@@ -320,14 +341,33 @@ public class PayConfirmPopup extends PopupWindow {
 
                 @Override
                 public void onError(Throwable e) {
-                    /*Toast.makeText(activity,"e:"+e,Toast.LENGTH_SHORT).show();*/
+                    Toast.makeText(activity,"e:"+e,Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
                 public void onNext(HelpMeBuyBean helpMeBuyBean) {
+                    Toast.makeText(activity,"下单成功",Toast.LENGTH_SHORT).show();
+                    HelpMeSendBuyNetWorks helpMeSendBuyNetWorks = new HelpMeSendBuyNetWorks();
+                    helpMeSendBuyNetWorks.orderPay(1,helpMeBuyBean.getOrderNo(), new Observer<BaseBean>() {
+                        @Override
+                        public void onCompleted() {
 
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onNext(BaseBean baseBean) {
+                            Toast.makeText(activity, "" + baseBean.getResult(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+/*
                     goodsName = helpMeBuyBean.getOrderNo();
-                    /*Toast.makeText(activity,"goodsName:"+goodsName,Toast.LENGTH_SHORT).show();*/
+                    *//*Toast.makeText(activity,"goodsName:"+goodsName,Toast.LENGTH_SHORT).show();*//*
                     switch (method){
                         case "wx":
                             wxPay(helpMeBuyBean);
@@ -335,7 +375,7 @@ public class PayConfirmPopup extends PopupWindow {
                         case "zfb":
                             zhiFuBaoPay(helpMeBuyBean);
                             break;
-                    }
+                    }*/
                 }
             });
 

@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import gototongcheng.zhyan.com.library.Bean.GoodsBean;
 
-/**
+/**http://www.apkbus.com/thread-272520-1-1.html
  * Created by admin on 2017/3/25.
  */
 

@@ -29,6 +29,7 @@ import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
 import cn.sharesdk.wechat.friends.Wechat;
 import gototongcheng.zhyan.com.library.Bean.UserLoginBean;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import rx.Observer;
 
@@ -172,13 +173,11 @@ public class LoginActivity extends BaseActivity  implements Handler.Callback, Pl
             String head_url = platform.getDb().getUserIcon();
             String nickname = platform.getDb().getUserName();
 
-            String name = "userName";
-            String usid = "usid";
-            String headUrl = "headUrl";
-            String loginStatus = "loginStatus";
-            mCacheManager.writeCache(name,nickname);
-            mCacheManager.writeCache(headUrl,head_url);
-            mCacheManager.writeCache(loginStatus,loginStatus);
+
+            XCCacheSavename xcCacheSavename = new XCCacheSavename();
+            mCacheManager.writeCache(xcCacheSavename.name,nickname);
+            mCacheManager.writeCache(xcCacheSavename.headUrl,head_url);
+            mCacheManager.writeCache(xcCacheSavename.loginStatus,"yes");
             Toast.makeText(this,openid+" "+gender+" "+head_url+" "+nickname,Toast.LENGTH_LONG).show();
             Log.i("third login",openid+" "+gender+" "+head_url+" "+nickname);
             System.out.println(openid+" "+gender+" "+head_url+" "+nickname);

@@ -304,6 +304,16 @@ public class PhoneFormatCheckUtils {
         Matcher matcher = pattern.matcher(str);
         return matcher.matches();
     }
+    //正则表达式 手机当中4位星号表示 比如152****4799
+    public String telReplaceMiddleByStar(String tel){
 
+        return tel.replaceAll("(\\d{3})\\d{4}(\\d{4})","$1****$2");
+    }
+
+    //正则表达式 证件当中4位星号表示 比如4304*****7733
+    public String cardReplaceMiddleByStar(String idCard){
+
+        return idCard.replaceAll("(\\d{4})\\d{10}(\\w{4})","$1*****$2");
+    }
 
 }

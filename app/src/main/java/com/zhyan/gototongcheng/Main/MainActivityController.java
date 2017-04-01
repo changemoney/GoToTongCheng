@@ -24,6 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import gototongcheng.zhyan.com.library.Utils.PhoneFormatCheckUtils;
 import gototongcheng.zhyan.com.library.Widget.ImageView.CircleImageView;
@@ -44,9 +45,9 @@ public class MainActivityController extends BaseController{
     @Override
     public void init(){
         ButterKnife.bind(this,activity);
-        xcCacheManager = XCCacheManager.getInstance(activity);
-        initFragment();
-        initAfterLogin();
+
+
+      /*  initAfterLogin();*/
     }
     private LayoutInflater inflater;
 
@@ -96,7 +97,9 @@ public class MainActivityController extends BaseController{
     RelativeLayout rlyMainLeftMenuAddressManage;
     @OnClick(R.id.rly_main_leftmenu_addressmanage)
     public void rlyMainLeftMenuAddressManageOnclick(){
-        xcCacheManager.writeCache("addressManageType","main");
+        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+        xcCacheManager.writeCache(xcCacheSavename.addressManageType,"main");
         Intent intent = new Intent(activity,AddressManageActivity.class);
         activity.startActivity(intent);
     }
@@ -123,7 +126,9 @@ public class MainActivityController extends BaseController{
     LinearLayout llyMainLeftMenuLogin;
     @OnClick(R.id.lly_main_leftmenu_login)
     public void llyMainLeftMenuLoginOnclick(){
-        String isLogin = xcCacheManager.readCache("loginStatus");
+        XCCacheSavename xcCacheSavename =new XCCacheSavename();
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+        String isLogin = xcCacheManager.readCache(xcCacheSavename.loginStatus);
         if((isLogin != null)&&(isLogin.equals("yes"))){
 
         }else {
@@ -170,20 +175,10 @@ public class MainActivityController extends BaseController{
     /*登录头像 名称*/
 
 
-    private XCCacheManager xcCacheManager;
 
 
-    /*初始化fragment*/
-    private void initFragment(){
-        FragmentManager manager = activity.getFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        // 动态增加Fragment
-        MainFragment mainFragment = new MainFragment();
-        transaction.add(R.id.main_content_lly, mainFragment, "content");
-        transaction.commit();
-    }
 
-    /*初始化fragment*/
+
 
 
 
@@ -201,33 +196,34 @@ public class MainActivityController extends BaseController{
     /*登陆以后初始化名字*/
     public void initAfterLogin(){
         try{
+            XCCacheSavename xcCacheSavename = new XCCacheSavename();
+            XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+            String loginStatus = xcCacheManager.readCache(xcCacheSavename.loginStatus);
+            if(loginStatus != null) {
+                if (loginStatus.equals("yes")) {
 
-            String loginStatus = xcCacheManager.readCache("loginStatus");
-            if(loginStatus.equals("yes")) {
+                    String userName = xcCacheManager.readCache(xcCacheSavename.name);
 
-                String userName = xcCacheManager.readCache("userName");
-
-                if (userName != null) {
+                    if (userName != null) {
                     /*Toast.makeText(this,"initAfterLogin:",Toast.LENGTH_LONG).show();*/
                     /*if()*/
-                    PhoneFormatCheckUtils phoneFormatCheckUtils = new PhoneFormatCheckUtils();
-                    if((phoneFormatCheckUtils.IsNumber(userName))&&(userName.length() > 9)){
-                        String tempBeg = userName.substring(0,3);
-                        String tempEnd = userName.substring(userName.length()-4,userName.length());
-                        userName = tempBeg+"****"+tempEnd;
-                        tvMainLeftMenuName.setText(userName);
+                        PhoneFormatCheckUtils phoneFormatCheckUtils = new PhoneFormatCheckUtils();
+                        if ((phoneFormatCheckUtils.IsNumber(userName)) && (userName.length() > 9)) {
+                             userName = phoneFormatCheckUtils.telReplaceMiddleByStar(userName);
+                            tvMainLeftMenuName.setText(userName);
+                        }
+
+                        String headImgUrl = xcCacheManager.readCache(xcCacheSavename.headUrl);
+                        if ((headImgUrl != null) && (!headImgUrl.isEmpty())) {
+
+                            FinalBitmap finalBitMap = null;
+                            finalBitMap = FinalBitmap.create(activity);
+                            finalBitMap.display(rivMainLeftMenuHeadImg, headImgUrl);
+
+
+                        }
+
                     }
-
-                    String headImgUrl = xcCacheManager.readCache("headUrl");
-                    if ((headImgUrl != null) && (!headImgUrl.isEmpty())) {
-
-                        FinalBitmap finalBitMap = null;
-                        finalBitMap = FinalBitmap.create(activity);
-                        finalBitMap.display(rivMainLeftMenuHeadImg, headImgUrl);
-
-
-                    }
-
                 }
             }
         }catch (Exception e){
@@ -238,8 +234,10 @@ public class MainActivityController extends BaseController{
 
     /*退出登录后的名字和头像*/
     private void exitLogin(){
-        xcCacheManager.writeCache("loginStatus","no");
-        xcCacheManager.writeCache("usid","");
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        xcCacheManager.writeCache(xcCacheSavename.loginStatus,"no");
+        xcCacheManager.writeCache(xcCacheSavename.usid,"");
         tvMainLeftMenuName.setText("请登录");
         rivMainLeftMenuHeadImg.setImageResource(R.drawable.activity_main_leftmenu_goto_head);
     }

@@ -29,6 +29,7 @@ import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
 import cn.sharesdk.wechat.friends.Wechat;
 import gototongcheng.zhyan.com.library.Bean.UserLoginBean;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import rx.Observer;
 
@@ -108,17 +109,15 @@ public class LoginActivityController extends BaseController  {
 
             @Override
             public void onNext(UserLoginBean userLogin) {
-                String name = "userName";
-                String usid = "usid";
-                String phone = "phone";
-                String loginStatus = "loginStatus";
+
                 /*Toast.makeText(getBaseContext(),"usid"+userLogin.getUserUsid(),Toast.LENGTH_LONG).show();*/
                 if(userLogin.getUserName() != null){
-                    mCacheManager.writeCache(name,userLogin.getUserName());
-                    mCacheManager.writeCache(phone,userLogin.getUserName());
-                    mCacheManager.writeCache(usid,userLogin.getUserUsid());
+                    XCCacheSavename xcCacheSavename = new XCCacheSavename();
+                    mCacheManager.writeCache(xcCacheSavename.name,userLogin.getUserName());
+                    mCacheManager.writeCache(xcCacheSavename.phone,userLogin.getUserName());
+                    mCacheManager.writeCache(xcCacheSavename.usid,userLogin.getUserUsid());
                     System.out.println("usid:"+userLogin.getUserUsid());
-                    mCacheManager.writeCache(loginStatus,"yes");
+                    mCacheManager.writeCache(xcCacheSavename.loginStatus,"yes");
                     Toast.makeText(activity,""+userLogin.getResult(),Toast.LENGTH_LONG).show();
                     activity.finish();
                 }else{

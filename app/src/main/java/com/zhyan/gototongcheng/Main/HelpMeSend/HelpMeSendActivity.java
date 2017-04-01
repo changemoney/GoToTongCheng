@@ -88,7 +88,8 @@ public class HelpMeSendActivity extends BaseActivity {
     public void rlyMainHelpMeSendBottomBarPayConfirmOnclick(){
         try {
             initOrderDetail();
-            if (orderDetailBean.getUserUsid().isEmpty() || orderDetailBean.getClientaddrAddr().isEmpty() || orderDetailBean.getClientaddrAddr1().isEmpty()   || orderDetailBean.getOrderTimeliness().isEmpty()) {
+           /* Toast.makeText(this, ""+orderDetailBean.getUserUsid()+" "+orderDetailBean.getClientaddrAddr()+" "+orderDetailBean.getClientaddrAddr1()+" "+orderDetailBean.getOrderTimeliness(), Toast.LENGTH_LONG).show();*/
+            if (((orderDetailBean.getUserUsid().isEmpty()) || (orderDetailBean.getClientaddrAddr().isEmpty()) || (orderDetailBean.getClientaddrAddr1().isEmpty())  || (orderDetailBean.getOrderTimeliness().isEmpty())||(orderDetailBean.getOrderMileage() <0))) {
                 Toast.makeText(this, "信息输入不全", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -161,7 +162,7 @@ public class HelpMeSendActivity extends BaseActivity {
         TimeUtil timeUtil = new TimeUtil();
         if(time.equals("立即收件")){
             time = timeUtil.getCurrentDateTime();
-            time = time.replace(" ","");
+            /*time = time.replace(" ","");*/
         }
         orderDetailBean.setOrderTimeliness(time);
         String remark = etMainHelpMeSendContentRemark.getText().toString();

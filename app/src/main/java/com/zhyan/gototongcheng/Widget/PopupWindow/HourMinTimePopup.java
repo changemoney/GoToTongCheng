@@ -2,12 +2,14 @@ package com.zhyan.gototongcheng.Widget.PopupWindow;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zhyan.gototongcheng.R;
 
@@ -35,7 +37,7 @@ public class HourMinTimePopup extends PopupWindow {
     private boolean isInitData = false;
     private String selectHour,selectMin,selectDay1,selectAMPM;
     private int selectYear,selectMonth,selectDay,selectWeek;
-
+    private final String Tag = "TIME_ERROR";
  /*   private String ,;*/
     private int currentHour,currentMin,currentYear,currentMonth,currentDay,currentWeek;
     private String currentDay1,currentAMPM ;
@@ -302,9 +304,17 @@ public class HourMinTimePopup extends PopupWindow {
                 }
                 String week = timeUtil.getDayofweek(tempweekdate)+"";
                 monthDay += week ;
+
                 if((i == getMonth())&&(j == getDay())){
                     monthDay = "今天";
+
+                    /*Toast.makeText(activity,"this is now day",Toast.LENGTH_SHORT).show();*/
+                    day1List.add(monthDay);
+                    monthDay = "";
+
+                    continue;
                 }
+
                 day1List.add(monthDay);
                 monthDay = "";
                 if(i < 10) {
@@ -319,6 +329,7 @@ public class HourMinTimePopup extends PopupWindow {
     public int setDay1(String currentDay1){
         int indexDay1 = 0;
         for(int i=0;i<day1List.size();i++){
+            Log.i("dayList",day1List.get(i));
             if(day1List.get(i).equals(currentDay1)){
                 return i;
             }else{
@@ -461,17 +472,24 @@ public class HourMinTimePopup extends PopupWindow {
     private void initAdapter(){
 
         mDayAdapter = new CalendarTextAdapter(activity,day1List,setDay1(currentDay1),maxTextSize,minTextSize);
+
         wvPopupFourWheelDay.setVisibleItems(10);
         wvPopupFourWheelDay.setViewAdapter(mDayAdapter);
         wvPopupFourWheelDay.setCurrentItem(setDay1(currentDay1));
+
         mAMPMAdapter = new CalendarTextAdapter(activity,AMPMList,setAMPM(currentAMPM),maxTextSize,minTextSize);
         wvPopupFourWheelAMPM.setVisibleItems(10);
         wvPopupFourWheelAMPM.setViewAdapter(mAMPMAdapter);
+
         wvPopupFourWheelAMPM.setCurrentItem(setAMPM(currentAMPM));
+
         hourAdapter = new CalendarTextAdapter(activity,hourList,setHour(currentHour),maxTextSize,minTextSize);
+
         wvPopupFourWheelHour.setVisibleItems(10);
         wvPopupFourWheelHour.setViewAdapter(hourAdapter);
+
         wvPopupFourWheelHour.setCurrentItem(0);
+
         minAdapter = new CalendarTextAdapter(activity,minList,setMin(currentMin),maxTextSize,minTextSize);
         wvPopupFourWheelMin.setVisibleItems(10);
         wvPopupFourWheelMin.setViewAdapter(minAdapter);
