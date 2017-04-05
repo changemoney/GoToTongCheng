@@ -43,6 +43,12 @@ public class AddressManageNetWorks extends BaseNetWork {
         Observable<BaseBean> deleteShopAddress(@Query("userUsid") String usid, @Query("clientaddr1Things1") String clientaddr1Things1);
         /*商家地址删除*/
 
+        /*商家地址修改*/
+        @GET("clientaddr1/addrupdate.do")
+        Observable<BaseBean> updateShopAddr(@Query("userUsid")String userUsid,@Query("clientaddr1Things1")String clientaddr1Things1,@Query("clientaddr1Addr")String clientaddr1Addr,@Query("clientaddr1Lat")float clientaddr1Lat,@Query("clientaddr1Long")float clientaddr1Long,@Query("clientaddr1Isdefault")String clientaddr1Isdefault);
+        /*商家地址修改*/
+
+
         /*用户地址添加*/
         @GET("clientaddr/addrsave.do")
         Observable<BaseBean> addUserAddress(@Query("userUsid") String userUsid, @Query("clientaddrAddr") String clientaddrAddr, @Query("clientaddrLat") float clientaddrLat, @Query("clientaddrLong") float clientaddrLong, @Query("clientaddrIsdefault") String clientaddrIsdefault);
@@ -51,6 +57,11 @@ public class AddressManageNetWorks extends BaseNetWork {
         @GET("clientaddr/addrfind.do")
         Observable<List<UserAddressListBean>> getUserAddress(@Query("userUsid") String userUsid);
         /*用户地址列表查找 484914c632db43e081b9a5eb75cc3971*/
+
+        /*用户地址修改*/
+        @GET("clientaddr/addrupdate.do")
+        Observable<BaseBean> updateUserAddr(@Query("userUsid")String userUsid,@Query("clientaddrThings1")String clientaddrThings1,@Query("clientaddrAddr")String clientaddrAddr,@Query("clientaddrLat")float clientaddrLat,@Query("clientaddrLong")float clientaddrLong,@Query("clientaddrIsdefault")String clientaddrIsdefault);
+        /*用户地址修改*/
 
         /*用户地址删除*/
         @GET("clientaddr/addrdelete.do")
@@ -70,11 +81,17 @@ public class AddressManageNetWorks extends BaseNetWork {
     public  void deleteShopAddress(String userUsid,String clientaddr1Things1,Observer<BaseBean> observable){
         setSubscribe(service.deleteShopAddress(userUsid,clientaddr1Things1),observable);
     }
+    public  void updateShopAddr(String userUsid,String clientaddr1Things1,String clientaddr1Addr,float clientaddr1Lat,float clientaddr1Long,String clientaddr1Isdefault,Observer<BaseBean> observable){
+        setSubscribe(service.updateShopAddr(userUsid,clientaddr1Things1,clientaddr1Addr,clientaddr1Lat,clientaddr1Long,clientaddr1Isdefault),observable);
+    }
     public void addUserAddress(String userUsid, String clientaddrAddr, float clientaddrLat, float clientaddrLong, String clientaddrIsdefault, Observer<BaseBean> observer) {
         setSubscribe(service.addUserAddress(userUsid, clientaddrAddr, clientaddrLat, clientaddrLong, clientaddrIsdefault), observer);
     }
     public  void getUserAddress(String userUsid,Observer<List<UserAddressListBean>> observable){
         setSubscribe(service.getUserAddress(userUsid),observable);
+    }
+    public  void updateUserAddr(String userUsid,String clientaddrThings1,String clientaddrAddr,float clientaddrLat,float clientaddrLong,String clientaddrIsdefault,Observer<BaseBean> observable){
+        setSubscribe(service.updateUserAddr(userUsid,clientaddrThings1,clientaddrAddr,clientaddrLat,clientaddrLong,clientaddrIsdefault),observable);
     }
     public  void deleteUserAddress(String userUsid,String clientaddrThings1,Observer<BaseBean> observable){
         setSubscribe(service.deleteUserAddress(userUsid,clientaddrThings1),observable);

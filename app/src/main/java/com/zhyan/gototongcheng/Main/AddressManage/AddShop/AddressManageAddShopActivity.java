@@ -41,6 +41,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import gototongcheng.zhyan.com.library.Utils.SystemUtils;
 import gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView;
@@ -133,9 +134,46 @@ public class AddressManageAddShopActivity extends BaseActivity{
     /*提交商户信息*/
     @OnClick(R.id.rly_main_addressmanage_add_shop_topbar_rightmenu)
     public void rlyHelpMeBuyAddSellerAddressTopBarRightMenuOnclick(){
-        addShopAddressToNet();
 
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(this);
+        XCCacheSavename xcCacheSavename = new  XCCacheSavename();
+        String isAddressUpdate = xcCacheManager.readCache(xcCacheSavename.isAddressUpdate);
+        if((isAddressUpdate != null)&&(isAddressUpdate.equals("yes"))){
+            updateShopAddressToNet();
+            /*Toast.makeText(AddressManageAddShopActivity.this,"this is updateShopAddressToNet",Toast.LENGTH_LONG).show();*/
+            xcCacheManager.writeCache(xcCacheSavename.isAddressUpdate,"no");
+        }else {
+            addShopAddressToNet();
+        }
     }
+
+    private void updateShopAddressToNet(){
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(this);
+        XCCacheSavename xcCacheSavename = new  XCCacheSavename();
+        String clientThing1 = xcCacheManager.readCache(xcCacheSavename.addrShopclientaddrThings);
+        String usid = xcCacheManager.readCache("usid");
+        if((clientThing1 != null)&&(usid != null)){
+            AddressManageNetWorks addressManageNetWorks = new AddressManageNetWorks();
+            addressManageNetWorks.updateShopAddr(usid, clientThing1,etMainAddressManageAddShopContentNameCall.getText().toString()+" "+etMainAddressManageAddShopContentAddress.getText().toString(),(float) blat,(float) blon, "0", new Observer<BaseBean>() {
+                @Override
+                public void onCompleted() {
+                    /*Toast.makeText(getBaseContext(),"onCompleted",Toast.LENGTH_SHORT).show();*/
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    /*Toast.makeText(getBaseContext(),"onError"+e,Toast.LENGTH_SHORT).show();*/
+                }
+
+                @Override
+                public void onNext(BaseBean baseBean) {
+                    Toast.makeText(AddressManageAddShopActivity.this,baseBean.getResult(),Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            });
+        }
+    }
+
     private void addShopAddressToNet(){
         XCCacheManager xcCacheManager = XCCacheManager.getInstance(this);
         String usid = xcCacheManager.readCache("usid");
@@ -222,8 +260,11 @@ public class AddressManageAddShopActivity extends BaseActivity{
     public void init() {
         ButterKnife.bind(this);
         initEditText();
+
         initSwitchContent();
+
     }
+
     private void initEditText(){
 
         etMainAddressManageAddShopContentAddress.setHorizontallyScrolling(false);
@@ -270,7 +311,7 @@ public class AddressManageAddShopActivity extends BaseActivity{
         viewList.add(mInflater.inflate(R.layout.activity_main_addressmanage_add_shop_content_vp_itemrv_lly, null));
         initRecycleView = new InitRecycleView(viewList.get(0));
         initRecycleView.initXRV();
-        addressManageAddShopController = new AddressManageAddShopController(this,etMainAddressManageAddShopContentAddress,initRecycleView);
+        addressManageAddShopController = new AddressManageAddShopController(this,initRecycleView);
         vpMainAddressManageAddShopContent.setAdapter(new AddShopMyPagerAdapter(viewList));
         vpMainAddressManageAddShopContent.setCurrentItem(0);
         vpMainAddressManageAddShopContent.addOnPageChangeListener(new MyOnPageChangeListener());

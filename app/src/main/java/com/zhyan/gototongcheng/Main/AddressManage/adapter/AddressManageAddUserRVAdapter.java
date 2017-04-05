@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhyan.gototongcheng.Main.AddressManage.AddUser.AddressManageAddUserActivity;
 import com.zhyan.gototongcheng.NetWork.AddressManageNetWorks;
 import com.zhyan.gototongcheng.R;
 
@@ -27,6 +28,7 @@ import butterknife.OnClick;
 import butterknife.OnTouch;
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
 import gototongcheng.zhyan.com.library.Bean.UserAddressListBean;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import rx.Observer;
 
@@ -148,6 +150,25 @@ public class AddressManageAddUserRVAdapter extends RecyclerView.Adapter<AddressM
                     break;
             }
             return false;
+        }
+
+
+        @BindView(R.id.rly_addressmanage_content_user_rv_item_update)
+        RelativeLayout rlyAddressManageContentUserRVItemUpdate;
+        @OnClick(R.id.rly_addressmanage_content_user_rv_item_update)
+        public void rlyAddressManageContentUserRVItemUpdateOnclick(){/*
+            Toast.makeText(activity,"this is onclick",Toast.LENGTH_SHORT).show();*/
+            XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+            XCCacheSavename xcCacheSavename = new XCCacheSavename();
+            xcCacheManager.writeCache(xcCacheSavename.isAddressUpdate,"yes");
+            xcCacheManager.writeCache(xcCacheSavename.addrUserUserName,userAddressListBeanList.get(pos).getClientaddrName());
+            xcCacheManager.writeCache(xcCacheSavename.addrUserTel,userAddressListBeanList.get(pos).getClientaddrTel());
+            xcCacheManager.writeCache(xcCacheSavename.addrUserAddr,userAddressListBeanList.get(pos).getClientaddrAddr());
+            xcCacheManager.writeCache(xcCacheSavename.addrUserclientaddrThings,userAddressListBeanList.get(pos).getClientaddrThings1());
+            xcCacheManager.writeCache(xcCacheSavename.addrUserLat,""+userAddressListBeanList.get(pos).getClientaddrLat());
+            xcCacheManager.writeCache(xcCacheSavename.addrUserLon,""+userAddressListBeanList.get(pos).getClientaddrLong());
+            Intent intent = new Intent(activity, AddressManageAddUserActivity.class);
+            activity.startActivity(intent);
         }
 
         public int pos = 0;

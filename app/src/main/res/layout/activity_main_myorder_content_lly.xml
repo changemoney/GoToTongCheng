@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/allOrder"
+            android:text="@string/finished"
             android:textSize="14sp"
             android:textColor="@color/color_activity_main_myorder_tabar_switch_selected_green_bg" />
         </RelativeLayout>
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textSize="14sp"
-            android:text="@string/waitForSay"
+            android:text="@string/waitForPay"
             android:textColor="@color/color_activity_main_myorder_tabar_switch_unselect_gray_bg" />
         </RelativeLayout>
     </LinearLayout>

@@ -50,6 +50,7 @@
     <string name="addressTest">浙江省乐清市柳市镇巴度电商园46号</string>
     <string name="delete">删除</string>
     <string name="telTest">18058378727</string>
+    <string name="update">修改</string>
     <!--main addressmanage-->
 
     <!--main addressmanage add user-->
@@ -116,6 +117,8 @@
     <string name="searchforinputordernumorkeyword">输入订单号或者关键字查询吧</string>
     <string name="allOrder">全部订单</string>
     <string name="waitForSay">待评价</string>
+    <string name="finished">已完成</string>
+    <string name="waitForPay">待支付</string>
     <string name="orderNum">订单编号</string>
     <string name="orderTime">下单时间</string>
     <string name="orderTimeTest">2016-01-12 14:25:30</string>
@@ -133,6 +136,8 @@
     <string name="pleaseWriteMoreThanEightWordSuggest">请阁下写下不少于8个字的建议，不吝赐教</string>
     <string name="course">里程</string>
     <string name="time">时间</string>
+    <string name="orderStatus">订单状态</string>
+    <string name="orderDetail">订单详情</string>
     <!--main myorder orderstatus-->
 
     <!--main common shoufeibiaozhun-->

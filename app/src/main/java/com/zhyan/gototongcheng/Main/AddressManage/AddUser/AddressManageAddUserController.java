@@ -60,6 +60,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
+import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import gototongcheng.zhyan.com.library.Utils.SystemUtils;
 import gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView;
 import com.zhyan.gototongcheng.Main.AddressManage.AddUser.AddressManageAddUserActivity.InitRecycleView;
@@ -94,11 +96,17 @@ public class AddressManageAddUserController extends BaseController  implements O
     private String addressLocation = "";
     private MyLocationConfiguration.LocationMode mCurrentMode;
     private Boolean isFirst = true;
-    private EditText  etMainAddressManageAddUserContentAddress ;
+    @BindView(R.id.et_main_addressmanage_add_user_content_name)
+    EditText etMainAddressManageAddUserContentName;
+    @BindView(R.id.et_main_addressmanage_add_user_content_tel)
+    EditText etMainAddressManageAddUserContentTel;
+    @BindView(R.id.et_main_addressmanage_add_user_contentaddress)
+    EditText etMainAddressManageAddUserContentAddress;
+    /*private EditText  etMainAddressManageAddUserContentAddress ;*/
     InitRecycleView initRecycleView;
-    public AddressManageAddUserController(Activity activity1, EditText editText, InitRecycleView initRecycleView1){
+    public AddressManageAddUserController(Activity activity1, InitRecycleView initRecycleView1){
         activity = activity1;
-        etMainAddressManageAddUserContentAddress = editText;
+
         initRecycleView = initRecycleView1;
         init();
     }
@@ -106,6 +114,40 @@ public class AddressManageAddUserController extends BaseController  implements O
     public void init(){
         ButterKnife.bind(this,activity);
         initBaiDuMap();
+    }
+
+
+
+    private void isUpdateInit(){
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        String isAddressUpdate = xcCacheManager.readCache(xcCacheSavename.isAddressUpdate);
+        if((isAddressUpdate != null)&&(isAddressUpdate.equals("yes"))){
+            String lat = xcCacheManager.readCache(xcCacheSavename.addrUserLat);
+            String lon = xcCacheManager.readCache(xcCacheSavename.addrUserLon);
+            String userName = xcCacheManager.readCache(xcCacheSavename.addrUserUserName);
+            String addr = xcCacheManager.readCache(xcCacheSavename.addrUserAddr);
+            String tel = xcCacheManager.readCache(xcCacheSavename.addrUserTel);
+            String clientaddrThings = xcCacheManager.readCache(xcCacheSavename.addrUserclientaddrThings);
+            /*Toast.makeText(activity,"isUpdateInit:"+lat+" lon:"+lon+" userName:"+userName+" addr:"+addr+" clientaddrThings:"+clientaddrThings,Toast.LENGTH_SHORT).show();*/
+            if((lat != null)&&(lon != null)){
+                rlat = Double.parseDouble(lat);
+                rlon = Double.parseDouble(lon);
+
+            }
+            if(userName != null){
+                etMainAddressManageAddUserContentName.setText(userName);
+
+            }
+            if(addr != null){
+                etMainAddressManageAddUserContentAddress.setText(addr);
+            }
+            if(tel != null){
+                etMainAddressManageAddUserContentTel.setText(tel);
+            }
+        }
+
+
     }
     /*打开通讯录*/
     @OnClick(R.id.rly_main_addressmanage_add_user_addcontacter)
@@ -265,6 +307,7 @@ public class AddressManageAddUserController extends BaseController  implements O
             etMainAddressManageAddUserContentAddress.setText(addressLocation);
             beginSearchLalByAddress(addressLocation);
         }
+        isUpdateInit();
     }
 
     /**经纬度地址动画显示在屏幕中间  有关mark网站的出处http://blog.csdn.net/callmesen/article/details/40540895**/
@@ -365,16 +408,22 @@ public class AddressManageAddUserController extends BaseController  implements O
 
 
     protected void onDestroy(){
-        mBaiduMap.clear();
-        mBaiduMap.setMyLocationEnabled(false);
-        search.destroy();
+        if(mBaiduMap != null) {
+            mBaiduMap.clear();
+            mBaiduMap.setMyLocationEnabled(false);
+        }
+        if(search != null) {
+            search.destroy();
+        }
         isFirst = true;
         mvHelpMeBuyAddReceiverDetailContent.onDestroy();
-        locationClient.unRegisterLocationListener(locationListener);
         if(locationClient!=null){
             locationClient.stop();
+            locationClient.unRegisterLocationListener(locationListener);
         }
-
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        xcCacheManager.writeCache(xcCacheSavename.isAddressUpdate,"no");
 
     }
 

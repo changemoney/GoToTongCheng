@@ -299,7 +299,7 @@
     <dimen name="activity_main_myorder_rv_item_margin">8dp</dimen>
     <!--main myorder-->
     <!--main myorder orderstatus-->
-    <dimen name="activity_main_myorder_orderstatus_mapview_height">180dp</dimen>
+    <dimen name="activity_main_myorder_orderstatus_mapview_height">280dp</dimen>
     <dimen name="activity_main_myorder_orderstatus_status_item_height">56dp</dimen>
     <dimen name="activity_main_myorder_orderstatus_status_item_first_split_height">20dp</dimen>
     <dimen name="activity_main_myorder_orderstatus_status_item_green_point_width">10dp</dimen>
@@ -323,7 +323,7 @@
     <dimen name="activity_main_myorder_orderstatus_status_comment_gray_photo_item_height">20dp</dimen>
     <dimen name="activity_main_myorder_orderstatus_tabstatus_height">60dp</dimen>
     <dimen name="activity_main_myorder_orderstatus_tabstatus_margin_left_right_size">25dp</dimen>
-    <dimen name="activity_main_myorder_orderstatus_tabstatus_margin_top_size">150dp</dimen>
+    <dimen name="activity_main_myorder_orderstatus_tabstatus_margin_top_size">250dp</dimen>
     <dimen name="activity_main_myorder_orderstatus_tabstatus_the_firstone_margintop_size">10dp</dimen>
     <dimen name="activity_main_myorder_orderstatus_tabstatus_the_secondone_margintop_size">30dp</dimen>
     <dimen name="activity_main_myorder_orderstatus_tabstatus_the_thirdone_margintop_size">10dp</dimen>
@@ -331,7 +331,10 @@
     <dimen name="activity_main_myorder_orderstatus_tabstatus_price_ico_height">10dp</dimen>
     <dimen name="activity_main_myorder_orderstatus_tabstatus_the_firstone_ico_margintop_size">12dp</dimen>
     <dimen name="activity_main_myorder_orderstatus_tabstatus_the_firstone_ico_margin_left_size">5dp</dimen>
-
+    <dimen name="activity_main_myorder_orderstatus_tab_height">48dp</dimen>
+    <dimen name="activity_main_myorder_orderstatus_tab_item_height">45dp</dimen><!--
+    <dimen name="activity_main_myorder_orderstatus_tab"
+    -->
     <!--main myorder orderstatus-->
 
     <!--widget popup payconfirmpopup-->

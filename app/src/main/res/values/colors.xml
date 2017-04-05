@@ -466,6 +466,8 @@
     <color name="color_activity_main_myorder_orderstatus_content_white_bg">#fefefe</color>
     <color name="color_activity_main_myorder_orderstatus_content_black_bg">#2c2d37</color>
     <color name="color_activity_main_myorder_orderstatus_content_gray_border_bg">#56575f</color>
+    <color name="color_activity_main_myorder_orderstatus_tabar_switch_unselect_gray_bg">#96969b</color>
+    <color name="color_activity_main_myorder_orderstatus_tabar_switch_selected_green_bg">#befa00</color>
     <!--main myorder orderstatus-->
 
     <!--main common shoufeibiaozhun-->

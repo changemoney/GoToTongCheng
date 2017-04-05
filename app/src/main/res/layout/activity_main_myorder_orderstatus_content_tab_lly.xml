@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="@dimen/activity_main_myorder_orderstatus_tab_height">
+    <LinearLayout
+        android:id="@+id/lly_main_myorder_content"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal"
+        android:layout_height="@dimen/activity_main_myorder_orderstatus_tab_item_height"
+         >
+        <RelativeLayout
+            android:id="@+id/rly_main_myorder_allorder"
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:id="@+id/tv_main_myorder_allorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/orderStatus"
+                android:textSize="14sp"
+                android:textColor="@color/color_activity_main_myorder_orderstatus_content_green_bg" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rly_main_myorder_waitforsay"
+            android:layout_width="@dimen/zero"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <TextView
+                android:id="@+id/tv_main_myorder_waitforsay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="14sp"
+                android:text="@string/orderDetail"
+                android:textColor="@color/color_activity_main_myorder_orderstatus_tabar_switch_unselect_gray_bg" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--    <ImageView
+            android:id="@+id/iv_main_myorder_tab_greenbottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"
+            android:background="@color/transparent"
+            android:src="@drawable/icon_tab_winter_a" />-->
+    <ImageView
+        android:id="@+id/iv_main_myorder_tab_greenbottom"
+        android:layout_width="@dimen/activity_main_myorder_tabbar_bottom_green_width"
+        android:layout_height="@dimen/activity_main_myorder_tabbar_bottom_green_height"
+        android:scaleType="matrix"
+        android:src="@color/color_activity_main_myorder_orderstatus_tabar_switch_selected_green_bg"
+        android:layout_marginLeft="50dp"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/the_split_line_height"
+        android:background="@color/color_activity_main_myorder_orderstatus_tabar_switch_unselect_gray_bg"
+        />
+</LinearLayout>

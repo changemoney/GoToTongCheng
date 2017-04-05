@@ -55,6 +55,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
+import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 
 /**
  * Created by admin on 2017/3/24.
@@ -88,18 +90,50 @@ public class AddressManageAddShopController extends BaseController  implements O
     private  final int accuracyCircleStrokeColor = 0xAA00FF00;
     private MyLocationConfiguration.LocationMode mCurrentMode;
     private LatLng currentPt;
-    private EditText etMainAddressManageAddShopContentAddress;
+ /*   private EditText etMainAddressManageAddShopContentAddress;*/
     private String addressLocation = "";
     public boolean isAddress = true;
-    public AddressManageAddShopController(Activity activity1, EditText editText, InitRecycleView initRecycleView1){
+    @BindView(R.id.et_main_addressmanage_add_shop_content_namecall)
+    EditText etMainAddressManageAddShopContentNameCall;
+    @BindView(R.id.et_main_addressmanage_add_shop_content_address)
+    EditText etMainAddressManageAddShopContentAddress;
+    public AddressManageAddShopController(Activity activity1,  InitRecycleView initRecycleView1){
         activity = activity1;
-        etMainAddressManageAddShopContentAddress = editText;
+    /*    etMainAddressManageAddShopContentAddress = editText;*/
         initRecycleView = initRecycleView1;
         init();
     }
+    private void isUpdateInit(){
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        String isAddressUpdate = xcCacheManager.readCache(xcCacheSavename.isAddressUpdate);
+        if((isAddressUpdate != null)&&(isAddressUpdate.equals("yes"))){
+            String lat = xcCacheManager.readCache(xcCacheSavename.addrShopLat);
+            String lon = xcCacheManager.readCache(xcCacheSavename.addrShopLon);
+            String userName = xcCacheManager.readCache(xcCacheSavename.addrShopName);
+            String addr = xcCacheManager.readCache(xcCacheSavename.addrShopAddr);
+            String clientaddrThings = xcCacheManager.readCache(xcCacheSavename.addrShopclientaddrThings);
+            /*Toast.makeText(activity,"isUpdateInit:"+lat+" lon:"+lon+" userName:"+userName+" addr:"+addr+" clientaddrThings:"+clientaddrThings,Toast.LENGTH_SHORT).show();*/
+            if((lat != null)&&(lon != null)){
+                blat = Double.parseDouble(lat);
+                blon = Double.parseDouble(lon);
 
+            }
+            if(userName != null){
+                etMainAddressManageAddShopContentNameCall.setText(userName);
+
+            }
+            if(addr != null){
+                etMainAddressManageAddShopContentAddress.setText(addr);
+            }
+        }
+
+
+    }
+    @Override
     public void init(){
         ButterKnife.bind(this,activity);
+
         initBaiDuMap();
     }
     private void initBaiDuMap(){
@@ -121,7 +155,7 @@ public class AddressManageAddShopController extends BaseController  implements O
         /*设置编码监听者*/
         mSearch.setOnGetGeoCodeResultListener(this);
         /*设置编码监听者*/
-        initLocation();
+        initLocation1();
         locationClient.start();
     }
 
@@ -168,7 +202,7 @@ public class AddressManageAddShopController extends BaseController  implements O
     }
     /*地图移动坐标不动*/
     /**配置定位参数**/
-    private void initLocation(){
+    private void initLocation1(){
         LocationClientOption option=new LocationClientOption();
         option.setOpenGps(true); // 打开gps
         option.setCoorType("bd09ll"); // 设置坐标类型
@@ -222,6 +256,7 @@ public class AddressManageAddShopController extends BaseController  implements O
             etMainAddressManageAddShopContentAddress.setText(addressLocation);
             beginSearchLalByAddress(addressLocation);
         }
+        isUpdateInit();
     }
 
 
@@ -481,16 +516,24 @@ public class AddressManageAddShopController extends BaseController  implements O
 
 
     protected void onDestroy(){
-        mBaiduMap.clear();
-        mSearch.destroy();
+        if(mBaiduMap != null) {
+            mBaiduMap.clear();
+        }
+        if(mSearch != null) {
+            mSearch.destroy();
+        }
         isFirst = true;
         mvMainAddressManageAddShopContent.onDestroy();
-        poiSearch.destroy();
-        locationClient.unRegisterLocationListener(locationListener);
+        if(poiSearch != null) {
+            poiSearch.destroy();
+        }
         if(locationClient!=null){
+            locationClient.unRegisterLocationListener(locationListener);
             locationClient.stop();
         }
-
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        xcCacheManager.writeCache(xcCacheSavename.isAddressUpdate,"no");
 
     }
 

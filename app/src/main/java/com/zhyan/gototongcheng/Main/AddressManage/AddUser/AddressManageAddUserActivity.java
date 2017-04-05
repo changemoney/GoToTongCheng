@@ -31,6 +31,7 @@ import android.widget.Toast;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.zhyan.gototongcheng.BaseActivity;
+import com.zhyan.gototongcheng.Main.AddressManage.AddShop.AddressManageAddShopActivity;
 import com.zhyan.gototongcheng.Main.BaiDuMapCommon.BaiduAddressSearchSuggestActivity;
 import com.zhyan.gototongcheng.NetWork.AddressManageNetWorks;
 import com.zhyan.gototongcheng.R;
@@ -42,6 +43,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import gototongcheng.zhyan.com.library.Utils.SystemUtils;
 import gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView;
@@ -131,9 +133,48 @@ public class AddressManageAddUserActivity extends BaseActivity  {
      /*信息确认返回*/
     @OnClick(R.id.rly_main_addressmanage_add_user_topbar_rightmenu)
     public void rlyHelpMeBuyAddReceiverDetailTopBarRightMenuOnclick(){
-        addUserAddressToNet();
+
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(this);
+        XCCacheSavename xcCacheSavename = new  XCCacheSavename();
+        String isAddressUpdate = xcCacheManager.readCache(xcCacheSavename.isAddressUpdate);
+        if((isAddressUpdate != null)&&(isAddressUpdate.equals("yes"))){
+            updateUserAddressToNet();
+            /*Toast.makeText(AddressManageAddShopActivity.this,"this is updateShopAddressToNet",Toast.LENGTH_LONG).show();*/
+            xcCacheManager.writeCache(xcCacheSavename.isAddressUpdate,"no");
+        }else {
+            addUserAddressToNet();
+        }
+
     }
     /*信息确认返回*/
+
+    private void updateUserAddressToNet(){
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(this);
+        XCCacheSavename xcCacheSavename = new  XCCacheSavename();
+        String clientThing1 = xcCacheManager.readCache(xcCacheSavename.addrUserclientaddrThings);
+        String usid = xcCacheManager.readCache("usid");
+        if((clientThing1 != null)&&(usid != null)){
+            AddressManageNetWorks addressManageNetWorks = new AddressManageNetWorks();
+            addressManageNetWorks.updateUserAddr(usid, clientThing1,etMainAddressManageAddUserContentName.getText().toString()+" "+etMainAddressManageAddUserContentTel.getText().toString()+" "+etMainAddressManageAddUserContentAddress.getText().toString(),(float) rlat,(float) rlon, "0", new Observer<BaseBean>() {
+                @Override
+                public void onCompleted() {
+                    /*Toast.makeText(getBaseContext(),"onCompleted",Toast.LENGTH_SHORT).show();*/
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    /*Toast.makeText(getBaseContext(),"onError"+e,Toast.LENGTH_SHORT).show();*/
+                }
+
+                @Override
+                public void onNext(BaseBean baseBean) {
+                    Toast.makeText(AddressManageAddUserActivity.this,baseBean.getResult(),Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            });
+        }
+    }
+
     private void addUserAddressToNet(){
         XCCacheManager xcCacheManager = XCCacheManager.getInstance(this);
         String usid = xcCacheManager.readCache("usid");
@@ -281,7 +322,7 @@ public class AddressManageAddUserActivity extends BaseActivity  {
         viewList.add(mInflater.inflate(R.layout.activity_main_addressmanage_add_user_content_vp_itemrv_lly, null));
         initRecycleView = new InitRecycleView(viewList.get(0));
         initRecycleView.initXRV();
-        addressManageAddUserController = new AddressManageAddUserController(this,etMainAddressManageAddUserContentAddress,initRecycleView);
+        addressManageAddUserController = new AddressManageAddUserController(this,initRecycleView);
         vpMainAddressManageAddUserContent.setAdapter(new AddUserMyPagerAdapter(viewList));
         vpMainAddressManageAddUserContent.setCurrentItem(0);
         vpMainAddressManageAddUserContent.addOnPageChangeListener(new MyOnPageChangeListener());

@@ -64,7 +64,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/zero"
                         android:layout_weight="1"
+                        android:orientation="horizontal"
                         >
+                        <RelativeLayout
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            >
+
+
                         <TextView
                             android:id="@+id/tv_addressmanage_content_shop_rv_item_addr"
                             android:layout_width="wrap_content"
@@ -72,8 +80,26 @@
                             android:text="@string/addressTest"
                             android:textColor="@color/color_activity_main_addressmanage_content_gray_word_bg"
                             android:textSize="11sp"
-                            android:layout_gravity="top"
+                            android:layout_alignParentTop="true"
                             />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/rly_addressmanage_content_shop_rv_item_update"
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            >
+                            <TextView
+                                android:id="@+id/tv_addressmanage_content_shop_rv_item_update"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/update"
+                                android:textColor="@color/color_activity_main_addressmanage_content_gray_word_bg"
+                                android:textSize="11sp"
+                                android:layout_centerInParent="true"
+                                />
+
+                        </RelativeLayout>
                     </LinearLayout>
 
 

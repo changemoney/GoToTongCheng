@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhyan.gototongcheng.Main.AddressManage.AddShop.AddressManageAddShopActivity;
 import com.zhyan.gototongcheng.NetWork.AddressManageNetWorks;
 import com.zhyan.gototongcheng.R;
 
@@ -26,6 +27,7 @@ import butterknife.OnClick;
 import butterknife.OnTouch;
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
 import gototongcheng.zhyan.com.library.Bean.ShopAddressListBean;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import rx.Observer;
 
@@ -133,6 +135,57 @@ public class AddressManageAddShopRVAdapter extends RecyclerView.Adapter<AddressM
             }
             return false;
         }
+
+        @BindView(R.id.rly_addressmanage_content_shop_rv_item_update)
+        RelativeLayout rlyAddressManageContentShopRVItemUpdate;
+        @OnClick(R.id.rly_addressmanage_content_shop_rv_item_update)
+        public void rlyAddressManageContentShopRVItemUpdateOnclick(){/*
+            Toast.makeText(activity,"disx:this is onclick",Toast.LENGTH_SHORT).show();*/
+            XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+            XCCacheSavename xcCacheSavename = new XCCacheSavename();
+            xcCacheManager.writeCache(xcCacheSavename.isAddressUpdate,"yes");
+            xcCacheManager.writeCache(xcCacheSavename.addrShopName,shopAddressListBeanList.get(pos).getClientaddr1Name());
+            xcCacheManager.writeCache(xcCacheSavename.addrShopAddr,shopAddressListBeanList.get(pos).getClientaddr1Addr());
+            xcCacheManager.writeCache(xcCacheSavename.addrShopLat,""+shopAddressListBeanList.get(pos).getClientaddr1Lat());
+            xcCacheManager.writeCache(xcCacheSavename.addrShopLon,"" + shopAddressListBeanList.get(pos).getClientaddr1Long());
+            xcCacheManager.writeCache(xcCacheSavename.addrShopclientaddrThings,shopAddressListBeanList.get(pos).getClientaddr1Things1());
+            Intent intent = new Intent(activity, AddressManageAddShopActivity.class);
+            activity.startActivity(intent);
+        }
+
+/*
+        @OnTouch(R.id.rly_addressmanage_content_shop_rv_item_update)
+        public boolean rlyAddressManageContentShopRVITemUpdateOnTouch(View view,MotionEvent event){
+
+            switch (event.getAction()){
+                case MotionEvent.ACTION_DOWN:
+                    xBegin = event.getRawX();
+                    yBegin = event.getRawY();
+                    break;
+                case MotionEvent.ACTION_UP:
+                    xEnd = event.getRawX();
+                    yEnd = event.getRawY();
+                    int absXBegin = (int) Math.abs(xBegin);
+                    int absYBegin = (int) Math.abs(yBegin);
+                    int absXEnd = (int) Math.abs(xEnd);
+                    int absYEnd = (int) Math.abs(yEnd);
+                    int disX = (absXEnd - absXBegin);
+                    int disY = (absYEnd - absYBegin);
+                    *//*
+                    Toast.makeText(activity,"disx:"+disX+" disy:"+disY,Toast.LENGTH_SHORT).show();*//*
+                    if((disX == 0)&&(disY == 0)){
+
+                    }
+
+                    break;
+
+            }
+
+
+            return false;
+        }*/
+
+
         public int pos = 0;
         @BindView(R.id.lly_addressmanage_content_shop_rv_item_total)
         LinearLayout llyAddressManageContentRVItemTotal;

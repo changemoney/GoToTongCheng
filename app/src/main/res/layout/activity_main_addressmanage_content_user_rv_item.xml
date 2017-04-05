@@ -78,8 +78,14 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/zero"
+                        android:orientation="horizontal"
                         android:layout_weight="1"
                         >
+                        <RelativeLayout
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            >
                         <TextView
                             android:id="@+id/tv_addressmanage_content_user_rv_item_tel"
                             android:layout_width="wrap_content"
@@ -87,8 +93,26 @@
                             android:text="@string/telTest"
                             android:textColor="@color/color_activity_main_addressmanage_content_gray_word_bg"
                             android:textSize="13sp"
-                            android:layout_gravity="center_vertical"
+                            android:layout_centerVertical="true"
                             />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/rly_addressmanage_content_user_rv_item_update"
+                            android:layout_width="@dimen/zero"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            >
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/update"
+                            android:textColor="@color/color_activity_main_addressmanage_content_gray_word_bg"
+                            android:textSize="13sp"
+                            android:layout_centerInParent="true"
+                            />
+                        </RelativeLayout>
                     </LinearLayout>
 
                 </LinearLayout>

@@ -4,5 +4,14 @@
     android:layout_height="match_parent">
 
     <include layout="@layout/activity_main_myorder_orderstatus_topbar_lly"/>
+    <include layout="@layout/activity_main_myorder_orderstatus_content_tab_lly"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:layout_weight="1"
+        >
+
+
     <include layout="@layout/activity_main_myorder_orderstatus_content_lly"/>
+    </LinearLayout>
 </LinearLayout>

@@ -13,4 +13,16 @@ public class XCCacheSavename {
     public String headUrl = "headUrl";
     public String addressManageType ="addressManageType";
     public String isNewApp = "isNewApp";
+    public String isAddressUpdate ="false";
+    public String addrUserUserName = "addrUserUserName";
+    public String addrUserAddr = "addrUserAddr";
+    public String addrUserTel = "addrUserTel";
+    public String addrUserLat = "addrUserLat";
+    public String addrUserLon = "addrUserLon";
+    public String addrUserclientaddrThings = "addrUserclientaddrThings";
+    public String addrShopName = "addrShopName";
+    public String addrShopAddr = "addrShopAddr";
+    public String addrShopLat = "addrShopLat";
+    public String addrShopLon = "addrShopLon";
+    public String addrShopclientaddrThings = "addrShopclientaddrThings";
 }
