@@ -196,6 +196,11 @@
             android:hardwareAccelerated="false"
             />
         <activity
+            android:name=".Main.MyOrder.OrderStatus.OrderStatusActivity"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="false"
+            />
+        <activity
             android:name=".Main.Common.ShouFeiBiaoZhunActivity"
             android:screenOrientation="portrait"
             android:hardwareAccelerated="false"

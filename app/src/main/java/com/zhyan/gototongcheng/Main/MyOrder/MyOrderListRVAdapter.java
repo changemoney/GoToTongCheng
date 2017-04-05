@@ -1,14 +1,18 @@
 package com.zhyan.gototongcheng.Main.MyOrder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhyan.gototongcheng.Main.MyOrder.OrderStatus.OrderStatusActivity;
 import com.zhyan.gototongcheng.NetWork.OrderNetWorks;
 import com.zhyan.gototongcheng.R;
 
@@ -18,6 +22,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTouch;
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
 import gototongcheng.zhyan.com.library.Bean.MyOrderBean;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
@@ -80,6 +85,33 @@ public class MyOrderListRVAdapter extends RecyclerView.Adapter<MyOrderListRVAdap
 
     public class MyHoldView extends RecyclerView.ViewHolder{
         int pos = 0;
+   /*     @BindView(R.id.lly_main_myorder_content_total)
+        LinearLayout llyMainMyOrderContentTotal;*/
+        float bx= 0,by=0;
+        @OnTouch(R.id.sly_main_myorder_content_shop_rv_item)
+        public boolean llyMainMyOrderContentTotalTouch(View view, MotionEvent event){
+
+            switch (event.getAction()){
+                case MotionEvent.ACTION_DOWN:
+                        bx = event.getRawX();
+                        by = event.getRawY();
+                        break;
+                case MotionEvent.ACTION_UP:
+                        float ex = event.getRawX();
+                        float ey = event.getRawY();
+                        float disx = ex - bx;
+                        float disy = ey - by;
+                    Toast.makeText(context,"i'm begin:"+disx+" "+disy,Toast.LENGTH_SHORT).show();
+                        if((disx == 0)&&(disy ==0)){
+                            Intent intent = new Intent(context, OrderStatusActivity.class);
+                            context.startActivity(intent);
+                            Toast.makeText(context,"i'm click",Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+            }
+
+            return false;
+        }
         @BindView(R.id.tv_myorder_content_tab_vp_item_rv_item_ordernum)
         TextView tvMyOrderContentTabVPItemRVItemOrderNum;
         @BindView(R.id.tv_myorder_content_tab_vp_item_rv_item_beginaddr)

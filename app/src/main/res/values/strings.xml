@@ -121,6 +121,19 @@
     <string name="orderTimeTest">2016-01-12 14:25:30</string>
     <!--main myorder-->
 
+    <!--main myorder orderstatus-->
+    <string name="paySuccessful">支付成功</string>
+    <string name="passerGotOrder">骑手已接单</string>
+    <string name="contactTel">联系电话:  </string>
+    <string name="passerReachPickPoint">骑手抵达取件点</string>
+    <string name="passerReachPiePoint">骑手抵达派件点</string>
+    <string name="orderFinish">订单完成</string>
+    <string name="passerSpeed">跑腿速度</string>
+    <string name="serviceAttitude">服务态度</string>
+    <string name="pleaseWriteMoreThanEightWordSuggest">请阁下写下不少于8个字的建议，不吝赐教</string>
+    <string name="course">里程</string>
+    <string name="time">时间</string>
+    <!--main myorder orderstatus-->
 
     <!--main common shoufeibiaozhun-->
     <string name="shoufeibiaozhun">收费标准</string>

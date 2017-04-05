@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <solid
+        android:color="@color/color_activity_main_myorder_orderstatus_content_black_bg"/>
+    <corners android:radius="5dip" />
+    <stroke android:color="@color/color_activity_main_myorder_orderstatus_content_gray_border_bg"
+        android:width="@dimen/the_split_line_height"
+        android:dashWidth="0dp"/>
+</shape>

@@ -342,4 +342,18 @@
     <!--actionsheet模式的取消按钮背景颜色-->
     <color name="bgColor_actionsheet_cancel_nor">#ffffff</color>
     <!--仿ios对话框-->
+
+
+
+    <!--point color-->
+    <color name="point_green_bg">#befa00</color>
+    <color name="point_red_bg">#ff2d2d</color>
+    <color name="point_dark_green_bg">#78dc2f</color>
+    <!--point color-->
+    <!--main myorder orderstatus-->
+    <color name="color_activity_main_myorder_orderstatus_content_black_bg">#2c2d37</color>
+    <color name="color_activity_main_myorder_orderstatus_gray_border_bg">#56575f</color>
+    <color name="color_activity_main_myorder_orderstatus_content_green_bg">#befa00</color>
+    <color name="color_activity_main_myorder_orderstatus_content_gray_border_bg">#56575f</color>
+    <!--main myorder orderstatus-->
 </resources>

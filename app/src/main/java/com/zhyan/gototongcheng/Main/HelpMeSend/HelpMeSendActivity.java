@@ -89,7 +89,7 @@ public class HelpMeSendActivity extends BaseActivity {
         try {
             initOrderDetail();
            /* Toast.makeText(this, ""+orderDetailBean.getUserUsid()+" "+orderDetailBean.getClientaddrAddr()+" "+orderDetailBean.getClientaddrAddr1()+" "+orderDetailBean.getOrderTimeliness(), Toast.LENGTH_LONG).show();*/
-            if (((orderDetailBean.getUserUsid().isEmpty()) || (orderDetailBean.getClientaddrAddr().isEmpty()) || (orderDetailBean.getClientaddrAddr1().isEmpty())  || (orderDetailBean.getOrderTimeliness().isEmpty())||(orderDetailBean.getOrderMileage() <0))) {
+            if (((orderDetailBean.getUserUsid().isEmpty()) || (orderDetailBean.getClientaddrAddr().isEmpty()) || (orderDetailBean.getClientaddrAddr1().isEmpty())  || (orderDetailBean.getOrderTimeliness().isEmpty())||(helpMeSendActivityController.tvMainHelpMeSendContentSendDis.getText().toString().isEmpty())||(helpMeSendActivityController.price.isEmpty()))) {
                 Toast.makeText(this, "信息输入不全", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -202,7 +202,10 @@ public class HelpMeSendActivity extends BaseActivity {
             String clientaddrThings1 = b.getString("clientaddrThings1");
             String lat = b.getString("lat");
             String lon = b.getString("lon");
-
+            /*Toast.makeText(this,"lat:"+lat+" lon:"+lon+" clientaddrThing1:"+clientaddrThings1,Toast.LENGTH_LONG).show();*/
+            if(lat.isEmpty()||lon.isEmpty()||clientaddrThings1.isEmpty()){
+                return;
+            }
             if(isSender){
                 if((lat != null) && (lon != null)) {
                     blat = Double.parseDouble(lat);

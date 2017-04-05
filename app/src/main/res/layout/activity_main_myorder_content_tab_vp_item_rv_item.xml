@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/color_activity_main_myorder_content_black_bg"
+    android:id="@+id/lly_main_myorder_content_total"
     >
     <gototongcheng.zhyan.com.library.Widget.SwipeLayout.SwipeLayout
         android:id="@+id/sly_main_myorder_content_shop_rv_item"

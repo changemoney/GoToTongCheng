@@ -460,6 +460,14 @@
     <color name="color_activity_main_myorder_content_red_delete_bg">#fa2e2e</color>
     <!--main myorder-->
 
+    <!--main myorder orderstatus-->
+    <color name="color_activity_main_myorder_orderstatus_content_green_bg">#befa00</color>
+    <color name="color_activity_main_myorder_orderstatus_content_gray_word_bg">#5d5f6b</color>
+    <color name="color_activity_main_myorder_orderstatus_content_white_bg">#fefefe</color>
+    <color name="color_activity_main_myorder_orderstatus_content_black_bg">#2c2d37</color>
+    <color name="color_activity_main_myorder_orderstatus_content_gray_border_bg">#56575f</color>
+    <!--main myorder orderstatus-->
+
     <!--main common shoufeibiaozhun-->
     <color name="color_activity_main_common_shoufeibiaozhun_topbar_green_word_bg">#a8dc09</color>
     <!--main common shoufeibiaozhun-->
