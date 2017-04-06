@@ -190,4 +190,124 @@ public class PriceUtil {
         }
         return tempPrice;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public String gotoHelpMeSendlNewFee(float dis1){
+
+        String temp = ""+dis1;
+        int indexOf = temp.indexOf(".");
+        int dis = 0;
+        if(indexOf >0){
+            temp = temp.substring(0,indexOf);
+            dis = Integer.parseInt(temp);
+            dis += 1;
+        }
+        String price = "";
+        TimeUtil timeUtil = new TimeUtil();
+        int hour = timeUtil.getHour(new Date());
+        Log.i("gotoHelpMeSendlFee",""+hour);
+        if(hour < 0){
+            return "";
+        }
+
+        if((hour >=10)&&(hour <=21)){
+           /* if(weight <= 10){*/
+            if(dis <= 3) {
+                price += "10";
+            }else if((dis <= 4)&&(dis > 3)){
+                price += "12";
+            }
+            else if((dis > 4)&&(dis <= 20)){
+                float fee = 12 + 3*(dis -4);
+                price +=  ""+fee;
+            }else if(dis > 20){
+                float fee =6*(4 + (dis -4));
+                price += ""+fee;
+            }
+          /*  }else if(weight > 10){
+                if(dis <= 3) {
+                    float fee = 7 + ((weight -10)*2);
+                    price += ""+fee;
+                }else if((dis >= 3)&&(dis <= 20)){
+                    float fee = 7 +((weight -10)*2) + (2*(dis -3));
+                    price +=  ""+fee;
+                }else if(dis > 20){
+                    float fee =2*(7 + ((weight -10)*2) + (2*(dis -3)));
+                    price += ""+fee;
+                }
+            }*/
+        }else if((hour > 21)||(hour <= 1)){
+
+
+           /* if(weight <= 10) {*/
+            if (dis <= 3) {
+                float fee = 20;
+                price += "" + fee;
+            }else if((dis > 3)&&(dis <= 4)){
+                price = "24";
+            } else if ((dis > 4) && (dis <= 20)) {
+                float fee = (4 + (dis - 4)) * 6;
+                price += "" + fee;
+            } else if (dis > 20) {
+                float fee = 12 * (4 + (dis - 4));
+                price += "" + fee;
+            }
+        /*    }else if(weight > 10){
+
+                    if(dis <= 3) {
+                        float fee = (7 + ((weight -10)*2))*2;
+                        price += ""+fee;
+                    }else if((dis >= 3)&&(dis <= 20)){
+                        float fee = (7 +((weight -10)*2) + (2*(dis -3)))*2;
+                        price +=  ""+fee;
+                    }else if(dis > 20){
+                        float fee =2*(7 + ((weight -10)*2) + (2*(dis -3)))*2;
+                        price += ""+fee;
+                    }
+
+            }*/
+        }else if((hour > 1)&&(hour < 10)){
+            Toast.makeText(activity,"尊敬的客户，我们兔子还没有出门呢（快递员还没有上班，10点开始上班）",Toast.LENGTH_LONG).show();
+        }
+
+        Log.i("gotoHelpMeSendlFee",""+price);
+        /*if(price.length() < 2){
+            price = "";
+        }*/
+        String tempPrice = price;
+        int index = tempPrice.indexOf(".");
+        if(index > 0){
+            tempPrice = tempPrice.substring(0,index);
+        }
+        return tempPrice;
+    }
+
+
+
+
+
+
+
+
+
+
+
 }

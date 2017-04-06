@@ -40,7 +40,7 @@ public class ShouFeiBiaoZhunActivity extends Activity{
     }
 
     private void initWebView(){
-        wvShouFeiBiaoZhunContent.loadUrl("file:///android_asset/index.html");
+        wvShouFeiBiaoZhunContent.loadUrl("file:///android_asset/index3.html");
     }
 
 }

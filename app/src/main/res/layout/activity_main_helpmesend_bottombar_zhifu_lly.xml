@@ -6,7 +6,7 @@
         android:id="@+id/rly_main_helpmesend_bottombar_feecontent"
         android:layout_width="@dimen/zero"
         android:layout_height="match_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="2.5"
         >
         <ImageView
             android:id="@+id/iv_main_helpmesend_bottombar_paymark"
@@ -24,7 +24,7 @@
             android:layout_toRightOf="@id/iv_main_helpmesend_bottombar_paymark"
             android:text="@string/moneyTest"
             android:textColor="@color/color_activity_main_helpmesend_bottom_green_pay_bg"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:layout_centerVertical="true"
             android:textStyle="bold"
             android:visibility="invisible"
@@ -33,14 +33,14 @@
     <RelativeLayout
         android:layout_width="@dimen/zero"
         android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_weight="0.3"
         ></RelativeLayout>
     <RelativeLayout
         android:id="@+id/rly_main_helpmesend_bottombar_payconfirm"
         android:layout_width="@dimen/zero"
         android:layout_height="match_parent"
         android:background="@color/color_activity_main_helpmesend_bottom_green_pay_bg"
-        android:layout_weight="1.1"
+        android:layout_weight="1"
         >
         <TextView
             android:layout_width="wrap_content"

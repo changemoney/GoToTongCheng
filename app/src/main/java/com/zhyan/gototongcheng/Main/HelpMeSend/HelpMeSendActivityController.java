@@ -35,6 +35,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import gototongcheng.zhyan.com.library.Bean.OrderDetailBean;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
+import gototongcheng.zhyan.com.library.Utils.PhoneFormatCheckUtils;
 import gototongcheng.zhyan.com.library.Utils.PriceUtil;
 import gototongcheng.zhyan.com.library.Utils.TimeUtil;
 import gototongcheng.zhyan.com.library.Widget.Dialog.AlertView;
@@ -218,11 +219,18 @@ public class HelpMeSendActivityController extends BaseController{
 
 
         price = priceUtil.gotoHelpMeSendlFee(dis);
-
+        String priceNew = priceUtil.gotoHelpMeSendlNewFee(dis);
+        PhoneFormatCheckUtils phoneFormatCheckUtils = new PhoneFormatCheckUtils();
+        int tempDisPrice = 0;
+        if(phoneFormatCheckUtils.IsNumber(price)&&phoneFormatCheckUtils.IsNumber(priceNew)){
+            int tempPrice = Integer.parseInt( price);
+            int tempNewPrice = Integer.parseInt(priceNew);
+            tempDisPrice = tempNewPrice - tempPrice;
+        }
         if(!price.isEmpty()) {
             tvMainHelpMeSendBottomBarPrice.setVisibility(View.VISIBLE);
         /*Toast.makeText(getBaseContext(),"here is getPrice tvHelpMeSendBottomBarPrice:"+price,Toast.LENGTH_SHORT).show();*/
-            tvMainHelpMeSendBottomBarPrice.setText("￥" + price);
+            tvMainHelpMeSendBottomBarPrice.setText("￥" + price + "     已优惠"+tempDisPrice+"元");
         }
     }
 

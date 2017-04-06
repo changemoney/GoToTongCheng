@@ -151,7 +151,10 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="X9Z1m11LamaG71GznDIKu0tFKsFdaNHB" />  <!--dWh1jhZmAPojyyNKrhD4anUjlqtEZyxU  http://lbsyun.baidu.com/apiconsole/key  X9Z1m11LamaG71GznDIKu0tFKsFdaNHB 公司-->
         <!-- meta-data需要写在application中 -->
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait"
+            >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

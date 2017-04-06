@@ -29,6 +29,7 @@ import butterknife.OnClick;
 import butterknife.OnTouch;
 import gototongcheng.zhyan.com.library.Bean.GoodsBean;
 import gototongcheng.zhyan.com.library.Bean.OrderDetailBean;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import gototongcheng.zhyan.com.library.Utils.PhoneFormatCheckUtils;
 import gototongcheng.zhyan.com.library.Utils.TimeUtil;
@@ -81,7 +82,8 @@ public class HelpMeBuyActivity extends BaseActivity {
     TextView tvMainHelpMeBuyContentShopAddress;
     @OnClick(R.id.lly_main_helpmebuy_shopdetail)
     public void llyMainHelpMeBuyShopDetailOnclick(){
-        xcCacheManager.writeCache("addressManageType","shop");
+        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        xcCacheManager.writeCache(xcCacheSavename.addressManageType,"shop");
         Intent intent = new Intent(this,AddressManageActivity.class);
         startActivityForResult(intent,RESULT_SHOP);
     }
@@ -97,7 +99,8 @@ public class HelpMeBuyActivity extends BaseActivity {
     TextView tvMainHelpMeBuyContentUserAddressDetail;
     @OnClick(R.id.lly_main_helpmebuy_userdetail)
     public void llyMainHelpMeBuyUserDetailOnclick(){
-        xcCacheManager.writeCache("addressManageType","user");
+        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        xcCacheManager.writeCache(xcCacheSavename.addressManageType,"user");
         Intent intent = new Intent(this,AddressManageActivity.class);
         startActivityForResult(intent,RESULT_RECE);
     }
