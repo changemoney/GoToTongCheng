@@ -21,7 +21,7 @@
     <string name="setting">设置</string>
     <string name="hotTelForGov">官方热线</string>
     <string name="sisterForEveryThing">萌妹客服包治百病</string>
-    <string name="version">版本号1.0.0</string>
+    <string name="version">版本号1.0.3</string>
     <string name="exitLogin">退出登入</string>
     <!--main leftmenu-->
 
@@ -122,6 +122,7 @@
     <string name="orderNum">订单编号</string>
     <string name="orderTime">下单时间</string>
     <string name="orderTimeTest">2016-01-12 14:25:30</string>
+<!--    <string name="toPay">去支付</string>-->
     <!--main myorder-->
 
     <!--main myorder orderstatus-->

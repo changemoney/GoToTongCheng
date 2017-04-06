@@ -5,7 +5,7 @@
 
     >
     <RelativeLayout
-        android:id="@+id/rly_main_helpmesend_topbar_leftmenu"
+        android:id="@+id/rly_main_myorder_orderstatus_topbar_leftmenu"
         android:layout_width="@dimen/zero"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
@@ -13,7 +13,7 @@
 
         >
         <ImageView
-            android:id="@+id/iv_helpmesend_topbar_leftmenu"
+            android:id="@+id/iv_main_myorder_orderstatus_topbar_leftmenu"
             android:layout_width="@dimen/activity_main_helpmesend_topbar_leftmenu_width"
             android:layout_height="@dimen/activity_main_helpmesend_topbar_leftmenu_height"
             android:background="@drawable/topbar_green_return_arrow"
@@ -31,6 +31,13 @@
         android:layout_height="match_parent"
         android:layout_weight="4"
         >
+
+        <ImageView
+            android:layout_width="@dimen/activity_main_myorder_orderstatus_topbar_center_title_chakandiandang_width"
+            android:layout_height="@dimen/activity_main_myorder_orderstatus_topbar_center_title_chakandiandang_height"
+            android:background="@drawable/activity_main_myorder_orderstatus_topbar_chakandiandang"
+            android:layout_centerInParent="true"
+            />
        <!-- <TextView
             android:id="@+id/tv_helpmesend_topbar_title"
             android:layout_width="@dimen/activity_main_helpmesend_topbar_center_title_width"

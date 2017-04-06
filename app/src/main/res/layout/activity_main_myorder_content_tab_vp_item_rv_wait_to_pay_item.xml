@@ -6,7 +6,7 @@
     android:id="@+id/lly_main_myorder_content_total"
     >
     <gototongcheng.zhyan.com.library.Widget.SwipeLayout.SwipeLayout
-        android:id="@+id/sly_main_myorder_content_shop_rv_item"
+        android:id="@+id/sly_main_myorder_content_rv_wait_to_pay_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
@@ -44,7 +44,7 @@
                 />
 
             <TextView
-                android:id="@+id/tv_myorder_content_tab_vp_item_rv_item_ordernum"
+                android:id="@+id/tv_myorder_content_tab_vp_wait_to_pay_item_rv_item_orderno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
@@ -74,11 +74,11 @@
                     android:layout_gravity="center_vertical"
                     />
                 <TextView
-                    android:id="@+id/tv_myorder_content_tab_vp_item_rv_item_beginaddr"
+                    android:id="@+id/tv_myorder_content_tab_vp_wait_to_pay_item_rv_item_beginaddr"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
+                    android:textSize="@dimen/activity_main_myorder_rv_item_addr_word_size"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:maxLines="2"
@@ -99,11 +99,11 @@
                     android:layout_gravity="center_vertical"
                     />
                 <TextView
-                    android:id="@+id/tv_myorder_content_tab_vp_item_rv_item_endaddr"
+                    android:id="@+id/tv_myorder_content_tab_vp_wait_to_pay_item_rv_item_endaddr"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
+                    android:textSize="@dimen/activity_main_myorder_rv_item_addr_word_size"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:maxLines="2"
@@ -121,7 +121,7 @@
 
 
             <TextView
-                android:id="@+id/tv_myorder_content_tab_vp_item_rv_item_ordermoney"
+                android:id="@+id/tv_myorder_content_tab_vp_wait_to_pay_item_rv_item_ordermoney"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/moneyTest"
@@ -148,7 +148,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="18dp" />
             <TextView
-                android:id="@+id/tv_myorder_content_tab_vp_item_rv_item_ordertime"
+                android:id="@+id/tv_myorder_content_tab_vp_wait_to_pay_item_rv_item_ordertime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/orderTimeTest"
@@ -159,11 +159,51 @@
                 android:layout_marginLeft="5dp"
                 />
         </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_weight="1.5"
+            android:orientation="horizontal"
+            >
+            <RelativeLayout
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
 
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                >
+                <Button
+                    android:id="@+id/bt_myorder_content_tab_vp_wait_to_pay_item_rv_item_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/activity_main_myorder_wait_to_pay_gray_bg_half_round_radius"
+                    android:layout_margin="@dimen/activity_main_myorder_wait_to_pay_submit_margin_size"
+                    android:text="@string/toPay"
+                    android:textColor="@color/color_activity_main_myorder_content_black_bg"
+                    android:textSize="@dimen/activity_main_myorder_wait_to_pay_submit_word_size"
+                    />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
             <RelativeLayout
-                android:id="@+id/rly_main_myorder_content_shop_rv_item_delete"
+                android:id="@+id/rly_main_myorder_content_rv_wait_to_pay_item_delete"
                 android:layout_width="50dp"
                 android:layout_height="@dimen/activity_main_myorder_tabbar_vp_item_lv_item_height"
                 android:background="@drawable/activity_main_myorder_red_delete_bg_radius"

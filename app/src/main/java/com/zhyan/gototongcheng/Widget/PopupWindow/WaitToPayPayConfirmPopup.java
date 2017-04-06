@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
 import gototongcheng.zhyan.com.library.Bean.HelpMeBuyBean;
+import gototongcheng.zhyan.com.library.Bean.MyOrderBean;
 import gototongcheng.zhyan.com.library.Bean.OrderDetailBean;
 import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
@@ -32,7 +33,7 @@ import rx.Observer;
  * Created by zhyan on 2017/2/20.
  */
 
-public class PayConfirmPopup extends PopupWindow {
+public class WaitToPayPayConfirmPopup extends PopupWindow {
 
 
 
@@ -100,6 +101,7 @@ public class PayConfirmPopup extends PopupWindow {
             default:
                 break;
         }
+
     }
     /*确认支付*/
     /*弹出窗口关闭*/
@@ -133,40 +135,37 @@ public class PayConfirmPopup extends PopupWindow {
     private String goodsName;
     private Double dPrice =  0.0;
     String tempPrice ="";
-    private OrderDetailBean orderDetailBean;
-    public PayConfirmPopup(Activity activity, OrderDetailBean orderDetailBean1){
+    private MyOrderBean myOrderBean;
+    public WaitToPayPayConfirmPopup(Activity activity, MyOrderBean myOrderBean1){
 
         LayoutInflater inflater = (LayoutInflater) activity
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mPopView= inflater.inflate(R.layout.popupwindow_payconfirm_lly, null);
         this.activity = activity;
         goodsName = "走兔";
-        orderDetailBean = orderDetailBean1;
+        myOrderBean = myOrderBean1;
 /*        Toast.makeText(activity,"goodsName",Toast.LENGTH_SHORT).show();*/
-        if(orderDetailBean1.getOrderOrderprice() != null) {
             /*price = orderDetail.getOrderOrderprice();*/
-            dPrice = orderDetailBean1.getOrderOrderprice();
+        dPrice = myOrderBean1.getOrderOrderprice();
+        /*dPrice = 0.01;*/
     /*        Toast.makeText(activity,"dPrice"+dPrice,Toast.LENGTH_SHORT).show();*/
-        }
+
         init();
 
     }
-
     private void init(){
         ButterKnife.bind(this,mPopView);
-        initJiFeiGongShi();
         popWindowInit();
         zhiFuBaoUtil = new ZhiFuBaoUtil(activity);
-
     }
-    private void initJiFeiGongShi(){
-        if(orderDetailBean.getDetailsGoodsname().isEmpty()){
+/*    private void initJiFeiGongShi(){
+        if(myOrderBean.getDetailsGoodsname().isEmpty()){
             tvPopupThirdPayPayConfirmFeeDescri.setText("(基础跑腿费7元+额外里程2元/1km)");
 
         }else{
             tvPopupThirdPayPayConfirmFeeDescri.setText("(基础跑腿费10元+额外里程2元/1km)");
         }
-    }
+    }*/
     /*付款方式*/
 
     private String initPayMethod(String method){
@@ -210,7 +209,7 @@ public class PayConfirmPopup extends PopupWindow {
         if(indexof > 0){
             tempPrice = tempPrice.substring(0,indexof);
         }
-        tvPopupThirdPayPayConfirmFee.setText(tempPrice+"元");
+        tvPopupThirdPayPayConfirmFee.setText(tempPrice + "元");
         // 设置SelectPicPopupWindow弹出窗体可点击
         this.setFocusable(true);
         // 点击外面的控件也可以使得PopUpWindow dimiss
@@ -223,18 +222,18 @@ public class PayConfirmPopup extends PopupWindow {
 
 
     /*微信支付*/
-    public void wxPay(final HelpMeBuyBean helpMeBuyBean){
+    public void wxPay(final MyOrderBean myOrderBean){
         /*Toast.makeText(activity,"this is wxpay",Toast.LENGTH_SHORT).show();*/
         String body = "测试商品不描述";
-        WeChatPayService weChatPay = new WeChatPayService(activity,type, helpMeBuyBean.getOrderNo(), goodsName, tempPrice);
+        WeChatPayService weChatPay = new WeChatPayService(activity,type, myOrderBean.getOrderNo(), goodsName, tempPrice);
         XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
         XCCacheSavename xcCacheSavename = new XCCacheSavename();
-        xcCacheManager.writeCache(xcCacheSavename.WXPayTempOrderNo,helpMeBuyBean.getOrderNo());
+        xcCacheManager.writeCache(xcCacheSavename.WXPayTempOrderNo,myOrderBean.getOrderNo());
         weChatPay.pay();
     }
     /*微信支付*/
     /*支付宝支付*/
-    public void zhiFuBaoPay(final HelpMeBuyBean helpMeBuyBean){
+    public void zhiFuBaoPay(final MyOrderBean myOrderBean){
 
 /*Toast.makeText(activity, " onCompleted mPopView:"+goodsName+price, Toast.LENGTH_LONG).show();*/
         zhiFuBaoUtil.payV2(mPopView, goodsName, ""+dPrice);
@@ -245,7 +244,7 @@ public class PayConfirmPopup extends PopupWindow {
                 HelpMeSendBuyNetWorks helpMeSendBuyNetWorks = new HelpMeSendBuyNetWorks();
                     /*Toast.makeText(activity," 我成功啦 isSuccessful:"+isSuccessful,Toast.LENGTH_LONG).show();*/
                 if (isSuccessful) {
-                    helpMeSendBuyNetWorks.orderPay(1,helpMeBuyBean.getOrderNo(), new Observer<BaseBean>() {
+                    helpMeSendBuyNetWorks.orderPay(1,myOrderBean.getOrderNo(), new Observer<BaseBean>() {
                         @Override
                         public void onCompleted() {
 
@@ -258,6 +257,7 @@ public class PayConfirmPopup extends PopupWindow {
 
                         @Override
                         public void onNext(BaseBean baseBean) {
+
                             Toast.makeText(activity, "" + baseBean.getResult(), Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -308,11 +308,14 @@ public class PayConfirmPopup extends PopupWindow {
     /*支付宝支付*/
 
     private void payMethod(String method){
-        if(orderDetailBean == null){
+        if(myOrderBean == null){
             Toast.makeText(activity,"请登录",Toast.LENGTH_SHORT).show();
             return;
         }
-        if(orderDetailBean.getUserUsid() == null || orderDetailBean.getUserUsid().isEmpty()  ){
+        XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        String usid = xcCacheManager.readCache(xcCacheSavename.usid);
+        if(usid == null || usid.isEmpty()  ){
             Toast.makeText(activity,"请登录",Toast.LENGTH_SHORT).show();
             return;
         }
@@ -338,58 +341,13 @@ public class PayConfirmPopup extends PopupWindow {
 
     /*下单给后台*/
     private void pOrderToNet(final String method){
-        try {
-            HelpMeSendBuyNetWorks helpMeSendBuyNetWorks;
-            helpMeSendBuyNetWorks = new HelpMeSendBuyNetWorks();
-
-            System.out.println("usid:"+orderDetailBean.getUserUsid()+" olon:"+ orderDetailBean.getOrderLong()+" olat:"+ orderDetailBean.getOrderLat()+" dlon:"+ orderDetailBean.getOrderDlong()+" dlat:"+ orderDetailBean.getOrderDlat()+" ct1:"+ orderDetailBean.getClientaddrThings1()+" c1t1:"+ orderDetailBean.getClientaddr1Things1()+" weight:"+ orderDetailBean.getOrderHeight()+" on:"+ orderDetailBean.getOrderName()+" time:"+ orderDetailBean.getOrderTimeliness()+" mark:"+ orderDetailBean.getOrderRemark()+" price:"+ orderDetailBean.getOrderOrderprice()+"omile:"+ orderDetailBean.getOrderMileage()+" area:"+ orderDetailBean.getClientaddrArea()+" goodsname:"+ orderDetailBean.getDetailsGoodsname());
-            helpMeSendBuyNetWorks.orderSubmit(orderDetailBean.getUserUsid(), orderDetailBean.getOrderLong(), orderDetailBean.getOrderLat(), orderDetailBean.getOrderDlong(), orderDetailBean.getOrderDlat(), orderDetailBean.getClientaddrThings1(), orderDetailBean.getClientaddr1Things1(), orderDetailBean.getOrderHeight(), orderDetailBean.getOrderName(), orderDetailBean.getOrderTimeliness(), orderDetailBean.getOrderRemark(), orderDetailBean.getOrderOrderprice(), orderDetailBean.getOrderMileage(), orderDetailBean.getClientaddrArea(), orderDetailBean.getDetailsGoodsname(), new Observer<HelpMeBuyBean>() {
-                @Override
-                public void onCompleted() {
-
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    Toast.makeText(activity,"e:"+e,Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onNext(HelpMeBuyBean helpMeBuyBean) {
-                    Toast.makeText(activity,"下单成功",Toast.LENGTH_SHORT).show();
-                    /*HelpMeSendBuyNetWorks helpMeSendBuyNetWorks = new HelpMeSendBuyNetWorks();*/
-                    /*helpMeSendBuyNetWorks.orderPay(1,helpMeBuyBean.getOrderNo(), new Observer<BaseBean>() {
-                        @Override
-                        public void onCompleted() {
-
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-
-                        }
-
-                        @Override
-                        public void onNext(BaseBean baseBean) {
-                            Toast.makeText(activity, "" + baseBean.getResult(), Toast.LENGTH_SHORT).show();
-                        }
-                    });*/
-
-                    goodsName = helpMeBuyBean.getOrderNo();
-                /*    Toast.makeText(activity,"goodsName:"+goodsName,Toast.LENGTH_SHORT).show();*/
-                    switch (method){
-                        case "wx":
-                            wxPay(helpMeBuyBean);
-                            break;
-                        case "zfb":
-                            zhiFuBaoPay(helpMeBuyBean);
-                            break;
-                    }
-                }
-            });
-
-        }catch (Exception e){
-            Toast.makeText(activity,"下单失败",Toast.LENGTH_SHORT).show();
+        switch (method){
+            case "wx":
+                wxPay(myOrderBean);
+                break;
+            case "zfb":
+                zhiFuBaoPay(myOrderBean);
+                break;
         }
 
     }

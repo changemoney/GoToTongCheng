@@ -7,52 +7,34 @@ package gototongcheng.zhyan.com.library.Bean;
 
 public class MyOrderBean {
 
-    private String clientaddrAddr1;
+    /**
+     * orderOrderprice : 7.0
+     * clientaddrAddr : 清市腾速网络科技有限公司
+     * orderNo : 626190927992042
+     * orderstatusOrderstatus : 下单成功
+     * orderRemark :
+     * orderOrdertime : 2017-04-05 17:08:38
+     * clientaddrAddr1 :  温州市温州俄库通进出口有限公司
+     * paystatusPaystatus : 支付成功
+     * orderName :
+     */
 
-    private String orderstatusOrderstatus;
-
-    private String orderNo;
-
-    private String orderOrdertime;
-
+    private double orderOrderprice;
     private String clientaddrAddr;
-
+    private String orderNo;
+    private String orderstatusOrderstatus;
+    private String orderRemark;
+    private String orderOrdertime;
+    private String clientaddrAddr1;
+    private String paystatusPaystatus;
     private String orderName;
 
-    private Double orderOrderprice;
-
-    private String orderRemark;
-
-    public String getClientaddrAddr1() {
-        return clientaddrAddr1;
+    public double getOrderOrderprice() {
+        return orderOrderprice;
     }
 
-    public void setClientaddrAddr1(String clientaddrAddr1) {
-        this.clientaddrAddr1 = clientaddrAddr1;
-    }
-
-    public String getOrderstatusOrderstatus() {
-        return orderstatusOrderstatus;
-    }
-
-    public void setOrderstatusOrderstatus(String orderstatusOrderstatus) {
-        this.orderstatusOrderstatus = orderstatusOrderstatus;
-    }
-
-    public String getOrderNo() {
-        return orderNo;
-    }
-
-    public void setOrderNo(String orderNo) {
-        this.orderNo = orderNo;
-    }
-
-    public String getOrderOrdertime() {
-        return orderOrdertime;
-    }
-
-    public void setOrderOrdertime(String orderOrdertime) {
-        this.orderOrdertime = orderOrdertime;
+    public void setOrderOrderprice(double orderOrderprice) {
+        this.orderOrderprice = orderOrderprice;
     }
 
     public String getClientaddrAddr() {
@@ -63,20 +45,20 @@ public class MyOrderBean {
         this.clientaddrAddr = clientaddrAddr;
     }
 
-    public String getOrderName() {
-        return orderName;
+    public String getOrderNo() {
+        return orderNo;
     }
 
-    public void setOrderName(String orderName) {
-        this.orderName = orderName;
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
-    public Double getOrderOrderprice() {
-        return orderOrderprice;
+    public String getOrderstatusOrderstatus() {
+        return orderstatusOrderstatus;
     }
 
-    public void setOrderOrderprice(Double orderOrderprice) {
-        this.orderOrderprice = orderOrderprice;
+    public void setOrderstatusOrderstatus(String orderstatusOrderstatus) {
+        this.orderstatusOrderstatus = orderstatusOrderstatus;
     }
 
     public String getOrderRemark() {
@@ -85,5 +67,37 @@ public class MyOrderBean {
 
     public void setOrderRemark(String orderRemark) {
         this.orderRemark = orderRemark;
+    }
+
+    public String getOrderOrdertime() {
+        return orderOrdertime;
+    }
+
+    public void setOrderOrdertime(String orderOrdertime) {
+        this.orderOrdertime = orderOrdertime;
+    }
+
+    public String getClientaddrAddr1() {
+        return clientaddrAddr1;
+    }
+
+    public void setClientaddrAddr1(String clientaddrAddr1) {
+        this.clientaddrAddr1 = clientaddrAddr1;
+    }
+
+    public String getPaystatusPaystatus() {
+        return paystatusPaystatus;
+    }
+
+    public void setPaystatusPaystatus(String paystatusPaystatus) {
+        this.paystatusPaystatus = paystatusPaystatus;
+    }
+
+    public String getOrderName() {
+        return orderName;
+    }
+
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
     }
 }

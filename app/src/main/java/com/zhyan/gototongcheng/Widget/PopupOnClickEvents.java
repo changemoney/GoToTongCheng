@@ -12,10 +12,12 @@ import android.widget.TextView;
 import com.zhyan.gototongcheng.Widget.PopupWindow.GoodsTypePopup;
 import com.zhyan.gototongcheng.Widget.PopupWindow.HourMinTimePopup;
 import com.zhyan.gototongcheng.Widget.PopupWindow.PayConfirmPopup;
+import com.zhyan.gototongcheng.Widget.PopupWindow.WaitToPayPayConfirmPopup;
 
 import java.util.Date;
 import java.util.List;
 
+import gototongcheng.zhyan.com.library.Bean.MyOrderBean;
 import gototongcheng.zhyan.com.library.Bean.OrderDetailBean;
 import gototongcheng.zhyan.com.library.Utils.TimeUtil;
 import gototongcheng.zhyan.com.library.Widget.Dialog.ShouDongShuRuDialog;
@@ -43,6 +45,20 @@ public class PopupOnClickEvents {
             }
         });
     }
+    public void WaitToPayPayConfirm(LinearLayout layout, MyOrderBean myOrderBean){
+        WaitToPayPayConfirmPopup waitToPayPayConfirmPopup = new WaitToPayPayConfirmPopup(activity,myOrderBean);
+        setBackgroundAlpha(0.5f);
+/*        payConfirmPopup.setFocusable(true);*/
+        waitToPayPayConfirmPopup.showAtLocation(layout, Gravity.BOTTOM, 0, 0);
+        waitToPayPayConfirmPopup.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                setBackgroundAlpha(1.0f);
+            }
+        });
+    }
+
+
     public void TimeSelect(LinearLayout layout, final TextView textView){
         HourMinTimePopup hourMinTimePopup = new HourMinTimePopup(activity);
         setBackgroundAlpha(0.5f);

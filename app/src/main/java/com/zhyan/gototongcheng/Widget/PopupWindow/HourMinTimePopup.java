@@ -304,17 +304,21 @@ public class HourMinTimePopup extends PopupWindow {
                 }
                 String week = timeUtil.getDayofweek(tempweekdate)+"";
                 monthDay += week ;
-
+                /*Log.i("monthDay",monthDay);*/
                 if((i == getMonth())&&(j == getDay())){
                     monthDay = "今天";
 
                     /*Toast.makeText(activity,"this is now day",Toast.LENGTH_SHORT).show();*/
                     day1List.add(monthDay);
                     monthDay = "";
-
+                    if(i < 10) {
+                        monthDay += "0"+i + "月";
+                    }else{
+                        monthDay += i + "月";
+                    }
                     continue;
                 }
-
+                /*Log.i("dayList1",monthDay);*/
                 day1List.add(monthDay);
                 monthDay = "";
                 if(i < 10) {
@@ -331,9 +335,8 @@ public class HourMinTimePopup extends PopupWindow {
         for(int i=0;i<day1List.size();i++){
             Log.i("dayList",day1List.get(i));
             if(day1List.get(i).equals(currentDay1)){
+                /*Toast.makeText(activity,"this is today"+i,Toast.LENGTH_SHORT).show();*/
                 return i;
-            }else{
-                i++;
             }
         }
         return indexDay1;
@@ -476,6 +479,7 @@ public class HourMinTimePopup extends PopupWindow {
         wvPopupFourWheelDay.setVisibleItems(10);
         wvPopupFourWheelDay.setViewAdapter(mDayAdapter);
         wvPopupFourWheelDay.setCurrentItem(setDay1(currentDay1));
+        /*Toast.makeText(activity,"this is current day1"+currentDay1,Toast.LENGTH_SHORT).show();*/
 
         mAMPMAdapter = new CalendarTextAdapter(activity,AMPMList,setAMPM(currentAMPM),maxTextSize,minTextSize);
         wvPopupFourWheelAMPM.setVisibleItems(10);

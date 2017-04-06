@@ -68,6 +68,7 @@
                 android:textColor="@color/color_widget_popupwindow_confirmpopup_orange_word_bg"
                 android:layout_marginTop="@dimen/widget_popupwindow_payconfirmpopup_payconfirm_word_margin_top_bottom_size"
                 android:layout_gravity="center_horizontal"
+
                 />
 
             <TextView
@@ -79,6 +80,7 @@
                 android:textColor="@color/color_widget_popupwindow_confirmpopup_gray_word_bg"
                 android:layout_marginTop="@dimen/widget_popupwindow_payconfirmpopup_payconfirm_word_margin_top_bottom_size"
                 android:layout_gravity="center_horizontal"
+                android:visibility="invisible"
                 />
         </LinearLayout>
 

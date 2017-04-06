@@ -10,8 +10,6 @@
         android:layout_height="@dimen/zero"
         android:layout_weight="1"
         >
-
-
-    <include layout="@layout/activity_main_myorder_orderstatus_content_lly"/>
+    <include layout="@layout/activity_main_myorder_orderstatus_content_vp_lly"/>
     </LinearLayout>
 </LinearLayout>

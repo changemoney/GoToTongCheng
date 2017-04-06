@@ -12,6 +12,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zhyan.gototongcheng.Main.BaseController;
 import com.zhyan.gototongcheng.NetWork.OrderNetWorks;
@@ -123,13 +124,19 @@ public class MyOrderActivityController extends BaseController{
         listViews.add(mInflater.inflate(R.layout.activity_main_myorder_content_tab_vp_item_rv, null));
 /*        vpMainMyOrder.setAdapter(new MyOrderMyPagerAdapter(listViews));
         vpMainMyOrder.setCurrentItem(0);*/
-        InitRVItemViews initRVItemViews = new InitRVItemViews(activity);
-        initRVItemViews.getMyOrderFromNet();
+      /*  initXRVItemView();*/
+        InitCompleteRVItemViews initCompleteRVItemViews = new InitCompleteRVItemViews(activity);
+        initCompleteRVItemViews.getMyOrderFromNet();
 
 /*        vpMainMyOrder.addOnPageChangeListener(new MyOnPageChangeListener());*/
 
     }
-
+/*
+    private void initXRVItemView(){
+        initCompleteRVItemViews = new InitCompleteRVItemViews(activity);
+        initWaitToPayRVItemViews = new InitWaitToPayRVItemViews(activity);
+    }
+*/
 
     /**
      * 页卡切换监听
@@ -166,8 +173,8 @@ public class MyOrderActivityController extends BaseController{
                 if((listViews != null)&&(listViews.size() > 1)) {
                     tvMainMyOrderAllOrder.setTextColor(activity.getResources().getColor(R.color.color_activity_main_myorder_tabar_switch_selected_green_bg));
                     tvMainMyOrderWaitForSay.setTextColor(activity.getResources().getColor(R.color.color_activity_main_myorder_tabar_switch_unselect_gray_bg));
-                    InitRVItemViews initRVItemViews = new InitRVItemViews(activity);
-                    initRVItemViews.getMyOrderFromNet();
+                    InitCompleteRVItemViews initCompleteRVItemViews = new InitCompleteRVItemViews(activity);
+                    initCompleteRVItemViews.getMyOrderFromNet();
                 }
                 break;
             case 1:
@@ -183,26 +190,29 @@ public class MyOrderActivityController extends BaseController{
                 if((listViews != null)&&(listViews.size() > 1)) {
                     tvMainMyOrderAllOrder.setTextColor(activity.getResources().getColor(R.color.color_activity_main_myorder_tabar_switch_unselect_gray_bg));
                     tvMainMyOrderWaitForSay.setTextColor(activity.getResources().getColor(R.color.color_activity_main_myorder_tabar_switch_selected_green_bg));
-                    InitRVItemViews initRVItemView = new InitRVItemViews(activity);
-                    initRVItemView.getMyOrderEvaluteFromNet();
+                    initWaitToPayRVItemViews();
                 }
                 break;
 
         }
     }
 
-    /*初始化 订单查询 或者待评价*/
-    public class InitRVItemViews{
+    public void initWaitToPayRVItemViews(){
+        InitWaitToPayRVItemViews initWaitToPayRVItemViews = new InitWaitToPayRVItemViews(activity);
+        initWaitToPayRVItemViews.getMyOrderFromNet();
+    }
+    /*初始化 完成订单 查询 */
+    public class InitCompleteRVItemViews{
         @BindView(R.id.xrv_main_myorder_content_tab_vp_item)
         XRecyclerView xrvMyOrderContentTabVPItem;
 
-        public MyOrderListRVAdapter myOrderListRVAdapter;
+        public MyOrderListCompleteRVAdapter myOrderListCompleteRVAdapter;
         private List<MyOrderBean> myOrderBeanList = new ArrayList<>();
         private void initRV(Activity activity){
             /*myOrderBeanList.add(new MyOrderBean());*/
-            myOrderListRVAdapter = new MyOrderListRVAdapter(activity,myOrderBeanList);
+            myOrderListCompleteRVAdapter = new MyOrderListCompleteRVAdapter(activity,myOrderBeanList);
             xrvMyOrderContentTabVPItem.setLayoutManager(new LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false));
-            xrvMyOrderContentTabVPItem.setAdapter(myOrderListRVAdapter);
+            xrvMyOrderContentTabVPItem.setAdapter(myOrderListCompleteRVAdapter);
 
             xrvMyOrderContentTabVPItem.setLoadingListener(new XRecyclerView.LoadingListener() {
                 @Override
@@ -218,16 +228,18 @@ public class MyOrderActivityController extends BaseController{
 
 
         }
-        public InitRVItemViews(Activity activity){
+        public InitCompleteRVItemViews(Activity activity){
             ButterKnife.bind(this,activity);
             initRV(activity);
 
         }
-        /*订单*/
+        /*已完成订单*/
         public void getMyOrderFromNet(){
             xcCacheManager = XCCacheManager.getInstance(activity);
             String usid = xcCacheManager.readCache("usid");
+            myOrderListCompleteRVAdapter.clean();
             if((usid != null)&&(!usid.isEmpty())) {
+                /*Toast.makeText(activity,"InitCompleteRVItemViews",Toast.LENGTH_SHORT).show();*/
                 /*Toast.makeText(getBaseContext(),"usid:"+usid,Toast.LENGTH_SHORT).show();*/
 
                 OrderNetWorks orderNetWorks = new OrderNetWorks();
@@ -246,43 +258,100 @@ public class MyOrderActivityController extends BaseController{
                     public void onNext(List<MyOrderBean> orderBeanList1) {
                         /*Toast.makeText(getBaseContext(),"orderbeanlist:"+orderBeanList1.get(0).getClientaddrAddr(),Toast.LENGTH_SHORT).show();*/
 
-                        myOrderListRVAdapter.setMyOrderBeanList(orderBeanList1);
+                        List<MyOrderBean> myOrderBeanList = new ArrayList<MyOrderBean>();
+                        for(int i = 0;i<orderBeanList1.size();i++){
+                            /*Toast.makeText(activity,"InitCompleteRVItemViews:"+orderBeanList1.get(i).getPaystatusPaystatus(),Toast.LENGTH_SHORT).show();*/
+                            if(orderBeanList1.get(i).getPaystatusPaystatus().equals("支付成功")){
+                                myOrderBeanList.add(orderBeanList1.get(i));
+                            }else{
+                                continue;
+                            }
+                        }
+                        /*Toast.makeText(activity,"InitCompleteRVItemViews:"+orderBeanList.size(),Toast.LENGTH_SHORT).show();*/
+                        myOrderListCompleteRVAdapter.addMyOrderBeanList(myOrderBeanList);
                     }
                 });
             }
         }
-        /*订单*/
-        /*待评价*/
-        public void getMyOrderEvaluteFromNet(){
-            xcCacheManager = XCCacheManager.getInstance(activity);
-            String usid = xcCacheManager.readCache("usid");
-            if((usid != null)&&(!usid.isEmpty())) {
-                /*Toast.makeText(getBaseContext(),"usid:"+usid,Toast.LENGTH_SHORT).show();*/
+        /*已完成订单*/
 
-                OrderNetWorks orderNetWorks = new OrderNetWorks();
-                orderNetWorks.getMyOrderList(usid, new Observer<List<MyOrderBean>>() {
-                    @Override
-                    public void onCompleted() {
-                        /*Toast.makeText(getBaseContext(),"orderbeanlist:OK",Toast.LENGTH_SHORT).show();*/
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        /*Toast.makeText(getBaseContext(),"orderbeanlist:"+e,Toast.LENGTH_SHORT).show();*/
-                    }
-
-                    @Override
-                    public void onNext(List<MyOrderBean> orderBeanList1) {
-                        /*Toast.makeText(getBaseContext(),"orderbeanlist:"+orderBeanList1.get(0).getClientaddrAddr(),Toast.LENGTH_SHORT).show();*/
-
-                        myOrderListRVAdapter.setMyOrderBeanList(orderBeanList1);
-                    }
-                });
-            }
-        }
-        /*待评价*/
 
     }
 
-    /*初始化 订单查询 或者待评价*/
+    /*初始化 完成订单 或者待评价*/
+
+    /*初始化 完成订单 查询 */
+    public class InitWaitToPayRVItemViews{
+        @BindView(R.id.xrv_main_myorder_content_tab_vp_item)
+        XRecyclerView xrvMyOrderContentTabVPItem;
+
+        public MyOrderListWaitToPayRVAdapter myOrderListWaitToPayRVAdapter;
+        private List<MyOrderBean> myOrderBeanList = new ArrayList<>();
+        private void initRV(Activity activity){
+            /*myOrderBeanList.add(new MyOrderBean());*/
+            myOrderListWaitToPayRVAdapter = new MyOrderListWaitToPayRVAdapter(activity,myOrderBeanList);
+            xrvMyOrderContentTabVPItem.setLayoutManager(new LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false));
+            xrvMyOrderContentTabVPItem.setAdapter(myOrderListWaitToPayRVAdapter);
+
+            xrvMyOrderContentTabVPItem.setLoadingListener(new XRecyclerView.LoadingListener() {
+                @Override
+                public void onRefresh() {
+                    xrvMyOrderContentTabVPItem.refreshComplete();
+                }
+
+                @Override
+                public void onLoadMore() {
+                    xrvMyOrderContentTabVPItem.loadMoreComplete();
+                }
+            });
+
+
+        }
+        public InitWaitToPayRVItemViews(Activity activity){
+            ButterKnife.bind(this,activity);
+            initRV(activity);
+
+        }
+        /*已完成订单*/
+        public void getMyOrderFromNet(){
+            xcCacheManager = XCCacheManager.getInstance(activity);
+            String usid = xcCacheManager.readCache("usid");
+            myOrderListWaitToPayRVAdapter.clean();
+            if((usid != null)&&(!usid.isEmpty())) {
+                /*Toast.makeText(getBaseContext(),"usid:"+usid,Toast.LENGTH_SHORT).show();*/
+                /*Toast.makeText(activity,"InitWaitToPayRVItemViews",Toast.LENGTH_SHORT).show();*/
+                OrderNetWorks orderNetWorks = new OrderNetWorks();
+                orderNetWorks.getMyOrderList(usid, new Observer<List<MyOrderBean>>() {
+                    @Override
+                    public void onCompleted() {
+                        /*Toast.makeText(getBaseContext(),"orderbeanlist:OK",Toast.LENGTH_SHORT).show();*/
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        /*Toast.makeText(getBaseContext(),"orderbeanlist:"+e,Toast.LENGTH_SHORT).show();*/
+                    }
+
+                    @Override
+                    public void onNext(List<MyOrderBean> orderBeanList1) {
+                        /*Toast.makeText(getBaseContext(),"orderbeanlist:"+orderBeanList1.get(0).getClientaddrAddr(),Toast.LENGTH_SHORT).show();*/
+                        List<MyOrderBean> orderBeanList = new ArrayList<MyOrderBean>();
+                        for(int i = 0;i<orderBeanList1.size();i++){
+                            if(!orderBeanList1.get(i).getPaystatusPaystatus().equals("支付成功")){
+                                orderBeanList.add(orderBeanList1.get(i));
+                            }else{
+                                continue;
+                            }
+                        }
+                        myOrderListWaitToPayRVAdapter.addMyOrderBeanList(orderBeanList);
+                    }
+                });
+            }
+        }
+        /*已完成订单*/
+
+
+    }
+
+    /*初始化 完成订单 或者待评价*/
 }

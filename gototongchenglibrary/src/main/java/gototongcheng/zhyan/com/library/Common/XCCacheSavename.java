@@ -25,4 +25,5 @@ public class XCCacheSavename {
     public String addrShopLat = "addrShopLat";
     public String addrShopLon = "addrShopLon";
     public String addrShopclientaddrThings = "addrShopclientaddrThings";
+    public String isMyOrderPay = "isMyOrderPay";
 }

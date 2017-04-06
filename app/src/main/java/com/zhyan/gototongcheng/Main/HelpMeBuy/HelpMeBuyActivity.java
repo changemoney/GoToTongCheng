@@ -30,6 +30,7 @@ import butterknife.OnTouch;
 import gototongcheng.zhyan.com.library.Bean.GoodsBean;
 import gototongcheng.zhyan.com.library.Bean.OrderDetailBean;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
+import gototongcheng.zhyan.com.library.Utils.PhoneFormatCheckUtils;
 import gototongcheng.zhyan.com.library.Utils.TimeUtil;
 import gototongcheng.zhyan.com.library.Widget.Dialog.ShouDongShuRuDialog;
 
@@ -164,24 +165,27 @@ public class HelpMeBuyActivity extends BaseActivity {
 
 
     /*支付*/
-    @OnClick(R.id.rly_main_helpmebuy_bottom_topay)
-    public void rlyHelpMeBuyBottomToPayOnclick(){
+    @BindView(R.id.rly_main_helpmebuy_bottom_payconfirm)
+    RelativeLayout rlyMainHelpMeBuyBottomPayConfirm;
+    @OnClick(R.id.rly_main_helpmebuy_bottom_payconfirm)
+    public void rlyHelpMeBuyBottomPayConfirmOnclick(){
        /* Intent intent = new Intent(this, PayConfirmPopup.class);
         startActivity(intent);*/
-        try {
+
             initOrderDetail();
             /*Toast.makeText(this,"initOrderOk",Toast.LENGTH_SHORT).show();*/
-            if (orderDetailBean.getUserUsid().isEmpty() || orderDetailBean.getClientaddrAddr().isEmpty() || orderDetailBean.getClientaddrAddr1().isEmpty() || orderDetailBean.getDetailsGoodsname().isEmpty()) {
+     /*       String addr = tvMainHelpMeBuyContentShopAddress.getText().toString();
+            String addr1 = tvMainHelpMeBuyContentUserAddressDetail.getText().toString();*/
+         Toast.makeText(this, "信息输入不全", Toast.LENGTH_LONG).show();
+            if ((orderDetailBean.getUserUsid().isEmpty()) || (tvMainHelpMeBuyContentShopAddress.getText().toString().isEmpty()) || (tvMainHelpMeBuyContentUserAddressDetail.getText().toString().isEmpty()) || (orderDetailBean.getDetailsGoodsname().isEmpty())) {
                 Toast.makeText(this, "信息输入不全", Toast.LENGTH_LONG).show();
                 return;
             }
             PopupOnClickEvents popupOnClickEvents = new PopupOnClickEvents(this);
-            goodsName = "走兔订单号";
+           /* goodsName = "走兔订单号";*/
             /*Toast.makeText(this,"click",Toast.LENGTH_SHORT).show();*/
             popupOnClickEvents.PayConfirm(llyMainHelpMeBuyTotal, orderDetailBean);
-        }catch (Exception e){
 
-        }
     }
      /*支付*/
 
@@ -222,6 +226,9 @@ public class HelpMeBuyActivity extends BaseActivity {
     private void initOrderDetail(){
         orderDetailBean = new OrderDetailBean();
         /*Toast.makeText(this,"usid:"+usid,Toast.LENGTH_LONG).show();*/
+        if(usid == null){
+            usid = "";
+        }
         orderDetailBean.setUserUsid(usid);
         orderDetailBean.setClientaddrThings1(clientaddrThings1);
         orderDetailBean.setClientaddr1Things1(clientaddr1Things1);
@@ -244,7 +251,12 @@ public class HelpMeBuyActivity extends BaseActivity {
             }
         }
         orderDetailBean.setOrderRemark(remark);
-        orderDetailBean.setOrderOrderprice(Double.parseDouble(helpMeBuyActivityController.price));
+
+            /*Toast.makeText(this,"price:"+helpMeBuyActivityController.price,Toast.LENGTH_SHORT).show();*/
+        PhoneFormatCheckUtils phoneFormatCheckUtils = new PhoneFormatCheckUtils();
+        if(phoneFormatCheckUtils.isDouble(helpMeBuyActivityController.price)) {
+            orderDetailBean.setOrderOrderprice(Double.parseDouble(helpMeBuyActivityController.price));
+        }
         orderDetailBean.setOrderMileage(helpMeBuyActivityController.dis);
         List<GoodsBean> goodsBeanList1 =  helpMeBuyShoppingMenuRecyclerViewAdapter.getGoodsBeanList();
         String menu = "";
@@ -331,6 +343,7 @@ public class HelpMeBuyActivity extends BaseActivity {
 
     protected void onResume(){
         super.onResume();
+        /*Toast.makeText(this.getBaseContext(),"blat:"+blat+" blon:"+blon+" rlat:"+rlat+" rlon:"+rlon,Toast.LENGTH_SHORT).show();*/
         helpMeBuyActivityController.startBikeNaviSearch(blat,blon,rlat,rlon);
     }
     protected void onPause(){
