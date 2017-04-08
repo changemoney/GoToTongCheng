@@ -21,7 +21,7 @@
     <string name="setting">设置</string>
     <string name="hotTelForGov">官方热线</string>
     <string name="sisterForEveryThing">萌妹客服包治百病</string>
-    <string name="version">版本号1.0.3</string>
+    <string name="version">版本号1.0.6</string>
     <string name="exitLogin">退出登入</string>
     <!--main leftmenu-->
 
@@ -139,6 +139,13 @@
     <string name="time">时间</string>
     <string name="orderStatus">订单状态</string>
     <string name="orderDetail">订单详情</string>
+
+    <string name="peisongxinxi">配送信息</string>
+    <string name="orderno">订单编号</string>
+    <string name="sendMan">配送人员</string>
+    <!--<string name="orderTime">下单时间</string>-->
+    <string name="reachTime">送达时间</string>
+    <string name="payMethod">支付方式</string>
     <!--main myorder orderstatus-->
 
     <!--main common shoufeibiaozhun-->

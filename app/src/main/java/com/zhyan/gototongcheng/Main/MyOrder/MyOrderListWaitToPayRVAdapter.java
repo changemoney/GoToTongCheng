@@ -111,7 +111,7 @@ public class MyOrderListWaitToPayRVAdapter extends RecyclerView.Adapter<MyOrderL
                     /*Toast.makeText(activity,"i'm begin:"+disx+" "+disy,Toast.LENGTH_SHORT).show();*/
                         if((disx == 0)&&(disy ==0)){
                             Intent intent = new Intent(activity, OrderStatusActivity.class);
-                           /* activity.startActivity(intent);*/
+                          /*  activity.startActivity(intent);*/
                             /*Toast.makeText(activity,"i'm click",Toast.LENGTH_SHORT).show();*/
                         }
                         break;

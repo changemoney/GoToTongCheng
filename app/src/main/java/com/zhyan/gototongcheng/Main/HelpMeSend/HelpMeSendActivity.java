@@ -17,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import gototongcheng.zhyan.com.library.Bean.OrderDetailBean;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import gototongcheng.zhyan.com.library.Utils.TimeUtil;
 
@@ -65,7 +66,8 @@ public class HelpMeSendActivity extends BaseActivity {
     LinearLayout llyMainHelpMeSendContentReceiverData;
     @OnClick(R.id.lly_main_helpmesend_content_receiverdata)
     public void llyMainHelpMeSendContentReceiverDataOnclick(){
-        xcCacheManager.writeCache("addressManageType","send");
+        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        xcCacheManager.writeCache(xcCacheSavename.addressManageType,"send");
         Bundle bundle = new Bundle();
         bundle.putString("receiver",""+RESULT_RECEIVER);
         Intent intent = new Intent(this,AddressManageActivity.class);
@@ -232,6 +234,7 @@ public class HelpMeSendActivity extends BaseActivity {
     protected void onResume(){
         super.onResume();
         /*Toast.makeText(this,"here is onResume",Toast.LENGTH_SHORT).show();*/
+        /*Toast.makeText(this,"here is onResume blat:"+blat+" blon:"+blon+" rlat:"+rlat+" rlon:"+rlon,Toast.LENGTH_SHORT).show();*/
         helpMeSendActivityController.startBikeNaviSearch(blat,blon,rlat,rlon);
     }
     protected void onStart(){

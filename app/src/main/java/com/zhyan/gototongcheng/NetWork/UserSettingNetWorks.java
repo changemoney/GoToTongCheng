@@ -1,5 +1,7 @@
 package com.zhyan.gototongcheng.NetWork;
 
+import com.zhyan.gototongcheng.NetWork.Base.BaseNetWork;
+
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
 import gototongcheng.zhyan.com.library.Bean.UserLoginBean;
 import gototongcheng.zhyan.com.library.Bean.UserRegBean;
@@ -11,7 +13,7 @@ import rx.Observer;
  * Created by admin on 2017/2/21.
  */
 
-public class UserSettingNetWorks extends BaseNetWork{
+public class UserSettingNetWorks extends BaseNetWork {
 
     protected  final NetService service = getRetrofit().create(NetService.class);
     private interface NetService{

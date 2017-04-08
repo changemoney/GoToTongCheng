@@ -1,5 +1,7 @@
 package com.zhyan.gototongcheng.NetWork;
 
+import com.zhyan.gototongcheng.NetWork.Base.BaseNetWork;
+
 import java.util.List;
 
 import gototongcheng.zhyan.com.library.Bean.BaseBean;

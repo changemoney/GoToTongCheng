@@ -103,7 +103,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler{
 				break;
 		}
 
-		Toast.makeText(this, result+resp.errCode, Toast.LENGTH_LONG).show();
+		/*Toast.makeText(this, result+resp.errCode, Toast.LENGTH_LONG).show();*/
 		finish();
 	}
 
@@ -127,6 +127,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler{
 				@Override
 				public void onNext(BaseBean baseBean) {
 					Toast.makeText(WXPayEntryActivity.this, "" + baseBean.getResult(), Toast.LENGTH_SHORT).show();
+					Toast.makeText(WXPayEntryActivity.this,"下单成功",Toast.LENGTH_SHORT).show();
 				}
 			});
 		}

@@ -112,7 +112,7 @@ public class OrderStatusController extends BaseController{
         listViews = new ArrayList<View>();
         LayoutInflater mInflater = activity.getLayoutInflater();
         listViews.add(mInflater.inflate(R.layout.activity_main_myorder_orderstatus_content_vp_item_first_lly, null));
-        listViews.add(mInflater.inflate(R.layout.activity_main_myorder_orderstatus_content_vp_item_first_lly, null));
+        listViews.add(mInflater.inflate(R.layout.activity_main_myorder_orderstatus_content_vp_item_second_lly, null));
         vpMainMyOrderOrderStatusContent.setAdapter(new MyOrderStatusMyPagerAdapter(listViews));
         vpMainMyOrderOrderStatusContent.setCurrentItem(0);
       /*  initXRVItemView();*/

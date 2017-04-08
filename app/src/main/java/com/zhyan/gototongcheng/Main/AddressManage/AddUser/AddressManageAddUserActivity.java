@@ -45,6 +45,7 @@ import butterknife.OnClick;
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
 import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
+import gototongcheng.zhyan.com.library.Utils.PhoneFormatCheckUtils;
 import gototongcheng.zhyan.com.library.Utils.SystemUtils;
 import gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView;
 import rx.Observer;
@@ -99,14 +100,7 @@ public class AddressManageAddUserActivity extends BaseActivity  {
     }
 
     InitRecycleView initRecycleView;
-    /*附近地址 历史记录*/
-    @BindView(R.id.rly_main_addressmanage_add_user_addresssearch)
-    RelativeLayout rlyMainAddressManageAddUserAddressSearch;
-    @OnClick(R.id.rly_main_addressmanage_add_user_addresssearch)
-    public void rlyMainAddressManageAddUserAddressSearchOnclick(){
-        Intent intent = new Intent(this, BaiduAddressSearchSuggestActivity.class);
-        startActivityForResult(intent,RESULT_SEARCH);
-    }
+
     private final int RESULT_SEARCH = 15;
     private final int RESULT_CONTACTER = 12;
     /*tab 绿色叶卡*/
@@ -133,15 +127,17 @@ public class AddressManageAddUserActivity extends BaseActivity  {
      /*信息确认返回*/
     @OnClick(R.id.rly_main_addressmanage_add_user_topbar_rightmenu)
     public void rlyHelpMeBuyAddReceiverDetailTopBarRightMenuOnclick(){
-
+        /*Toast.makeText(this,"this is rightmenu onclick",Toast.LENGTH_SHORT).show();*/
         XCCacheManager xcCacheManager = XCCacheManager.getInstance(this);
         XCCacheSavename xcCacheSavename = new  XCCacheSavename();
         String isAddressUpdate = xcCacheManager.readCache(xcCacheSavename.isAddressUpdate);
         if((isAddressUpdate != null)&&(isAddressUpdate.equals("yes"))){
+           /* Toast.makeText(this,"this is updateUserAddressToNet onclick",Toast.LENGTH_SHORT).show();*/
             updateUserAddressToNet();
             /*Toast.makeText(AddressManageAddShopActivity.this,"this is updateShopAddressToNet",Toast.LENGTH_LONG).show();*/
             xcCacheManager.writeCache(xcCacheSavename.isAddressUpdate,"no");
         }else {
+           /* Toast.makeText(this,"this is addUserAddressToNet onclick",Toast.LENGTH_SHORT).show();*/
             addUserAddressToNet();
         }
 
@@ -163,7 +159,7 @@ public class AddressManageAddUserActivity extends BaseActivity  {
 
                 @Override
                 public void onError(Throwable e) {
-                    /*Toast.makeText(getBaseContext(),"onError"+e,Toast.LENGTH_SHORT).show();*/
+                    Toast.makeText(getBaseContext(),"onError"+e,Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -180,25 +176,45 @@ public class AddressManageAddUserActivity extends BaseActivity  {
         String usid = xcCacheManager.readCache("usid");
         String name = etMainAddressManageAddUserContentName.getText().toString();
         String tel = etMainAddressManageAddUserContentTel.getText().toString();
+        PhoneFormatCheckUtils phoneFormatCheckUtils = new PhoneFormatCheckUtils();
+        if((!phoneFormatCheckUtils.isNumber(tel))||(tel.length() != 11)){
+            Toast.makeText(this,"请输入正确的手机号码",Toast.LENGTH_SHORT).show();
+            return;
+        }
         String address = etMainAddressManageAddUserContentAddress.getText().toString();
         String finalAddress = name+" "+tel+" "+ address;
+     /*   Toast.makeText(this,"this is in addUserAddressToNet onclick:"+finalAddress,Toast.LENGTH_SHORT).show();*/
         rlat = addressManageAddUserController.rlat;
         rlon = addressManageAddUserController.rlon;
         float clientaddr1Lat = (float) rlat;
         float clientaddr1Long = (float) rlon;
-        String clientaddr1Isdefault = "";
+        String clientaddr1Isdefault = "0";
 
         if((usid != null)&&(finalAddress != null)&&(clientaddr1Isdefault != null)&&(!name.isEmpty())){
+         /*   Toast.makeText(this,"this is in addressManageNetWorks onclick:"+finalAddress,Toast.LENGTH_SHORT).show();*/
+            System.out.println("\nusid:"+usid+" finalAddress:"+finalAddress+" clientaddr1Lat:"+clientaddr1Lat+" clientaddr1Long:"+clientaddr1Long+" clientaddr1Isdefault:"+clientaddr1Isdefault);
+            System.out.println("\nusid:"+usid+" finalAddress:"+finalAddress+" clientaddr1Lat:"+clientaddr1Lat+" clientaddr1Long:"+clientaddr1Long+" clientaddr1Isdefault:"+clientaddr1Isdefault);
+            System.out.println("\nusid:"+usid+" finalAddress:"+finalAddress+" clientaddr1Lat:"+clientaddr1Lat+" clientaddr1Long:"+clientaddr1Long+" clientaddr1Isdefault:"+clientaddr1Isdefault);
+            System.out.println("\nusid:"+usid+" finalAddress:"+finalAddress+" clientaddr1Lat:"+clientaddr1Lat+" clientaddr1Long:"+clientaddr1Long+" clientaddr1Isdefault:"+clientaddr1Isdefault);
+            System.out.println("\nusid:"+usid+" finalAddress:"+finalAddress+" clientaddr1Lat:"+clientaddr1Lat+" clientaddr1Long:"+clientaddr1Long+" clientaddr1Isdefault:"+clientaddr1Isdefault);
+            System.out.println("\nusid:"+usid+" finalAddress:"+finalAddress+" clientaddr1Lat:"+clientaddr1Lat+" clientaddr1Long:"+clientaddr1Long+" clientaddr1Isdefault:"+clientaddr1Isdefault);
+            System.out.println("\nusid:"+usid+" finalAddress:"+finalAddress+" clientaddr1Lat:"+clientaddr1Lat+" clientaddr1Long:"+clientaddr1Long+" clientaddr1Isdefault:"+clientaddr1Isdefault);
+            System.out.println("\nusid:"+usid+" finalAddress:"+finalAddress+" clientaddr1Lat:"+clientaddr1Lat+" clientaddr1Long:"+clientaddr1Long+" clientaddr1Isdefault:"+clientaddr1Isdefault);
+            System.out.println("\nusid:"+usid+" finalAddress:"+finalAddress+" clientaddr1Lat:"+clientaddr1Lat+" clientaddr1Long:"+clientaddr1Long+" clientaddr1Isdefault:"+clientaddr1Isdefault);
+            System.out.println("\nusid:"+usid+" finalAddress:"+finalAddress+" clientaddr1Lat:"+clientaddr1Lat+" clientaddr1Long:"+clientaddr1Long+" clientaddr1Isdefault:"+clientaddr1Isdefault);
+            System.out.println("\nusid:"+usid+" finalAddress:"+finalAddress+" clientaddr1Lat:"+clientaddr1Lat+" clientaddr1Long:"+clientaddr1Long+" clientaddr1Isdefault:"+clientaddr1Isdefault);
+            System.out.println("\nusid:"+usid+" finalAddress:"+finalAddress+" clientaddr1Lat:"+clientaddr1Lat+" clientaddr1Long:"+clientaddr1Long+" clientaddr1Isdefault:"+clientaddr1Isdefault);
+            System.out.println("\nusid:"+usid+" finalAddress:"+finalAddress+" clientaddr1Lat:"+clientaddr1Lat+" clientaddr1Long:"+clientaddr1Long+" clientaddr1Isdefault:"+clientaddr1Isdefault);
             AddressManageNetWorks addressManageNetWorks = new AddressManageNetWorks();
             addressManageNetWorks.addUserAddress(usid,finalAddress,clientaddr1Lat,clientaddr1Long,clientaddr1Isdefault, new Observer<BaseBean>() {
                 @Override
                 public void onCompleted() {
-
+                   /* Toast.makeText(getBaseContext(),"this is in onCompleted onclick:",Toast.LENGTH_SHORT).show();*/
                 }
 
                 @Override
                 public void onError(Throwable e) {
-
+                    Toast.makeText(getBaseContext(),"this is in onError onclick:"+e,Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -209,7 +225,7 @@ public class AddressManageAddUserActivity extends BaseActivity  {
             });
 
         }else{
-            Toast.makeText(getBaseContext(),"请输入正确联系方式和地址,不能为空",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"请输入正确联系方式和地址,不能为空",Toast.LENGTH_LONG).show();
         }
     }
     /*信息确认返回*/
@@ -256,6 +272,17 @@ public class AddressManageAddUserActivity extends BaseActivity  {
     ImageView ivMainAddressManageAddUserTabBarUpArrow;
     private boolean isUp = false;
     /*上拉*/
+
+
+    /*附近地址 历史记录*/
+    @BindView(R.id.rly_main_addressmanage_add_user_addresssearch)
+    RelativeLayout rlyMainAddressManageAddUserAddressSearch;
+    @OnClick(R.id.rly_main_addressmanage_add_user_addresssearch)
+    public void rlyMainAddressManageAddUserAddressSearchOnclick(){/*
+        Toast.makeText(this,"this is addresssearch onclick",Toast.LENGTH_SHORT).show();*/
+        Intent intent = new Intent(this, BaiduAddressSearchSuggestActivity.class);
+        startActivityForResult(intent,RESULT_SEARCH);
+    }
     private AddressManageAddUserController addressManageAddUserController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -600,7 +627,7 @@ public class AddressManageAddUserActivity extends BaseActivity  {
             String lon = b.getString("lon");
             if ((lat != null) && (lon != null)) {
                 LatLng latLng = new LatLng(Double.parseDouble(lat),Double.parseDouble(lon));
-                location(latLng);
+                addressManageAddUserController.location(latLng);
                 etMainAddressManageAddUserContentAddress.setText(address);
             }
         }

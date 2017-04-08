@@ -221,7 +221,7 @@ public class PhoneFormatCheckUtils {
      * @param str
      * @return 如果是符合格式的字符串,返回 <b>true </b>,否则为 <b>false </b>
      */
-    public  boolean IsNumber(String str) {
+    public  boolean isNumber(String str) {
         String regex = "^[0-9]*$";
         return match(regex, str);
     }

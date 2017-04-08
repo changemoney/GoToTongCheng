@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.baidu.mapapi.model.LatLng;
@@ -32,6 +33,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by admin on 2017/3/24.
@@ -39,6 +41,13 @@ import butterknife.ButterKnife;
 
 public class BaiduAddressSearchSuggestController extends BaseController implements TextWatcher,OnGetPoiSearchResultListener,OnGetGeoCoderResultListener {
 
+
+    @BindView(R.id.rly_baiduaddress_search_suggest_topbar_back)
+    RelativeLayout rlyBaiduAddressSearchSuggestTopBarBack;
+    @OnClick(R.id.rly_baiduaddress_search_suggest_topbar_back)
+    public void rlyBaiduAddressSearchSuggestTopBarBackOnclick(){
+        activity.finish();
+    }
 
     @BindView(R.id.rlv_main_baidumap_common_baiduaddress_suggest_content)
     RecyclerView rlvMainBaiDuMapCommonBaiDuAddressSuggestContent;

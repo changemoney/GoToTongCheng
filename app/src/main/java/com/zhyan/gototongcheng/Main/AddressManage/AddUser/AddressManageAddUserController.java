@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -51,6 +52,7 @@ import com.baidu.mapapi.search.poi.PoiIndoorResult;
 import com.baidu.mapapi.search.poi.PoiNearbySearchOption;
 import com.baidu.mapapi.search.poi.PoiResult;
 import com.baidu.mapapi.search.poi.PoiSearch;
+import com.zhyan.gototongcheng.Main.BaiDuMapCommon.BaiduAddressSearchSuggestActivity;
 import com.zhyan.gototongcheng.Main.BaseController;
 import com.zhyan.gototongcheng.R;
 
@@ -65,6 +67,9 @@ import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheMan
 import gototongcheng.zhyan.com.library.Utils.SystemUtils;
 import gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.XRecyclerView;
 import com.zhyan.gototongcheng.Main.AddressManage.AddUser.AddressManageAddUserActivity.InitRecycleView;
+
+import static com.baidu.location.LocationClientOption.LocationMode.Hight_Accuracy;
+
 /**
  * Created by admin on 2017/3/24.
  */
@@ -81,6 +86,19 @@ public class AddressManageAddUserController extends BaseController  implements O
     @BindView(R.id.iv_main_addressmanage_add_user_centerloc)
     ImageView ivMainAddressManageAddUserCenterLoc;
     public BaiduMap mBaiduMap;
+    double selfLat = 0,selfLon= 0;
+    /*定位自己*/
+    @BindView(R.id.ib_main_addressmanage_add_user_gps_loc)
+    ImageButton ibMainAddressManageAddUserGpsLoc;
+    @OnClick(R.id.ib_main_addressmanage_add_user_gps_loc)
+    public void ibMainAddressManageAddUserGpsLocOnclick(){
+        locMySelf();
+    }
+    /*定位自己*/
+    private void locMySelf(){
+        location(new LatLng(selfLat,selfLon));
+    }
+
 
     private final int RESULT_SEARCH = 15;
     private final int RESULT_CONTACTER = 12;
@@ -118,7 +136,7 @@ public class AddressManageAddUserController extends BaseController  implements O
 
 
 
-    private void isUpdateInit(){
+    private void isUpdateInit(LatLng latLng){
         XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
         XCCacheSavename xcCacheSavename = new XCCacheSavename();
         String isAddressUpdate = xcCacheManager.readCache(xcCacheSavename.isAddressUpdate);
@@ -130,6 +148,21 @@ public class AddressManageAddUserController extends BaseController  implements O
             String tel = xcCacheManager.readCache(xcCacheSavename.addrUserTel);
             String clientaddrThings = xcCacheManager.readCache(xcCacheSavename.addrUserclientaddrThings);
             /*Toast.makeText(activity,"isUpdateInit:"+lat+" lon:"+lon+" userName:"+userName+" addr:"+addr+" clientaddrThings:"+clientaddrThings,Toast.LENGTH_SHORT).show();*/
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
+            System.out.print("\n this is isUpdateInit lat:"+lat+" lon:"+lon);
             if((lat != null)&&(lon != null)){
                 rlat = Double.parseDouble(lat);
                 rlon = Double.parseDouble(lon);
@@ -145,6 +178,12 @@ public class AddressManageAddUserController extends BaseController  implements O
             if(tel != null){
                 etMainAddressManageAddUserContentTel.setText(tel);
             }
+            xcCacheManager.writeCache(xcCacheSavename.isAddressUpdate,"no");
+            location(new LatLng(rlat,rlon));
+        }else{
+            /*Toast.makeText(activity,"this is add",Toast.LENGTH_SHORT).show();*/
+        /*    LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());*/
+            location(latLng);
         }
 
 
@@ -159,11 +198,11 @@ public class AddressManageAddUserController extends BaseController  implements O
     }
     /*打开通讯录*/
         /*搜索*/
-    @OnClick(R.id.rly_main_addressmanage_add_user_addresssearch)
+/*    @OnClick(R.id.rly_main_addressmanage_add_user_addresssearch)
     public void llyHelpMeBuyAddReceiverDetailSearchAddressOnclick(){
-/*        Intent intent = new Intent(this,BaiduAddressSearchSuggestActivity.class);
-        activity.startActivityForResult(intent,RESULT_SEARCH);*/
-    }
+        Intent intent = new Intent(activity,BaiduAddressSearchSuggestActivity.class);
+        activity.startActivityForResult(intent,RESULT_SEARCH);
+    }*/
 
 
     /*根据地名开始查找经纬度*/
@@ -195,6 +234,7 @@ public class AddressManageAddUserController extends BaseController  implements O
     private void initBaiDuMap(){
         initPoiSearch();
         mBaiduMap = mvHelpMeBuyAddReceiverDetailContent.getMap();
+        mvHelpMeBuyAddReceiverDetailContent.showZoomControls(false);
 
         initOverlyWithMapView();
         //设置缩放级别，默认级别为12
@@ -255,11 +295,14 @@ public class AddressManageAddUserController extends BaseController  implements O
     /**配置定位SDK参数**/
     private void initLocation(){
         LocationClientOption option=new LocationClientOption();
+        option.setLocationMode(Hight_Accuracy);//设置定位模式
         option.setOpenGps(true); // 打开gps
         option.setCoorType("bd09ll"); // 设置坐标类型
         option.setIsNeedAddress(true);//返回地址
         option.setIsNeedLocationDescribe(true);//返回地址周边描述
         option.setEnableSimulateGps(false);
+        //开启定位图层
+
         locationClient.setLocOption(option);
     }
 
@@ -299,23 +342,25 @@ public class AddressManageAddUserController extends BaseController  implements O
                 mCurrentMode, true, mCurrentMarker,
                 accuracyCircleFillColor, accuracyCircleStrokeColor));
         /*定位蓝色点*/
-        LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
-        location(latLng);
+        /*获取自己的坐标*/
+        selfLat = location.getLatitude();
+        selfLon = location.getLongitude();
+        /*获取自己的坐标*/
         /*etHelpMeBuyAddSellerAddressContentAddress.setText(location.getAddrStr() + location.getBuildingName() +location.getFloor()+location.getStreet()+location.getStreetNumber());*/
         if((location.getAddrStr()!= null)&&(location.getLocationDescribe() != null)) {
             addressLocation = location.getAddrStr() + " " + location.getLocationDescribe();
             etMainAddressManageAddUserContentAddress.setText(addressLocation);
             beginSearchLalByAddress(addressLocation);
         }
-        isUpdateInit();
+
     }
 
     /**经纬度地址动画显示在屏幕中间  有关mark网站的出处http://blog.csdn.net/callmesen/article/details/40540895**/
-    private void location(LatLng latLng){
+    public void location(LatLng latLng){
         /*只要调用画面 就能赋值*/
         rlat = latLng.latitude;
-        rlon = latLng.longitude;
-
+        rlon = latLng.longitude;/*
+        Toast.makeText(activity,"this is update1:"+rlat+" rlon:"+rlon,Toast.LENGTH_SHORT).show();*/
         /*无论哪个调用此动画 都将经纬度赋值*/
        /* mBaiduMap.clear();*/
         //定义地图状态
@@ -323,7 +368,7 @@ public class AddressManageAddUserController extends BaseController  implements O
         builder.target(latLng).zoom(18.0f);
         mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
         //定义MapStatusUpdate对象，以便描述地图状态将要发生的变化
-
+        /*Toast.makeText(activity,"this is update2",Toast.LENGTH_SHORT).show();*/
     }
 
     /*poi附近检索*/
@@ -362,9 +407,9 @@ public class AddressManageAddUserController extends BaseController  implements O
     @Override
     public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
         if (geoCodeResult.getLocation() != null) {
-            location(geoCodeResult.getLocation());
+           /* location(geoCodeResult.getLocation());*/
             /*搜索附近地址*/
-
+            isUpdateInit(geoCodeResult.getLocation());
             poiSearchNearBy(geoCodeResult.getAddress(),geoCodeResult.getLocation());
             /*搜索附近地址*/
         }

@@ -67,6 +67,8 @@ public class AddressManageAddUserRVAdapter extends RecyclerView.Adapter<AddressM
     public void onBindViewHolder(ItemContentViewHolder holder, int position) {
         if(holder != null){
             holder.pos = position;
+
+
             holder.tvAddressManageContentUserRVItemAddr.setText(userAddressListBeanList.get(position).getClientaddrAddr());
             holder.tvAddressManageContentUserRVItemName.setText(userAddressListBeanList.get(position).getClientaddrName());
             holder.tvAddressManageContentUserRVItemTel.setText(userAddressListBeanList.get(position).getClientaddrTel());
@@ -89,7 +91,7 @@ public class AddressManageAddUserRVAdapter extends RecyclerView.Adapter<AddressM
             bundle.putString("nameCall",userAddressListBeanList.get(pos).getClientaddrName());
             bundle.putString("tel",userAddressListBeanList.get(pos).getClientaddrTel());
             bundle.putString("address",userAddressListBeanList.get(pos).getClientaddrAddr());
-            bundle.putString("clientaddrThings1",userAddressListBeanList.get(pos).getClientaddrThings1());
+            bundle.putString("clientaddr1Things1",userAddressListBeanList.get(pos).getClientaddrThings1());
             bundle.putString("rlat", "" + userAddressListBeanList.get(pos).getClientaddrLat());
             bundle.putString("rlon", "" + userAddressListBeanList.get(pos).getClientaddrLong());
             Intent intent = new Intent();
@@ -167,6 +169,19 @@ public class AddressManageAddUserRVAdapter extends RecyclerView.Adapter<AddressM
             xcCacheManager.writeCache(xcCacheSavename.addrUserclientaddrThings,userAddressListBeanList.get(pos).getClientaddrThings1());
             xcCacheManager.writeCache(xcCacheSavename.addrUserLat,""+userAddressListBeanList.get(pos).getClientaddrLat());
             xcCacheManager.writeCache(xcCacheSavename.addrUserLon,""+userAddressListBeanList.get(pos).getClientaddrLong());
+            System.out.print("\n this is addressmanage lat:"+userAddressListBeanList.get(pos).getClientaddrLat()+" lon:"+userAddressListBeanList.get(pos).getClientaddrLong());
+            System.out.print("\n this is addressmanage lat:"+userAddressListBeanList.get(pos).getClientaddrLat()+" lon:"+userAddressListBeanList.get(pos).getClientaddrLong());
+            System.out.print("\n this is addressmanage lat:"+userAddressListBeanList.get(pos).getClientaddrLat()+" lon:"+userAddressListBeanList.get(pos).getClientaddrLong());
+            System.out.print("\n this is addressmanage lat:"+userAddressListBeanList.get(pos).getClientaddrLat()+" lon:"+userAddressListBeanList.get(pos).getClientaddrLong());
+            System.out.print("\n this is addressmanage lat:"+userAddressListBeanList.get(pos).getClientaddrLat()+" lon:"+userAddressListBeanList.get(pos).getClientaddrLong());
+            System.out.print("\n this is addressmanage lat:"+userAddressListBeanList.get(pos).getClientaddrLat()+" lon:"+userAddressListBeanList.get(pos).getClientaddrLong());
+            System.out.print("\n this is addressmanage lat:"+userAddressListBeanList.get(pos).getClientaddrLat()+" lon:"+userAddressListBeanList.get(pos).getClientaddrLong());
+            System.out.print("\n this is addressmanage lat:"+userAddressListBeanList.get(pos).getClientaddrLat()+" lon:"+userAddressListBeanList.get(pos).getClientaddrLong());
+            System.out.print("\n this is addressmanage lat:"+userAddressListBeanList.get(pos).getClientaddrLat()+" lon:"+userAddressListBeanList.get(pos).getClientaddrLong());
+            System.out.print("\n this is addressmanage lat:"+userAddressListBeanList.get(pos).getClientaddrLat()+" lon:"+userAddressListBeanList.get(pos).getClientaddrLong());
+            System.out.print("\n this is addressmanage lat:"+userAddressListBeanList.get(pos).getClientaddrLat()+" lon:"+userAddressListBeanList.get(pos).getClientaddrLong());
+            System.out.print("\n this is addressmanage lat:"+userAddressListBeanList.get(pos).getClientaddrLat()+" lon:"+userAddressListBeanList.get(pos).getClientaddrLong());
+            System.out.print("\n this is addressmanage lat:"+userAddressListBeanList.get(pos).getClientaddrLat()+" lon:"+userAddressListBeanList.get(pos).getClientaddrLong());
             Intent intent = new Intent(activity, AddressManageAddUserActivity.class);
             activity.startActivity(intent);
         }

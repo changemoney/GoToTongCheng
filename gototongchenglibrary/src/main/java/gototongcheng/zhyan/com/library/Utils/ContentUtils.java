@@ -9,6 +9,7 @@ public class ContentUtils {
 
     /*服务器地址*/
     public final String ServiceUrl = "http://www.gotogoto.com";
+    /*public final String ServiceUrl = "http://192.168.0.111:8074/COMOTO";*/
 
     /*用户登录
     * parame:userName(String) userPassword(String)

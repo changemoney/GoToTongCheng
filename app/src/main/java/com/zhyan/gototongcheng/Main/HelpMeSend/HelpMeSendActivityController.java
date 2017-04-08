@@ -222,7 +222,10 @@ public class HelpMeSendActivityController extends BaseController{
         String priceNew = priceUtil.gotoHelpMeSendlNewFee(dis);
         PhoneFormatCheckUtils phoneFormatCheckUtils = new PhoneFormatCheckUtils();
         int tempDisPrice = 0;
-        if(phoneFormatCheckUtils.IsNumber(price)&&phoneFormatCheckUtils.IsNumber(priceNew)){
+        if((price.isEmpty())||(priceNew.isEmpty())){
+            return;
+        }
+        if(phoneFormatCheckUtils.isNumber(price)&&phoneFormatCheckUtils.isNumber(priceNew)){
             int tempPrice = Integer.parseInt( price);
             int tempNewPrice = Integer.parseInt(priceNew);
             tempDisPrice = tempNewPrice - tempPrice;

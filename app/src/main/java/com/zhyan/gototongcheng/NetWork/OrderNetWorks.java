@@ -1,5 +1,7 @@
 package com.zhyan.gototongcheng.NetWork;
 
+import com.zhyan.gototongcheng.NetWork.Base.BaseNetWork;
+
 import java.util.List;
 
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
@@ -13,7 +15,7 @@ import rx.Observer;
  * Created by admin on 2017/2/21.
  */
 
-public class OrderNetWorks extends BaseNetWork{
+public class OrderNetWorks extends BaseNetWork {
 
     protected  final NetService service = getRetrofit().create(NetService.class);
     private interface NetService{

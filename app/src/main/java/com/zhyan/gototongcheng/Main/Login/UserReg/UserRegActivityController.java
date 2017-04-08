@@ -119,8 +119,12 @@ public class UserRegActivityController extends BaseController {
     }
     /*注册信息*/
     /*判断是否正确输入手机号码*/
-    public boolean isPhoneNum(String tel){
+    public boolean isPhoneNum(){
+        String tel = etUserRegContentTel.getText().toString();
 
+        if(tel == null){
+            return false;
+        }
         PhoneFormatCheckUtils phoneFormatCheckUtils = new PhoneFormatCheckUtils();
         return  phoneFormatCheckUtils.isPhoneLegal(tel);
     }

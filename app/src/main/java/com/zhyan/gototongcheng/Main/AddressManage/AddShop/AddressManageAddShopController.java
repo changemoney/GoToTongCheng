@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,8 +56,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
+
+import static com.baidu.location.LocationClientOption.LocationMode.Hight_Accuracy;
 
 /**
  * Created by admin on 2017/3/24.
@@ -97,13 +101,38 @@ public class AddressManageAddShopController extends BaseController  implements O
     EditText etMainAddressManageAddShopContentNameCall;
     @BindView(R.id.et_main_addressmanage_add_shop_content_address)
     EditText etMainAddressManageAddShopContentAddress;
+
+
+    double selfLat = 0,selfLon= 0;
+
+    /*定位自己*/
+    @BindView(R.id.ib_main_addressmanage_add_shop_gps_loc)
+    ImageButton ibMainAddressManageAddUserGpsLoc;
+    @OnClick(R.id.ib_main_addressmanage_add_shop_gps_loc)
+    public void ibMainAddressManageAddUserGpsLocOnclick(){
+        locMySelf();
+    }
+    /*定位自己*/
+    private void locMySelf(){
+        location(new LatLng(selfLat,selfLon));
+    }
+
+
+
+
+
+
+
+
+
+
     public AddressManageAddShopController(Activity activity1,  InitRecycleView initRecycleView1){
         activity = activity1;
     /*    etMainAddressManageAddShopContentAddress = editText;*/
         initRecycleView = initRecycleView1;
         init();
     }
-    private void isUpdateInit(){
+    private void isUpdateInit(LatLng latLng){
         XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
         XCCacheSavename xcCacheSavename = new XCCacheSavename();
         String isAddressUpdate = xcCacheManager.readCache(xcCacheSavename.isAddressUpdate);
@@ -126,6 +155,12 @@ public class AddressManageAddShopController extends BaseController  implements O
             if(addr != null){
                 etMainAddressManageAddShopContentAddress.setText(addr);
             }
+            xcCacheManager.writeCache(xcCacheSavename.isAddressUpdate,"no");
+            location(new LatLng(blat,blon));
+        }else{
+            /*Toast.makeText(activity,"this is add",Toast.LENGTH_SHORT).show();*/
+        /*    LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());*/
+            location(latLng);
         }
 
 
@@ -141,6 +176,7 @@ public class AddressManageAddShopController extends BaseController  implements O
         /*监听输入框的变化*/
         initPoiSearch();
         mBaiduMap = mvMainAddressManageAddShopContent.getMap();
+        mvMainAddressManageAddShopContent.showZoomControls(false);
         // 开启定位图层
         mBaiduMap.setMyLocationEnabled(true);
         locationClient=new LocationClient(activity);
@@ -205,6 +241,7 @@ public class AddressManageAddShopController extends BaseController  implements O
     private void initLocation1(){
         LocationClientOption option=new LocationClientOption();
         option.setOpenGps(true); // 打开gps
+        option.setLocationMode(Hight_Accuracy);//设置定位模式
         option.setCoorType("bd09ll"); // 设置坐标类型
         option.setIsNeedAddress(true);//返回地址
         option.setIsNeedLocationDescribe(true);//返回地址周边描述
@@ -248,15 +285,18 @@ public class AddressManageAddShopController extends BaseController  implements O
                 mCurrentMode, true, mCurrentMarker,
                 accuracyCircleFillColor, accuracyCircleStrokeColor));
         /*定位蓝色点*/
-        LatLng latLng = new LatLng(location1.getLatitude(),location1.getLongitude());
-        location(latLng);
-
+        /*LatLng latLng = new LatLng(location1.getLatitude(),location1.getLongitude());*/
+        /*location(latLng);*/
+    /*获取自己的坐标*/
+        selfLat = location1.getLatitude();
+        selfLon = location1.getLongitude();
+        /*获取自己的坐标*/
         if((location1.getAddrStr()!= null)&&(location1.getLocationDescribe() != null)) {
             addressLocation = location1.getAddrStr() + " " + location1.getLocationDescribe();
             etMainAddressManageAddShopContentAddress.setText(addressLocation);
             beginSearchLalByAddress(addressLocation);
         }
-        isUpdateInit();
+
     }
 
 
@@ -447,7 +487,8 @@ public class AddressManageAddShopController extends BaseController  implements O
         Log.i("onGetGeoCodeResult","begin");
         if (geoCodeResult.getLocation() != null) {
             /*直接定位到具体地址*/
-            location( geoCodeResult.getLocation());
+            /*location( geoCodeResult.getLocation());*/
+            isUpdateInit(geoCodeResult.getLocation());
             /*直接定位到具体地址*/
   /*          addressLocation = geoCodeResult.getAddress();
             etMainAddressManageAddShopContentAddress.setText(addressLocation );*/

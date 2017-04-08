@@ -208,7 +208,7 @@ public class MainActivityController extends BaseController{
                     /*Toast.makeText(this,"initAfterLogin:",Toast.LENGTH_LONG).show();*/
                     /*if()*/
                         PhoneFormatCheckUtils phoneFormatCheckUtils = new PhoneFormatCheckUtils();
-                        if ((phoneFormatCheckUtils.IsNumber(userName)) && (userName.length() > 9)) {
+                        if ((phoneFormatCheckUtils.isNumber(userName)) && (userName.length() > 9)) {
                              userName = phoneFormatCheckUtils.telReplaceMiddleByStar(userName);
                             tvMainLeftMenuName.setText(userName);
                         }

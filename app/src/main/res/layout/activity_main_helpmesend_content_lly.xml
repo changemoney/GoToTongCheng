@@ -11,7 +11,7 @@
         android:id="@+id/lly_main_helpmesend_content_senderdata"
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_main_helpmesend_content_addressitem_height"
-        android:background="@color/white"
+        android:background="@color/color_activity_main_helpmesend_item_white_bg"
         android:orientation="horizontal"
         >
         <RelativeLayout
@@ -505,7 +505,7 @@
         android:layout_height="@dimen/activity_main_helpmesend_content_edittext_item_height"
         android:background="@color/color_activity_main_helpmesend_item_white_bg"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/activity_main_helpmesend_content_buyorder_item_margin_top_size"
+        android:layout_marginTop="@dimen/activity_main_helpmesend_content_buyorder_item_remark_margin_top_size"
         android:layout_marginBottom="@dimen/activity_main_helpmesend_content_margin_bottom_size"
         >
         <RelativeLayout
@@ -555,8 +555,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/activity_main_helpmesend_content_shoppingorder_margin_right_size"
-                    android:layout_marginTop="@dimen/activity_main_helpmesend_content_shoppingorder_margin_top_bottom_size"
-                    android:layout_marginBottom="@dimen/activity_main_helpmesend_content_shoppingorder_margin_right_size"
+                    android:layout_marginTop="@dimen/activity_main_helpmesend_content_shoppingorder_margin_top_size"
+                    android:layout_marginBottom="@dimen/activity_main_helpmesend_content_shoppingorder_margin_bottom_size"
                     android:gravity="start"
                     android:background="@null"
                     android:textSize="13sp"

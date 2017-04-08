@@ -88,7 +88,7 @@ public class AddressManageAddShopRVAdapter extends RecyclerView.Adapter<AddressM
             Bundle bundle = new Bundle();
             bundle.putString("nameCall",shopAddressListBeanList.get(pos).getClientaddr1Name());
             bundle.putString("address",shopAddressListBeanList.get(pos).getClientaddr1Addr());
-            bundle.putString("clientaddr1Things1",shopAddressListBeanList.get(pos).getClientaddr1Things1());
+            bundle.putString("clientaddrThings1",shopAddressListBeanList.get(pos).getClientaddr1Things1());
             bundle.putString("blat", "" + shopAddressListBeanList.get(pos).getClientaddr1Lat());
             bundle.putString("blon", "" + shopAddressListBeanList.get(pos).getClientaddr1Long());
             Intent intent = new Intent();

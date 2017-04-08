@@ -44,7 +44,7 @@ public class UserRegActivity extends BaseActivity{
     /*注册提交点击事件*/
     @OnClick(R.id.rly_userreg_content_regsubmit)
     public void rlyUserRegContentRegSubmitOnclick(){
-        if(isPhoneNum()) {
+        if(userRegController.isPhoneNum()) {
             String tel = etUserRegContentTel.getText().toString();
             String identity = etUserRegContentIdentity.getText().toString();
             if(identity.isEmpty()){
@@ -58,11 +58,11 @@ public class UserRegActivity extends BaseActivity{
         }
     }
     /*判断是否正确输入手机号码*/
-    private boolean isPhoneNum(){
+/*    private boolean isPhoneNum(){
         String tel = etUserRegContentTel.getText().toString();
         PhoneFormatCheckUtils phoneFormatCheckUtils = new PhoneFormatCheckUtils();
         return  phoneFormatCheckUtils.isPhoneLegal(tel);
-    }
+    }*/
     /*判断是否正确输入手机号码*/
     /*注册提交点击事件*/
     /*注册提交*/
@@ -79,11 +79,8 @@ public class UserRegActivity extends BaseActivity{
     /*点击获取验证码*/
     @OnClick(R.id.rly_userreg_content_smsec)
     public void rlyUserRegContentSMSecOnclick(){
-        String tel = etUserRegContentTel.getText().toString();
-        if(tel == null){
-            return;
-        }
-        if(userRegController.isPhoneNum(tel)){
+
+        if(userRegController.isPhoneNum()){
              /*第一次点击倒计时*/
             if(second == 0){
                 second = 60;

@@ -1,15 +1,11 @@
 package com.zhyan.gototongcheng.NetWork;
 
-import java.util.Map;
+import com.zhyan.gototongcheng.NetWork.Base.BaseNetWork;
 
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
 import gototongcheng.zhyan.com.library.Bean.HelpMeBuyBean;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Query;
-import retrofit2.http.QueryMap;
 import rx.Observable;
 import rx.Observer;
 
@@ -17,7 +13,7 @@ import rx.Observer;
  * Created by admin on 2017/2/21.
  */
 
-public class HelpMeSendBuyNetWorks extends BaseNetWork{
+public class HelpMeSendBuyNetWorks extends BaseNetWork {
 
     protected  final NetService service = getRetrofit().create(NetService.class);
     private interface NetService{

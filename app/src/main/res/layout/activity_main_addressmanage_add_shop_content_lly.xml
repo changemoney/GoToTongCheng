@@ -159,14 +159,24 @@
          </com.baidu.mapapi.map.MapView>-->
         <ImageView
             android:id="@+id/iv_main_addressmanage_add_shop_content_centerloc"
-            android:layout_width="16dp"
-            android:layout_height="19dp"
+            android:layout_width="@dimen/activity_main_addressmanage_add_shop_main_center_loc_red_mark_width"
+            android:layout_height="@dimen/activity_main_addressmanage_add_shop_main_center_loc_red_mark_height"
             android:background="@drawable/activity_main_addressmanage_add_shop_search_map"
             android:layout_centerInParent="true"
             />
+        <ImageButton
+            android:id="@+id/ib_main_addressmanage_add_shop_gps_loc"
+            android:layout_width="@dimen/activity_main_addressmanage_add_shop_main_center_gps_loc_mark_width"
+            android:layout_height="@dimen/activity_main_addressmanage_add_shop_main_center_gps_loc_mark_height"
+            android:background="@drawable/gps_loc"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/activity_main_addressmanage_add_shop_main_center_gps_loc_mark_margin_right_size"
+            android:layout_marginBottom="@dimen/activity_main_addressmanage_add_shop_main_center_gps_loc_mark_margin_bottom_size"
+            />
     </RelativeLayout>
     <!--百度地图-->
-
+    <!--android:background="@color/color_activity_main_addressmanage_add_shop_content_tabbar_black_bg"-->
     <LinearLayout
         android:id="@+id/lly_main_addressmanage_add_shop_bottom"
         android:layout_width="match_parent"
@@ -174,7 +184,7 @@
         android:layout_weight="2.5"
         android:orientation="vertical"
         android:animateLayoutChanges="true"
-        android:background="@color/color_activity_main_addressmanage_add_shop_content_tabbar_black_bg"
+        android:background="@color/transparent"
         >
         <LinearLayout
             android:id="@+id/linearLayout1"

@@ -158,7 +158,11 @@ public class AddressManageActivityController extends BaseController {
                         @Override
                         public void onNext(List<UserAddressListBean> userAddressListBeen) {
                             /*Toast.makeText(getBaseContext(),"this is userlist:"+userAddressListBeen.size(),Toast.LENGTH_SHORT).show();*/
-                            userRVAdapter.setDataList(userAddressListBeen);
+                            List<UserAddressListBean> userAddressListBeen1 = new ArrayList<UserAddressListBean>();
+                            for(int i=0;i<userAddressListBeen.size();i++){
+                                userAddressListBeen1.add(userAddressListBeen.get(userAddressListBeen.size()-1-i));
+                            }
+                            userRVAdapter.setDataList(userAddressListBeen1);
 
                         }
                     });
@@ -182,7 +186,12 @@ public class AddressManageActivityController extends BaseController {
 
                         @Override
                         public void onNext(List<ShopAddressListBean> shopAddressListBeen) {
-                            shopRVAdapter.setDataList(shopAddressListBeen);
+
+                            List<ShopAddressListBean> shopAddressListBeen1 = new ArrayList<ShopAddressListBean>();
+                            for(int i=0;i<shopAddressListBeen.size();i++){
+                                shopAddressListBeen1.add(shopAddressListBeen.get(shopAddressListBeen.size()-1-i));
+                            }
+                            shopRVAdapter.setDataList(shopAddressListBeen1);
 
                         }
                     });

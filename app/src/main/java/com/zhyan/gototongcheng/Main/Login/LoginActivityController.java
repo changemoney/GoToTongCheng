@@ -104,7 +104,7 @@ public class LoginActivityController extends BaseController  {
 
             @Override
             public void onError(Throwable e) {
-                Toast.makeText(activity,"网络君凯旋失败啦！！快检查你的账号和密码吧",Toast.LENGTH_LONG).show();
+                Toast.makeText(activity,"网络君凯旋失败啦！！快检查你的账号和密码吧"+e,Toast.LENGTH_LONG).show();
             }
 
             @Override

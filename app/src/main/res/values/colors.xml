@@ -469,6 +469,10 @@
     <color name="color_activity_main_myorder_orderstatus_content_gray_border_bg">#56575f</color>
     <color name="color_activity_main_myorder_orderstatus_tabar_switch_unselect_gray_bg">#96969b</color>
     <color name="color_activity_main_myorder_orderstatus_tabar_switch_selected_green_bg">#befa00</color>
+    <color name="color_activity_main_myorder_orderstatus_rvitem_second_item_content_gray_word_bg">#9f9f9f</color>
+    <color name="color_activity_main_myorder_orderstatus_rvitem_second_item_content_address_black_word_bg">#000000</color>
+    <color name="color_activity_main_myorder_orderstatus_rvitem_second_item_white_bg">#ffffff</color>
+    <color name="color_activity_main_myorder_orderstatus_rvitem_second_item_content_silver_white_bg">#eeeeee</color>
     <!--main myorder orderstatus-->
 
     <!--main common shoufeibiaozhun-->

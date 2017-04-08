@@ -179,7 +179,7 @@ public class HelpMeBuyActivity extends BaseActivity {
             /*Toast.makeText(this,"initOrderOk",Toast.LENGTH_SHORT).show();*/
      /*       String addr = tvMainHelpMeBuyContentShopAddress.getText().toString();
             String addr1 = tvMainHelpMeBuyContentUserAddressDetail.getText().toString();*/
-         Toast.makeText(this, "信息输入不全", Toast.LENGTH_LONG).show();
+         /*Toast.makeText(this, "信息输入不全", Toast.LENGTH_LONG).show();*/
             if ((orderDetailBean.getUserUsid().isEmpty()) || (tvMainHelpMeBuyContentShopAddress.getText().toString().isEmpty()) || (tvMainHelpMeBuyContentUserAddressDetail.getText().toString().isEmpty()) || (orderDetailBean.getDetailsGoodsname().isEmpty())) {
                 Toast.makeText(this, "信息输入不全", Toast.LENGTH_LONG).show();
                 return;
@@ -288,7 +288,7 @@ public class HelpMeBuyActivity extends BaseActivity {
                 Bundle b=data.getExtras(); //data为B中回传的Intent
                 String nameCall=b.getString("nameCall");//str即为回传的值
                 String address=b.getString("address");//str即为回传的值
-                clientaddr1Things1 = b.getString("clientaddr1Things1");
+                clientaddrThings1 = b.getString("clientaddrThings1");
                 String lat = b.getString("blat");
                 String lon = b.getString("blon");
                 /*Toast.makeText(getBaseContext(),"RESULT_BUY:"+lat+" "+lon+" ",Toast.LENGTH_SHORT).show();*/
@@ -306,7 +306,7 @@ public class HelpMeBuyActivity extends BaseActivity {
                 Bundle r=data.getExtras(); //data为B中回传的Intent
                 String name=r.getString("nameCall");//str即为回传的值
                 String addr=r.getString("address");//str即为回传的值
-                clientaddrThings1 = r.getString("clientaddrThings1");
+                clientaddr1Things1 = r.getString("clientaddr1Things1");
                 String tel =r.getString("tel");
                 String latt = r.getString("rlat");
                 String lonn = r.getString("rlon");
