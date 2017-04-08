@@ -122,6 +122,7 @@ public class AddressManageAddUserController extends BaseController  implements O
     EditText etMainAddressManageAddUserContentAddress;
     /*private EditText  etMainAddressManageAddUserContentAddress ;*/
     InitRecycleView initRecycleView;
+    public boolean isUpdate = false;
     public AddressManageAddUserController(Activity activity1, InitRecycleView initRecycleView1){
         activity = activity1;
 
@@ -179,6 +180,7 @@ public class AddressManageAddUserController extends BaseController  implements O
                 etMainAddressManageAddUserContentTel.setText(tel);
             }
             xcCacheManager.writeCache(xcCacheSavename.isAddressUpdate,"no");
+            isUpdate = true;
             location(new LatLng(rlat,rlon));
         }else{
             /*Toast.makeText(activity,"this is add",Toast.LENGTH_SHORT).show();*/

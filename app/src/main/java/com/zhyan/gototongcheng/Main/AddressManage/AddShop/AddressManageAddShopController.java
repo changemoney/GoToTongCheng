@@ -72,7 +72,7 @@ public class AddressManageAddShopController extends BaseController  implements O
     /*商家地址经纬度*/
     public double blat,blon;
     /*商家地址经纬度*/
-
+    public boolean isUpdate = false;
     private InitRecycleView initRecycleView;
     public BaiduMap mBaiduMap;
     @BindView(R.id.mv_main_addressmanage_add_shop_content)
@@ -156,6 +156,7 @@ public class AddressManageAddShopController extends BaseController  implements O
                 etMainAddressManageAddShopContentAddress.setText(addr);
             }
             xcCacheManager.writeCache(xcCacheSavename.isAddressUpdate,"no");
+            isUpdate = true;
             location(new LatLng(blat,blon));
         }else{
             /*Toast.makeText(activity,"this is add",Toast.LENGTH_SHORT).show();*/

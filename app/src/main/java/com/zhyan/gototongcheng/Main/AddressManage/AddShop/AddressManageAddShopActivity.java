@@ -138,7 +138,7 @@ public class AddressManageAddShopActivity extends BaseActivity{
         XCCacheManager xcCacheManager = XCCacheManager.getInstance(this);
         XCCacheSavename xcCacheSavename = new  XCCacheSavename();
         String isAddressUpdate = xcCacheManager.readCache(xcCacheSavename.isAddressUpdate);
-        if((isAddressUpdate != null)&&(isAddressUpdate.equals("yes"))){
+        if(addressManageAddShopController.isUpdate){
             updateShopAddressToNet();
             /*Toast.makeText(AddressManageAddShopActivity.this,"this is updateShopAddressToNet",Toast.LENGTH_LONG).show();*/
             xcCacheManager.writeCache(xcCacheSavename.isAddressUpdate,"no");
