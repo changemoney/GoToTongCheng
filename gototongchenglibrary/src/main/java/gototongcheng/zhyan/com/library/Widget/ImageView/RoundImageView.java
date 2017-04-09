@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
@@ -73,7 +74,8 @@ public class RoundImageView extends ImageView {
         this.measure(0, 0);
         if (drawable.getClass() == NinePatchDrawable.class)
             return;
-        Bitmap b = ((BitmapDrawable) drawable).getBitmap();
+        /*Bitmap b = ((BitmapDrawable) drawable).getBitmap();*/
+        Bitmap b = drawableToBitamp(drawable);
         Bitmap bitmap = b.copy(Config.ARGB_8888, true);
         if (defaultWidth == 0) {
             defaultWidth = getWidth();
@@ -99,6 +101,25 @@ public class RoundImageView extends ImageView {
         }
         Bitmap roundBitmap = getCroppedRoundBitmap(bitmap, radius);
         canvas.drawBitmap(roundBitmap, defaultWidth / 2 - radius, defaultHeight / 2 - radius, null);
+    }
+
+    private Bitmap drawableToBitamp(Drawable drawable) {
+         Bitmap bitmap;
+
+         /*int w = drawable.getIntrinsicWidth();
+         int h = drawable.getIntrinsicHeight();*/
+        int w = getWidth();
+        int h = getHeight();
+         System.out.println("Drawable转Bitmap");
+         Bitmap.Config config =
+                         drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
+                         : Bitmap.Config.RGB_565;
+         bitmap = Bitmap.createBitmap(w,h,config);
+         //注意，下面三行代码要用到，否在在View或者surfaceview里的canvas.drawBitmap会看不到图
+         Canvas canvas = new Canvas(bitmap);
+         drawable.setBounds(0, 0, w, h);
+         drawable.draw(canvas);
+        return bitmap;
     }
 
     /**

@@ -11,6 +11,9 @@ import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 import gototongcheng.zhyan.com.library.R;
 import gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.progressindicator.indicator.BallBeatIndicator;
 import gototongcheng.zhyan.com.library.Widget.RecycleView.XRecycleView.progressindicator.indicator.BallClipRotateIndicator;
@@ -104,8 +107,7 @@ public class AVLoadingIndicatorView extends View{
     public static final int LineSpinFadeLoader=23;
     public static final int TriangleSkewSpin=24;
     public static final int Pacman=25;
-    public static final int BallGridBeat=26;
-    public static final int SemiCircleSpin=27;
+    public static final int BallGridBeat=26;    public static final int SemiCircleSpin=27;
 
 
     @IntDef(flag = true,
@@ -139,6 +141,7 @@ public class AVLoadingIndicatorView extends View{
                     BallGridBeat,
                     SemiCircleSpin
             })
+    @Retention(RetentionPolicy.SOURCE)
     public @interface Indicator{}
 
     //Sizes (with defaults in DP)

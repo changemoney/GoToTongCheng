@@ -71,13 +71,13 @@ public class LoginActivity extends BaseActivity  implements Handler.Callback, Pl
                 UIHandler.sendEmptyMessage(MSG_USERID_FOUND, this);
                 login(plat.getName(), userId, null);
                 /*Toast.makeText(this,"this is in plat ",Toast.LENGTH_LONG).show();*/
-
-                String name = mCacheManager.readCache("userName");
+                thirdLoginSuccessful(plat);
+           /*     String name = mCacheManager.readCache("userName");
                 String usid = mCacheManager.readCache("usid");
                 String headUrl = mCacheManager.readCache("headUrl");
                 String loginStatus = mCacheManager.readCache("loginStatus");
 
-                Toast.makeText(this,name+" "+usid+" "+headUrl+" "+loginStatus,Toast.LENGTH_LONG).show();
+                Toast.makeText(this,name+" "+usid+" "+headUrl+" "+loginStatus,Toast.LENGTH_LONG).show();*/
                 return;
             }
         }
@@ -168,20 +168,7 @@ public class LoginActivity extends BaseActivity  implements Handler.Callback, Pl
             UIHandler.sendEmptyMessage(MSG_AUTH_COMPLETE, this);
             login(platform.getName(), platform.getDb().getUserId(), res);
             /*finish();*/
-            String openid = platform.getDb().getUserId() + "";
-            String gender = platform.getDb().getUserGender();
-            String head_url = platform.getDb().getUserIcon();
-            String nickname = platform.getDb().getUserName();
-
-
-            XCCacheSavename xcCacheSavename = new XCCacheSavename();
-            mCacheManager.writeCache(xcCacheSavename.name,nickname);
-            mCacheManager.writeCache(xcCacheSavename.headUrl,head_url);
-            mCacheManager.writeCache(xcCacheSavename.loginStatus,"yes");
-            Toast.makeText(this,openid+" "+gender+" "+head_url+" "+nickname,Toast.LENGTH_LONG).show();
-            Log.i("third login",openid+" "+gender+" "+head_url+" "+nickname);
-            System.out.println(openid+" "+gender+" "+head_url+" "+nickname);
-            finish();
+            thirdLoginSuccessful(platform);
         }
     }
 
@@ -203,6 +190,24 @@ public class LoginActivity extends BaseActivity  implements Handler.Callback, Pl
         }
 
 
+    }
+
+
+    private void thirdLoginSuccessful(Platform platform){
+        String openid = platform.getDb().getUserId() + "";
+        String gender = platform.getDb().getUserGender();
+        String head_url = platform.getDb().getUserIcon();
+        String nickname = platform.getDb().getUserName();
+
+
+        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        mCacheManager.writeCache(xcCacheSavename.name,nickname);
+        mCacheManager.writeCache(xcCacheSavename.headUrl,head_url);
+        mCacheManager.writeCache(xcCacheSavename.loginStatus,"yes");
+        Toast.makeText(this,openid+" "+gender+" "+head_url+" "+nickname,Toast.LENGTH_LONG).show();
+        Log.i("third login",openid+" "+gender+" "+head_url+" "+nickname);
+        System.out.println(openid+" "+gender+" "+head_url+" "+nickname);
+        finish();
     }
 
 
