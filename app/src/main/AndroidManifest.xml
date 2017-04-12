@@ -249,6 +249,15 @@
             android:hardwareAccelerated="false"
             />
         <activity
+            android:name=".Main.Login.ThirdLogin.ThirdLoginTelActivity"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="false"
+            /><activity
+            android:name=".Main.Login.ThirdLogin.ThirdLoginTelIdentify.ThirdLoginTelIdentifyActivity"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="false"
+            />
+        <activity
             android:name=".Main.Login.UserReg.UserRegActivity"
             android:screenOrientation="portrait"
             android:hardwareAccelerated="false"

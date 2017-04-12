@@ -26,4 +26,10 @@ public class XCCacheSavename {
     public String addrShopLon = "addrShopLon";
     public String addrShopclientaddrThings = "addrShopclientaddrThings";
     public String isMyOrderPay = "isMyOrderPay";
+    public String thirdLoginRegTel = "thirdLoginRegTel";
+    public String thirdLoginRegType = "thirdLoginRegType";
+    public String thirdLoginUsid = "thirdLoginUsid";
+
+
+    public String myOrderOrderStatusOrderNo = "myOrderOrderStatusOrderNo";
 }

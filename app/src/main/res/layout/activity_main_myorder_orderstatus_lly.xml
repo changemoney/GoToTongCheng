@@ -12,4 +12,5 @@
         >
     <include layout="@layout/activity_main_myorder_orderstatus_content_vp_lly"/>
     </LinearLayout>
+    <include layout="@layout/activity_main_myorder_orderstatus_bottom_lly"/>
 </LinearLayout>

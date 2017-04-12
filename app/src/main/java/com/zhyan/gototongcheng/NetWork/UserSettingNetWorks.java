@@ -3,6 +3,7 @@ package com.zhyan.gototongcheng.NetWork;
 import com.zhyan.gototongcheng.NetWork.Base.BaseNetWork;
 
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
+import gototongcheng.zhyan.com.library.Bean.ThirdLoginBean;
 import gototongcheng.zhyan.com.library.Bean.UserLoginBean;
 import gototongcheng.zhyan.com.library.Bean.UserRegBean;
 import retrofit2.http.GET;
@@ -36,6 +37,20 @@ public class UserSettingNetWorks extends BaseNetWork {
         @GET("users/appexit.do")
         Observable<BaseBean> userExit();
         /*用户退出*/
+
+        /*第三方qq登陆*/
+        @GET("users/applogin1.do")
+        Observable<ThirdLoginBean> thirdLoginQQ(@Query("clientQqid") String clientQqid);
+        /*第三方weixin登陆*/
+        @GET("users/applogin1.do")
+        Observable<ThirdLoginBean> thirdLoginWeiXin(@Query("clientWeixinid") String clientWeixinid);
+
+        /*第三方登录qq注册*/
+        @GET("users/applogin2.do")
+        Observable<ThirdLoginBean> thirdLoginQQReg(@Query("userName")String userName,@Query("clientQqid") String clientQqid);
+        /*第三方登录weixin注册*/
+        @GET("users/applogin2.do")
+        Observable<ThirdLoginBean> thirdLoginWeiXinReg(@Query("userName")String userName,@Query("clientWeixinid") String clientQqid);
     }
 
     public  void userRegToNet(String userName, String userPassword, Observer<UserRegBean> observer){
@@ -47,5 +62,16 @@ public class UserSettingNetWorks extends BaseNetWork {
     public void userExit(Observer<BaseBean> observer){
         setSubscribe(service.userExit(),observer);
     }
-
+    public void thirdLoginQQ(String clientQqid,Observer<ThirdLoginBean> observer){
+        setSubscribe(service.thirdLoginQQ(clientQqid),observer);
+    }
+    public void thirdLoginWeiXin(String clientWeixinid,Observer<ThirdLoginBean> observer){
+        setSubscribe(service.thirdLoginWeiXin(clientWeixinid),observer);
+    }
+    public void thirdLoginQQReg(String userName,String clientWeixinid,Observer<ThirdLoginBean> observer){
+        setSubscribe(service.thirdLoginQQReg(userName,clientWeixinid),observer);
+    }
+    public void thirdLoginWeiXinReg(String userName,String clientWeixinid,Observer<ThirdLoginBean> observer){
+        setSubscribe(service.thirdLoginWeiXinReg(userName,clientWeixinid),observer);
+    }
 }

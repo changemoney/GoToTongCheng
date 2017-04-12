@@ -366,7 +366,20 @@
     <color name="color_activity_main_login_reg_submit_green_bg">#befa00</color>
     <color name="color_activity_main_login_reg_input_black_word_bg">#2c2d37</color>
     <!--main login reg-->
-
+    <!--main login thirdlogin-->
+    <color name="color_activity_main_login_thirdlogin_white_word_bg">#ffffff</color>
+    <color name="color_activity_main_login_thirdlogin_input_white_word_bg">#d5d5d7</color>
+    <color name="color_activity_main_login_thirdlogin_gray_word_bg">#56575f</color>
+    <color name="color_activity_main_login_thirdlogin_split_light_black_bg">#56575f</color>
+    <color name="color_activity_main_login_thirdlogin_submit_black_word_bg">#2c2d37</color>
+    <!--main login thirdlogin-->
+    <!--main login thirdlogin tel identify-->
+    <color name="color_activity_main_login_thirdlogin_tel_identify_reg_input_white_word_bg">#ffffff</color>
+    <color name="color_activity_main_login_thirdlogin_tel_identify_input_white_word_bg">#d5d5d7</color>
+    <color name="color_activity_main_login_thirdlogin_tel_identify_gray_word_bg">#56575f</color>
+    <color name="color_activity_main_login_thirdlogin_tel_identify_split_light_black_bg">#56575f</color>
+    <color name="color_activity_main_login_thirdlogin_tel_identify_submit_black_word_bg">#2c2d37</color>
+    <!--main login thirdlogin tel identify-->
     <!--main addressmanage-->
     <color name="color_activity_main_addressmanage_content_light_white_bg">#f5f5f5</color>
     <color name="color_activity_main_addressmanage_topbar_white_word_bg">#ffffff</color>
@@ -473,6 +486,7 @@
     <color name="color_activity_main_myorder_orderstatus_rvitem_second_item_content_address_black_word_bg">#000000</color>
     <color name="color_activity_main_myorder_orderstatus_rvitem_second_item_white_bg">#ffffff</color>
     <color name="color_activity_main_myorder_orderstatus_rvitem_second_item_content_silver_white_bg">#eeeeee</color>
+    <color name="color_activity_main_myorder_orderstatus_bottom_black_bg">#42424b</color>
     <!--main myorder orderstatus-->
 
     <!--main common shoufeibiaozhun-->

@@ -25,6 +25,7 @@ import butterknife.OnClick;
 import butterknife.OnTouch;
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
 import gototongcheng.zhyan.com.library.Bean.MyOrderBean;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
 import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
 import rx.Observer;
 
@@ -107,8 +108,11 @@ public class MyOrderListCompleteRVAdapter extends RecyclerView.Adapter<MyOrderLi
                         float disy = ey - by;
                     /*Toast.makeText(context,"i'm begin:"+disx+" "+disy,Toast.LENGTH_SHORT).show();*/
                         if((disx == 0)&&(disy ==0)){
+                            XCCacheManager xcCacheManager = XCCacheManager.getInstance(context);
+                            XCCacheSavename xcCacheSavename = new XCCacheSavename();
+                            xcCacheManager.writeCache(xcCacheSavename.myOrderOrderStatusOrderNo,tvMyOrderContentTabVPItemRVCompleteItemOrderNo.getText().toString());
                             Intent intent = new Intent(context, OrderStatusActivity.class);
-                            /*context.startActivity(intent);*/
+                            context.startActivity(intent);
                             /*Toast.makeText(context,"i'm click",Toast.LENGTH_SHORT).show();*/
                         }
                         break;

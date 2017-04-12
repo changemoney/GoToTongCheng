@@ -43,6 +43,16 @@
     <string name="register">注册</string>
     <!--main login reg-->
 
+    <!--main login thirdlogin-->
+    <string name="pleaseInputTheTelWhichWantToBind">请输入要绑定的手机号</string>
+    <string name="nextStep">下一步</string>
+    <!--main login thirdlogin-->
+    <!--main login thirdlogin tel identify-->
+    <string name="pleaseInputIdentify">请输入验证码</string>
+<!--    <string name="nextStep">下一步</string>-->
+    <!--main login thirdlogin tel identify-->
+
+
     <!--main addressmanage-->
     <string name="addAddress">添加地址</string>
     <string name="headImageNameTest">胡小姐</string>
@@ -146,6 +156,7 @@
     <!--<string name="orderTime">下单时间</string>-->
     <string name="reachTime">送达时间</string>
     <string name="payMethod">支付方式</string>
+    <string name="waitToSay">等待评价</string>
     <!--main myorder orderstatus-->
 
     <!--main common shoufeibiaozhun-->

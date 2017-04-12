@@ -14,7 +14,6 @@ import com.zhyan.gototongcheng.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import gototongcheng.zhyan.com.library.Utils.PhoneFormatCheckUtils;
 
 /**
  * Created by admin on 2017/3/24.
@@ -116,7 +115,7 @@ public class UserRegActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_userreg_lly);
+        setContentView(R.layout.activity_main_login_userreg_lly);
         init();
     }
     @Override

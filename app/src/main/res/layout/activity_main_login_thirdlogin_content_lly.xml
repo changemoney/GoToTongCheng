@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--请输入手机号码 请输入验证码  android:layout_height="match_parent"-->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/activity_main_login_thirdlogin_input_item_margin_left_right_size"
+        android:layout_marginRight="@dimen/activity_main_login_thirdlogin_input_item_margin_left_right_size"
+        android:layout_marginTop="@dimen/activity_main_login_thirdlogin_input_item_margin_top_size"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_main_login_thirdlogin_input_item_height"
+            android:orientation="horizontal"
+
+
+
+            >
+
+            <RelativeLayout
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/areaNum"
+                    android:textColor="@color/color_activity_main_login_thirdlogin_input_white_word_bg"
+                    android:textSize="@dimen/activity_main_login_input_word_size"
+                    android:layout_centerInParent="true"
+                    />
+
+            </RelativeLayout>
+            <ImageView
+                android:layout_width="@dimen/the_split_line_height"
+                android:layout_height="match_parent"
+                android:background="@color/color_activity_main_login_thirdlogin_gray_word_bg"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                />
+            <RelativeLayout
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+
+                >
+                <EditText
+                    android:id="@+id/et_main_login_thirdlogin_content_tel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:hint="@string/pleaseInputTheTelWhichWantToBind"
+                    android:textSize="@dimen/activity_main_login_thirdlogin_input_word_size"
+                    android:textColor="@color/color_activity_main_login_thirdlogin_white_word_bg"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="20dp"
+
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/the_split_line_height"
+        android:background="@color/color_activity_main_login_thirdlogin_split_light_black_bg"
+        />
+    </LinearLayout>
+
+
+    <!--登录   android:layout_height="@dimen/activity_login_input_item_height"-->
+
+
+        <RelativeLayout
+            android:id="@+id/rly_main_login_thirdlogin_content_nextstep"
+            android:layout_width="@dimen/activity_main_login_thirdlogin_submit_width"
+            android:layout_height="@dimen/activity_main_login_thirdlogin_submit_height"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/activity_main_login_thirdlogin_submit_green_radius"
+            android:layout_marginTop="@dimen/activity_main_login_thirdlogin_submit_margin_top_size"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nextStep"
+                android:textColor="@color/color_activity_main_login_thirdlogin_submit_black_word_bg"
+                android:textSize="@dimen/activity_main_login_thirdlogin_submit_word_size"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
+
+
+    <!--登录-->
+</RelativeLayout>

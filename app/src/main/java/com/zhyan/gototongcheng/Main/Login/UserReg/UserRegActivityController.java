@@ -25,9 +25,9 @@ import rx.Observer;
  */
 
 public class UserRegActivityController extends BaseController {
-    /*验证码秒数*/
+/*    *//*验证码秒数*//*
     int second = 0;
-    /*验证码秒数*/
+    *//*验证码秒数*/
 
     MOBSMSSDKUtil mobsmssdkUtil ;
     private EditText etUserRegContentTel,etUserRegContentPass;

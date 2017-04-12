@@ -238,6 +238,7 @@ public class MainActivityController extends BaseController{
         XCCacheSavename xcCacheSavename = new XCCacheSavename();
         xcCacheManager.writeCache(xcCacheSavename.loginStatus,"no");
         xcCacheManager.writeCache(xcCacheSavename.usid,"");
+        xcCacheManager.writeCache(xcCacheSavename.headUrl,"");
         tvMainLeftMenuName.setText("请登录");
         rivMainLeftMenuHeadImg.setImageResource(R.drawable.activity_main_leftmenu_goto_head);
     }

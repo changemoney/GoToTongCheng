@@ -19,6 +19,7 @@ import com.zhyan.gototongcheng.Main.AddressManage.AddUser.AddressManageAddUserAc
 import com.zhyan.gototongcheng.NetWork.AddressManageNetWorks;
 import com.zhyan.gototongcheng.R;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -231,7 +232,11 @@ public class AddressManageAddUserRVAdapter extends RecyclerView.Adapter<AddressM
                             }
                             @Override
                             public void onNext(List<UserAddressListBean> userAddressListBeen) {
-                                setDataList(userAddressListBeen);
+                                List<UserAddressListBean> userAddressListBeen1 = new ArrayList<UserAddressListBean>();
+                                for(int i=0;i<userAddressListBeen.size();i++){
+                                    userAddressListBeen1.add(userAddressListBeen.get(userAddressListBeen.size()-1-i));
+                                }
+                                setDataList(userAddressListBeen1);
                             }
                         });
                     }

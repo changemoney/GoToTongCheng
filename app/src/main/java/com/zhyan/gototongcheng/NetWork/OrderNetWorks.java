@@ -6,6 +6,7 @@ import java.util.List;
 
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
 import gototongcheng.zhyan.com.library.Bean.MyOrderBean;
+import gototongcheng.zhyan.com.library.Bean.MyOrderOrderStatusBean;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -27,14 +28,20 @@ public class OrderNetWorks extends BaseNetWork {
         final String CACHE_CONTROL_NETWORK = "max-age=0";
         /*用户查询订单列表*/
         //GET请求
-        @GET("/orders/appfind.do")
+        @GET("orders/appfind.do")
         Observable<List<MyOrderBean>> getMyOrderList(@Query("userUsid") String userUsid);
         /*用户查询订单列表*/
 
         /*删除订单*/
-        @GET("/orders/appdeleteone.do")
+        @GET("orders/appdeleteone.do")
         Observable<BaseBean> deleteOrder(@Query("userUsid")String userUsid,@Query("orderNo")String orderNo,@Query("orderCarriage")double orderCarriage);
         /*删除订单*/
+
+        /*用户订单详情*/
+        @GET("orders/appfindone.do")
+        Observable<List<MyOrderOrderStatusBean>> getOrderStatusFromNet(@Query("userUsid")String userUsid,@Query("orderNo")String orderNo);
+        /*用户订单详情*/
+
   /*      //用户登录
         @GET("users/applogin.do")
         Observable<UserLogin> userLogin(@Query("userName") String tel, @Query("userPassword") String pass);
@@ -54,6 +61,12 @@ public class OrderNetWorks extends BaseNetWork {
         setSubscribe(service.deleteOrder(userUsid,orderNo,orderCarriage),observer);
     }
     /*删除订单*/
+    public void getOrderStatusFromNet(String userUsid,String orderNo, Observer<List<MyOrderOrderStatusBean>> observer){
+        setSubscribe(service.getOrderStatusFromNet(userUsid,orderNo),observer);
+    }
+    /*用户订单详情*/
+
+    /*用户订单详情*/
 /*
     public  void userLoginToNet(String userName, String userPassword, Observer<UserLogin> observer){
         setSubscribe(service.userLogin(userName, userPassword),observer);

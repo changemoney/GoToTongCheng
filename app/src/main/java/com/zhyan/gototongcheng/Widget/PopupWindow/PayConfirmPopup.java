@@ -358,7 +358,7 @@ public class PayConfirmPopup extends PopupWindow {
                 @Override
                 public void onNext(HelpMeBuyBean helpMeBuyBean) {
                     /*Toast.makeText(activity,"下单成功",Toast.LENGTH_SHORT).show();*/
-                    /*HelpMeSendBuyNetWorks helpMeSendBuyNetWorks = new HelpMeSendBuyNetWorks();
+                    HelpMeSendBuyNetWorks helpMeSendBuyNetWorks = new HelpMeSendBuyNetWorks();
                     helpMeSendBuyNetWorks.orderPay(1,helpMeBuyBean.getOrderNo(), new Observer<BaseBean>() {
                         @Override
                         public void onCompleted() {
@@ -374,9 +374,9 @@ public class PayConfirmPopup extends PopupWindow {
                         public void onNext(BaseBean baseBean) {
                             Toast.makeText(activity, "" + baseBean.getResult(), Toast.LENGTH_SHORT).show();
                         }
-                    });*/
+                    });
 
-                    goodsName = "走兔订单号:"+helpMeBuyBean.getOrderNo();
+                 /*   goodsName = "走兔订单号:"+helpMeBuyBean.getOrderNo();
 
                     switch (method){
                         case "wx":
@@ -385,7 +385,7 @@ public class PayConfirmPopup extends PopupWindow {
                         case "zfb":
                             zhiFuBaoPay(helpMeBuyBean);
                             break;
-                    }
+                    }*/
 
                       /*Toast.makeText(activity,"goodsName:"+goodsName,Toast.LENGTH_SHORT).show();*/
                 }

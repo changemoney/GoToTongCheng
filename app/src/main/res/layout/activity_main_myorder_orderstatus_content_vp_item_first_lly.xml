@@ -102,6 +102,7 @@
                         >
 
                         <TextView
+                            android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_paysuccess"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/paySuccessful"
@@ -110,6 +111,7 @@
                             android:layout_centerVertical="true"
                             />
                         <TextView
+                            android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_paysuccess_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="11:31"
@@ -164,6 +166,7 @@
                         android:orientation="vertical"
                         >
                         <TextView
+                            android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_bikerstatus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/passerGotOrder"
@@ -173,7 +176,8 @@
                             />
 
                         <TextView
-                            android:id="@+id/tv_fragment_orderstatus_contacttel"
+                            android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_contact_tel"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/contactTel"
@@ -183,17 +187,18 @@
                             />
 
                         <TextView
-                            android:id="@+id/tv_fragment_orderstatus_contacttelnum"
+                            android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_biker_tel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/telTest"
                             android:textSize="14sp"
                             android:textColor="@color/color_activity_main_myorder_orderstatus_content_white_bg"
                             android:layout_marginTop="@dimen/activity_main_myorder_orderstatus_status_item_contacttel_margin_top_size"
-                            android:layout_toRightOf="@id/tv_fragment_orderstatus_contacttel"
+                            android:layout_toRightOf="@id/tv_main_myorder_orderstatus_content_vp_item_first_contact_tel"
                             android:layout_marginLeft="5dp"
                             />
                         <TextView
+                            android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_biker_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="11:50"
@@ -250,6 +255,7 @@
                         >
 
                         <TextView
+                            android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_biker_reachget"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/passerReachPickPoint"
@@ -258,6 +264,7 @@
                             android:layout_centerVertical="true"
                             />
                         <TextView
+                            android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_biker_reachget_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="11:55"
@@ -313,6 +320,7 @@
                         android:orientation="vertical"
                         >
                         <TextView
+                            android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_biker_reachto"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/passerReachPiePoint"
@@ -321,6 +329,7 @@
                             android:layout_centerVertical="true"
                             />
                         <TextView
+                            android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_biker_reachto_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="12:10"
@@ -375,6 +384,7 @@
                         android:orientation="vertical"
                         >
                         <TextView
+                            android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_order_finish"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/orderFinish"
@@ -383,6 +393,7 @@
                             android:layout_centerVertical="true"
                             />
                         <TextView
+                            android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_order_finish_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="12:20"
@@ -677,6 +688,7 @@
                         android:layout_centerHorizontal="true"
                         />
                     <TextView
+                        android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_miles"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5.4km"
@@ -693,7 +705,7 @@
                     android:layout_weight="1"
                     >
                     <TextView
-                        android:id="@+id/tv_fragment_orderstatus_price"
+                        android:id="@+id/tv_main_myorder_orderstatus_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/price"
@@ -707,10 +719,11 @@
                         android:layout_height="@dimen/activity_main_myorder_orderstatus_tabstatus_price_ico_height"
                         android:background="@drawable/activity_main_myorder_orderstatus_priceico"
                         android:layout_marginTop="@dimen/activity_main_myorder_orderstatus_tabstatus_the_firstone_ico_margintop_size"
-                        android:layout_toRightOf="@id/tv_fragment_orderstatus_price"
+                        android:layout_toRightOf="@id/tv_main_myorder_orderstatus_price"
                         android:layout_marginLeft="@dimen/activity_main_myorder_orderstatus_tabstatus_the_firstone_ico_margin_left_size"
                         />
                     <TextView
+                        android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="9.0元"
@@ -737,6 +750,7 @@
                         android:layout_centerHorizontal="true"
                         />
                     <TextView
+                        android:id="@+id/tv_main_myorder_orderstatus_content_vp_item_first_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0h34m"

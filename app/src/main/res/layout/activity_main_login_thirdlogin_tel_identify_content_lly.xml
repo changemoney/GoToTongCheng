@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--请输入手机号码 请输入验证码  android:layout_height="match_parent"-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/activity_main_login_thirdlogin_tel_identify_input_item_margin_left_right_size"
+        android:layout_marginRight="@dimen/activity_main_login_thirdlogin_tel_identify_input_item_margin_left_right_size"
+        android:layout_marginTop="@dimen/activity_main_login_thirdlogin_tel_identify_input_item_margin_top_size"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_main_login_thirdlogin_tel_identify_reg_input_item_height"
+            android:orientation="horizontal"
+            >
+            <EditText
+                android:id="@+id/et_main_login_thirdlogin_tel_identify_userreg_content_identify"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="2.5"
+                android:hint="@string/inputConfirmNum"
+                android:textColor="@color/color_activity_main_login_thirdlogin_tel_identify_reg_input_white_word_bg"
+                android:textSize="@dimen/activity_main_login_thirdlogin_tel_identify_reg_input_word_size"
+                android:background="@null"
+
+                />
+            <RelativeLayout
+                android:id="@+id/rly_main_login_thirdlogin_tel_identify_userreg_content_getidentify"
+                android:layout_width="@dimen/zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/tv_main_login_thirdlogin_tel_identify_content_smsec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/getConfirmNum"
+                    android:textColor="@color/color_activity_main_login_thirdlogin_tel_identify_reg_input_white_word_bg"
+                    android:textSize="@dimen/activity_main_login_thirdlogin_tel_identify_reg_input_word_size"
+                    android:background="@null"
+                    android:layout_centerInParent="true"
+                    />
+
+            </RelativeLayout>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/the_split_line_height"
+            android:background="@color/color_activity_main_login_thirdlogin_tel_identify_split_light_black_bg"
+            />
+    </LinearLayout>
+
+
+    <!--登录   android:layout_height="@dimen/activity_login_input_item_height"-->
+
+
+        <RelativeLayout
+            android:id="@+id/rly_main_login_thirdlogin_tel_identify_reg_submit"
+            android:layout_width="@dimen/activity_main_login_thirdlogin_tel_identify_submit_width"
+            android:layout_height="@dimen/activity_main_login_thirdlogin_tel_identify_submit_height"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/activity_main_login_thirdlogin_tel_identify_submit_green_radius"
+            android:layout_marginTop="@dimen/activity_main_login_thirdlogin_tel_identify_submit_margin_top_size"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nextStep"
+                android:textColor="@color/color_activity_main_login_thirdlogin_tel_identify_submit_black_word_bg"
+                android:textSize="@dimen/activity_main_login_thirdlogin_tel_identify_submit_word_size"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
+
+
+    <!--登录-->
+</RelativeLayout>
