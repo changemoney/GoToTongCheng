@@ -53,6 +53,7 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
 
     private int currentIndex = 0;
     private static int maxsize = 24;
+    private static int middlesize = 19;
     private static int minsize = 14;
     private ArrayList<View> arrayList = new ArrayList<View>();
 
@@ -76,7 +77,7 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
      *            when instantiating items views
      */
     protected AbstractWheelTextAdapter(Context context, int itemResource) {
-        this(context, itemResource, NO_RESOURCE, 0, maxsize, minsize);
+        this(context, itemResource, NO_RESOURCE, 0, maxsize,middlesize, minsize);
     }
 
     /**
@@ -91,12 +92,13 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
      *            the resource ID for a text view in the item layout
      */
     protected AbstractWheelTextAdapter(Context context, int itemResource, int itemTextResource, int currentIndex,
-                                       int maxsize, int minsize) {
+                                       int maxsize,int middlesize, int minsize) {
         this.context = context;
         itemResourceId = itemResource;
         itemTextResourceId = itemTextResource;
         this.currentIndex = currentIndex;
         this.maxsize = maxsize;
+        this.middlesize = middlesize;
         this.minsize = minsize;
 
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -234,6 +236,8 @@ public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
 
                 if (index == currentIndex) {
                     textView.setTextSize(maxsize);
+                }else if((index == (currentIndex -1))||(index == (currentIndex +1))){
+                    textView.setTextSize(middlesize);
                 } else {
                     textView.setTextSize(minsize);
                 }

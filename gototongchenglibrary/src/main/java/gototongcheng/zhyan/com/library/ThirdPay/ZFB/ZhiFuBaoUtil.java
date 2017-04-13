@@ -133,7 +133,7 @@ public class ZhiFuBaoUtil {
      *
      * @param v
      */
-    public void payV2(View v,String goodsName,String price) {
+    public void payV2(View v,String goodsName,String price,String outTradeNo) {
         if (TextUtils.isEmpty(APPID) || (TextUtils.isEmpty(RSA2_PRIVATE) && TextUtils.isEmpty(RSA_PRIVATE))) {
             new AlertDialog.Builder(activity).setTitle("警告").setMessage("需要配置APPID | RSA_PRIVATE")
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -154,7 +154,7 @@ public class ZhiFuBaoUtil {
          */
         boolean rsa2 = (RSA2_PRIVATE.length() > 0);
         /*price = "0.01";*/
-        Map<String, String> params = OrderInfoUtil2_0.buildOrderParamMap(APPID, rsa2,goodsName,price);
+        Map<String, String> params = OrderInfoUtil2_0.buildOrderParamMap(APPID, rsa2,goodsName,price,outTradeNo);
         String orderParam = OrderInfoUtil2_0.buildOrderParam(params);
 
         String privateKey = rsa2 ? RSA2_PRIVATE : RSA_PRIVATE;

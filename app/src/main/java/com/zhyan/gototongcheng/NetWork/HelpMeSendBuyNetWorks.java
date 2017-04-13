@@ -36,7 +36,7 @@ public class HelpMeSendBuyNetWorks extends BaseNetWork {
         *//*订单提交*/
         /*支付*/
         @GET("orders/apppaysave.do")
-        Observable<BaseBean> orderPay(@Query("paystatusId") int paystatusId, @Query("orderNo") String orderNo);
+        Observable<BaseBean> orderPay(@Query("paystatusId") int paystatusId, @Query("orderNo") String orderNo,@Query("orderPayway") String orderPayway,@Query("orderPaywayno") String orderPaywayno);
         /*支付*/
 
     /*        @GET("orders/appsave.do")
@@ -56,8 +56,8 @@ public class HelpMeSendBuyNetWorks extends BaseNetWork {
     }
     *//*订单提交*/
     /*订单支付*/
-    public void orderPay( int paystatusId, String orderNo,Observer<BaseBean> observer){
-        setSubscribe(service.orderPay(paystatusId,orderNo),observer);
+    public void orderPay( int paystatusId, String orderNo,String orderPayway, String orderPaywayno,Observer<BaseBean> observer){
+        setSubscribe(service.orderPay(paystatusId,orderNo,orderPayway,orderPaywayno),observer);
     }
     /*订单支付*/
     /*public  void orderUpdate( String usid, String address, String address1, String orderHeight, String orderName, String orderTimeliness, String orderRemark, String orderOrderprice, String orderMileage, String clientaddrArea, String detailsGoodsname, Observer<HelpMeBuyBean> observer){

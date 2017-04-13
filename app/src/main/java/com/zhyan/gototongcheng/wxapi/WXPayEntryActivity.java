@@ -111,9 +111,10 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler{
 		XCCacheManager xcCacheManager = XCCacheManager.getInstance(this);
 		XCCacheSavename xcCacheSavename = new XCCacheSavename();
 		String orderNo = xcCacheManager.readCache(xcCacheSavename.WXPayTempOrderNo);
-		if(orderNo != null) {
+		String nonceStr = xcCacheManager.readCache(xcCacheSavename.weixinPayNonceStr);
+		if((orderNo != null)&&(nonceStr != null)) {
 			HelpMeSendBuyNetWorks helpMeSendBuyNetWorks = new HelpMeSendBuyNetWorks();
-			helpMeSendBuyNetWorks.orderPay(1, orderNo, new Observer<BaseBean>() {
+			helpMeSendBuyNetWorks.orderPay(1, orderNo,"微信",nonceStr, new Observer<BaseBean>() {
 				@Override
 				public void onCompleted() {
 

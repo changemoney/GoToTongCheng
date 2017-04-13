@@ -34,6 +34,9 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.conn.util.InetAddressUtils;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
+import gototongcheng.zhyan.com.library.Common.XCCacheSavename;
+import gototongcheng.zhyan.com.library.DBCache.XCCacheManager.xccache.XCCacheManager;
+
 /**
  * 创建人 : skyCracks<br>
  * 创建时间 : 2016-7-18上午11:02:34<br>
@@ -178,6 +181,9 @@ public class WeChatPayService {
 	 */
 	public String genEntity() {
 		String nonceStr = genNonceStr();
+		XCCacheManager xcCacheManager = XCCacheManager.getInstance(context);
+		XCCacheSavename xcCacheSavename = new XCCacheSavename();
+		xcCacheManager.writeCache(xcCacheSavename.weixinPayNonceStr,nonceStr);
 		List<NameValuePair> packageParams = new ArrayList<NameValuePair>();
 		// APPID
 		packageParams

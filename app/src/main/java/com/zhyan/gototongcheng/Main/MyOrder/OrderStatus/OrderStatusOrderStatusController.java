@@ -106,7 +106,7 @@ public class OrderStatusOrderStatusController extends BaseController {
 
                 @Override
                 public void onNext(List<MyOrderOrderStatusBean> myOrderOrderStatusBeen) {
-                    /*Toast.makeText(view.getContext(),"this is orderstatus:"+myOrderOrderStatusBeen.get(0).getOrderstatusOrderstatus(),Toast.LENGTH_SHORT).show();*/
+                    Toast.makeText(view.getContext(),"this is orderstatus:"+myOrderOrderStatusBeen.get(0).getOrderstatusOrderstatus(),Toast.LENGTH_SHORT).show();
                     if(myOrderOrderStatusBeen == null){
                         return;
                     }
@@ -118,7 +118,7 @@ public class OrderStatusOrderStatusController extends BaseController {
 
     private void initOrderStatus(List<MyOrderOrderStatusBean> myOrderOrderStatusBean){
         tvMainMyOrderOrderStatusContentVPItemFirstMiles.setText(""+myOrderOrderStatusBean.get(0).getOrderMileage()+"km");
-        tvMainMyOrderOrderStatusContentVPItemFirstPrice.setText(""+myOrderOrderStatusBean.get(0).getOrderOrderprice());
+        tvMainMyOrderOrderStatusContentVPItemFirstPrice.setText(""+myOrderOrderStatusBean.get(0).getOrderOrderprice()+"元");
         String time = myOrderOrderStatusBean.get(0).getOrderOrdertime().split(" ")[1];
         tvMainMyOrderOrderStatusContentVPItemFirstTime.setText(""+time);
         tvMainMyOrderOrderStatusContentVPItemFirstPaySuccess.setText(""+myOrderOrderStatusBean.get(0).getPaystatusPaystatus());

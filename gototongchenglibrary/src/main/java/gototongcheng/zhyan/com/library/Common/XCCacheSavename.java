@@ -32,4 +32,6 @@ public class XCCacheSavename {
 
 
     public String myOrderOrderStatusOrderNo = "myOrderOrderStatusOrderNo";
+
+    public String weixinPayNonceStr ="weixinPayNonceStr";
 }

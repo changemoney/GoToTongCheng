@@ -85,6 +85,7 @@ public class HourMinTimePopup extends PopupWindow {
     /*数据填充器 adapter*/
     /*字体大小*/
     private int maxTextSize = 19;
+    private int middleTextSize = 14;
     private int minTextSize = 9;
     /*字体大小*/
 
@@ -474,27 +475,27 @@ public class HourMinTimePopup extends PopupWindow {
     /*数据填充初始化*/
     private void initAdapter(){
 
-        mDayAdapter = new CalendarTextAdapter(activity,day1List,setDay1(currentDay1),maxTextSize,minTextSize);
+        mDayAdapter = new CalendarTextAdapter(activity,day1List,setDay1(currentDay1),maxTextSize,middleTextSize,minTextSize);
 
         wvPopupFourWheelDay.setVisibleItems(10);
         wvPopupFourWheelDay.setViewAdapter(mDayAdapter);
         wvPopupFourWheelDay.setCurrentItem(setDay1(currentDay1));
         /*Toast.makeText(activity,"this is current day1"+currentDay1,Toast.LENGTH_SHORT).show();*/
 
-        mAMPMAdapter = new CalendarTextAdapter(activity,AMPMList,setAMPM(currentAMPM),maxTextSize,minTextSize);
+        mAMPMAdapter = new CalendarTextAdapter(activity,AMPMList,setAMPM(currentAMPM),maxTextSize,middleTextSize,minTextSize);
         wvPopupFourWheelAMPM.setVisibleItems(10);
         wvPopupFourWheelAMPM.setViewAdapter(mAMPMAdapter);
 
         wvPopupFourWheelAMPM.setCurrentItem(setAMPM(currentAMPM));
 
-        hourAdapter = new CalendarTextAdapter(activity,hourList,setHour(currentHour),maxTextSize,minTextSize);
+        hourAdapter = new CalendarTextAdapter(activity,hourList,setHour(currentHour),maxTextSize,middleTextSize,minTextSize);
 
         wvPopupFourWheelHour.setVisibleItems(10);
         wvPopupFourWheelHour.setViewAdapter(hourAdapter);
 
         wvPopupFourWheelHour.setCurrentItem(0);
 
-        minAdapter = new CalendarTextAdapter(activity,minList,setMin(currentMin),maxTextSize,minTextSize);
+        minAdapter = new CalendarTextAdapter(activity,minList,setMin(currentMin),maxTextSize,middleTextSize,minTextSize);
         wvPopupFourWheelMin.setVisibleItems(10);
         wvPopupFourWheelMin.setViewAdapter(minAdapter);
         wvPopupFourWheelMin.setCurrentItem(0);
@@ -532,9 +533,15 @@ public class HourMinTimePopup extends PopupWindow {
             @Override
             public void onChanged(WheelView wheel, int oldValue, int newValue) {
                 String currentDay1 = mDayAdapter.getItemText(wheel.getCurrentItem()).toString();
+                String preDay1 = null;
+                String nextDay1 = null;
+                if((wheel.getCurrentItem() > 0)&&(wheel.getCurrentItem() < (day1List.size() - 1))){
+                   preDay1 = mDayAdapter.getItemText(wheel.getCurrentItem() - 1).toString();
+                    nextDay1 = mDayAdapter.getItemText(wheel.getCurrentItem() + 1).toString();
+                }
                 if(currentDay1 != null) {
                     selectDay1 = currentDay1;
-                    setTextviewSize(currentDay1, mDayAdapter);
+                    setTextviewSize(currentDay1,preDay1,nextDay1, mDayAdapter);
 
                     setDay1(currentDay1);
                 }
@@ -544,7 +551,15 @@ public class HourMinTimePopup extends PopupWindow {
             @Override
             public void onScrollingStarted(WheelView wheel) {
                 String currentDay1 = (String)mDayAdapter.getItemText(wheel.getCurrentItem());
-                setTextviewSize(currentDay1,mDayAdapter);
+                String preDay1 = null;
+                String nextDay1 = null;
+                if((wheel.getCurrentItem() > 0)&&(wheel.getCurrentItem() < (day1List.size() - 1))){
+                    preDay1 = mDayAdapter.getItemText(wheel.getCurrentItem() - 1).toString();
+                    nextDay1 = mDayAdapter.getItemText(wheel.getCurrentItem() + 1).toString();
+                }
+
+                setTextviewSize(currentDay1,preDay1,nextDay1, mDayAdapter);
+                /*setTextviewSize(currentDay1,null,null,mDayAdapter);*/
             }
 
             @Override
@@ -558,7 +573,7 @@ public class HourMinTimePopup extends PopupWindow {
                 String currentAMPM = mAMPMAdapter.getItemText(wheel.getCurrentItem()).toString();
                 if(currentAMPM != null) {
                     selectAMPM = currentAMPM;
-                    setTextviewSize(currentAMPM, mAMPMAdapter);
+                    setTextviewSize(currentAMPM,null,null, mAMPMAdapter);
 
                     setAMPM(currentAMPM);
                 }
@@ -568,7 +583,7 @@ public class HourMinTimePopup extends PopupWindow {
             @Override
             public void onScrollingStarted(WheelView wheel) {
                 String currentAMPM = (String)mAMPMAdapter.getItemText(wheel.getCurrentItem());
-                setTextviewSize(currentAMPM,mAMPMAdapter);
+                setTextviewSize(currentAMPM,null,null,mAMPMAdapter);
             }
 
             @Override
@@ -580,9 +595,15 @@ public class HourMinTimePopup extends PopupWindow {
             @Override
             public void onChanged(WheelView wheel, int oldValue, int newValue) {
                 String currentHour = hourAdapter.getItemText(wheel.getCurrentItem()).toString();
+                String preHour = null;
+                String nextHour = null;
+                if((wheel.getCurrentItem() > 0)&&(wheel.getCurrentItem() < (hourList.size() - 1))){
+                    preHour = hourAdapter.getItemText(wheel.getCurrentItem() - 1).toString();
+                    nextHour = hourAdapter.getItemText(wheel.getCurrentItem() + 1).toString();
+                }
                 if(currentHour != null) {
                     selectHour = currentHour;
-                    setTextviewSize(currentHour, hourAdapter);
+                    setTextviewSize(currentHour,preHour,nextHour, hourAdapter);
 
                     setHour(Integer.valueOf(currentHour));
                 }
@@ -592,7 +613,14 @@ public class HourMinTimePopup extends PopupWindow {
             @Override
             public void onScrollingStarted(WheelView wheel) {
                 String currentHour = (String)hourAdapter.getItemText(wheel.getCurrentItem());
-                setTextviewSize(currentHour,hourAdapter);
+                String preHour = null;
+                String nextHour = null;
+                if((wheel.getCurrentItem() > 0)&&(wheel.getCurrentItem() < (hourList.size() - 1))){
+                    preHour = hourAdapter.getItemText(wheel.getCurrentItem() - 1).toString();
+                    nextHour = hourAdapter.getItemText(wheel.getCurrentItem() + 1).toString();
+                }
+                setTextviewSize(currentHour,preHour,nextHour, hourAdapter);
+                /*setTextviewSize(currentHour,hourAdapter);*/
             }
 
             @Override
@@ -607,9 +635,15 @@ public class HourMinTimePopup extends PopupWindow {
             @Override
             public void onChanged(WheelView wheel, int oldValue, int newValue) {
                 String currentMin = minAdapter.getItemText(wheel.getCurrentItem()).toString();
+                String preMin = null;
+                String nextMin = null;
+                if((wheel.getCurrentItem() > 0)&&(wheel.getCurrentItem() < (minList.size() - 1))){
+                    preMin = minAdapter.getItemText(wheel.getCurrentItem() - 1).toString();
+                    nextMin = minAdapter.getItemText(wheel.getCurrentItem() + 1).toString();
+                }
                 if(currentMin != null) {
                     selectMin = currentMin;
-                    setTextviewSize(currentMin, minAdapter);
+                    setTextviewSize(currentMin,preMin,nextMin, minAdapter);
 
                     setMin(Integer.valueOf(selectMin));
                 }
@@ -619,7 +653,13 @@ public class HourMinTimePopup extends PopupWindow {
             @Override
             public void onScrollingStarted(WheelView wheel) {
                 String currentMin = (String)minAdapter.getItemText(wheel.getCurrentItem());
-                setTextviewSize(currentMin,minAdapter);
+                String preMin = null;
+                String nextMin = null;
+                if((wheel.getCurrentItem() > 0)&&(wheel.getCurrentItem() < (minList.size() - 1))){
+                    preMin = minAdapter.getItemText(wheel.getCurrentItem() - 1).toString();
+                    nextMin = minAdapter.getItemText(wheel.getCurrentItem() + 1).toString();
+                }
+                setTextviewSize(currentMin,preMin,nextMin, minAdapter);
             }
 
             @Override
@@ -647,17 +687,52 @@ public class HourMinTimePopup extends PopupWindow {
      * @param curriteItemText
      * @param adapter
      */
-    public void setTextviewSize(String curriteItemText, CalendarTextAdapter adapter) {
+    public void setTextviewSize(String curriteItemText,String preItemText1,String nextItemText1, CalendarTextAdapter adapter) {
         ArrayList<View> arrayList = adapter.getTestViews();
         int size = arrayList.size();
         String currentText;
+        TextView textViewP=null,textViewN=null;
+        String preItemText="",nextItemText="";
         for (int i = 0; i < size; i++) {
             TextView textvew = (TextView) arrayList.get(i);
+            if((i > 0)&&(i < size -1)) {
+                textViewP = (TextView) arrayList.get(i - 1);
+                textViewN = (TextView) arrayList.get(i + 1);
+                preItemText = textViewP.getText().toString();
+                nextItemText = textViewN.getText().toString();
+            }
+            if(i == 0){
+                textViewN = (TextView) arrayList.get(i + 1);
+            }
+            if(i == size-1){
+                textViewP = (TextView) arrayList.get(i - 1);
+            }
             currentText = textvew.getText().toString();
-            if (curriteItemText.equals(currentText)) {
-                textvew.setTextSize(maxTextSize);
-            } else {
-                textvew.setTextSize(minTextSize);
+            if((textViewP != null)) {
+                if (curriteItemText.equals(currentText)) {
+                    textvew.setTextSize(maxTextSize);
+                }else {
+                    textvew.setTextSize(minTextSize);
+                }
+                if (preItemText.equals(preItemText1)) {
+                    textViewP.setTextSize(middleTextSize);
+                }
+            }else if((textViewN != null)){
+                if (curriteItemText.equals(currentText)) {
+                    textvew.setTextSize(maxTextSize);
+                }  else {
+                    textvew.setTextSize(minTextSize);
+                }
+                if(nextItemText.equals(nextItemText1)){
+                    textViewN.setTextSize(middleTextSize);
+                }
+            }
+            else{
+                if (curriteItemText.equals(currentText)) {
+                    textvew.setTextSize(maxTextSize);
+                } else {
+                    textvew.setTextSize(minTextSize);
+                }
             }
         }
     }
@@ -705,8 +780,8 @@ public class HourMinTimePopup extends PopupWindow {
     private class CalendarTextAdapter extends AbstractWheelTextAdapter {
         List<String> dateList;
 
-        protected CalendarTextAdapter(Context context, List<String> list, int currentItem, int maxsize, int minsize) {
-            super(context, R.layout.popupdialog_wheel_item, NO_RESOURCE, currentItem, maxsize, minsize);
+        protected CalendarTextAdapter(Context context, List<String> list, int currentItem, int maxsize,int middlesize, int minsize) {
+            super(context, R.layout.popupdialog_wheel_item, NO_RESOURCE, currentItem, maxsize,middlesize, minsize);
             this.dateList = list;
             setItemTextResource(R.id.tv_dialogpopup_wheel_item);
         }

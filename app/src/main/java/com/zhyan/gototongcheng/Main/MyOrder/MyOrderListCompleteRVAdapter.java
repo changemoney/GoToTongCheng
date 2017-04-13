@@ -74,8 +74,8 @@ public class MyOrderListCompleteRVAdapter extends RecyclerView.Adapter<MyOrderLi
         initHoldData(holder,position);
     }
     private void initHoldData(MyHoldView holdView,int pos){
-        holdView.tvMyOrderContentTabVPItemRVCompleteItemBeginAddr.setText(myOrderBeanList.get(pos).getClientaddrAddr1());
-        holdView.tvMyOrderContentTabVPItemRVCompleteItemEndAddr.setText(myOrderBeanList.get(pos).getClientaddrAddr());
+        holdView.tvMyOrderContentTabVPItemRVCompleteItemBeginAddr.setText(myOrderBeanList.get(pos).getClientaddrAddr());
+        holdView.tvMyOrderContentTabVPItemRVCompleteItemEndAddr.setText(myOrderBeanList.get(pos).getClientaddrAddr1());
         holdView.tvMyOrderContentTabVPItemRVCompleteItemOrderNo.setText(myOrderBeanList.get(pos).getOrderNo());
         holdView.pos = pos;
         holdView.tvMyOrderContentTabVPItemRVCompleteItemOrderTime.setText(myOrderBeanList.get(pos).getOrderOrdertime());
@@ -112,7 +112,7 @@ public class MyOrderListCompleteRVAdapter extends RecyclerView.Adapter<MyOrderLi
                             XCCacheSavename xcCacheSavename = new XCCacheSavename();
                             xcCacheManager.writeCache(xcCacheSavename.myOrderOrderStatusOrderNo,tvMyOrderContentTabVPItemRVCompleteItemOrderNo.getText().toString());
                             Intent intent = new Intent(context, OrderStatusActivity.class);
-                            context.startActivity(intent);
+                           /* context.startActivity(intent);*/
                             /*Toast.makeText(context,"i'm click",Toast.LENGTH_SHORT).show();*/
                         }
                         break;

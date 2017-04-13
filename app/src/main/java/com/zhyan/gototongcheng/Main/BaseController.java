@@ -8,6 +8,9 @@ import android.view.View;
  */
 
 public abstract class BaseController {
+
+
+
     protected Activity activity;
     protected View view;
     public abstract void init();

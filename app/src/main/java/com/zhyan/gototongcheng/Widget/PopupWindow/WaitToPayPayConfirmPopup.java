@@ -15,6 +15,11 @@ import android.widget.Toast;
 import com.zhyan.gototongcheng.NetWork.HelpMeSendBuyNetWorks;
 import com.zhyan.gototongcheng.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Random;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -234,9 +239,9 @@ public class WaitToPayPayConfirmPopup extends PopupWindow {
     /*微信支付*/
     /*支付宝支付*/
     public void zhiFuBaoPay(final MyOrderBean myOrderBean){
-
+        final String outTradeNo = getOutTradeNo();
 /*Toast.makeText(activity, " onCompleted mPopView:"+goodsName+price, Toast.LENGTH_LONG).show();*/
-        zhiFuBaoUtil.payV2(mPopView, goodsName, ""+dPrice);
+        zhiFuBaoUtil.payV2(mPopView, goodsName, ""+dPrice,outTradeNo);
                     /*去支付金钱*/
         zhiFuBaoUtil.setOnPaySuccessfulListener(new ZhiFuBaoUtil.OnPaySuccessfulListener() {
             @Override
@@ -244,7 +249,7 @@ public class WaitToPayPayConfirmPopup extends PopupWindow {
                 HelpMeSendBuyNetWorks helpMeSendBuyNetWorks = new HelpMeSendBuyNetWorks();
                     /*Toast.makeText(activity," 我成功啦 isSuccessful:"+isSuccessful,Toast.LENGTH_LONG).show();*/
                 if (isSuccessful) {
-                    helpMeSendBuyNetWorks.orderPay(1,myOrderBean.getOrderNo(), new Observer<BaseBean>() {
+                    helpMeSendBuyNetWorks.orderPay(1,myOrderBean.getOrderNo(),"支付宝",outTradeNo, new Observer<BaseBean>() {
                         @Override
                         public void onCompleted() {
 
@@ -352,6 +357,19 @@ public class WaitToPayPayConfirmPopup extends PopupWindow {
 
     }
     /*下单给后台*/
+    /**
+     * 要求外部订单号必须唯一。
+     * @return
+     */
+    private  String getOutTradeNo() {
+        SimpleDateFormat format = new SimpleDateFormat("MMddHHmmss", Locale.getDefault());
+        Date date = new Date();
+        String key = format.format(date);
 
+        Random r = new Random();
+        key = key + r.nextInt();
+        key = key.substring(0, 15);
+        return key;
+    }
 
 }

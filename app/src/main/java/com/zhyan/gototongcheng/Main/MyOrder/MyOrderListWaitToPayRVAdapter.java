@@ -76,8 +76,8 @@ public class MyOrderListWaitToPayRVAdapter extends RecyclerView.Adapter<MyOrderL
         initHoldData(holder,position);
     }
     private void initHoldData(MyHoldView holdView,int pos){
-        holdView.tvMyOrderContentTabVPWaitToPayItemRVItemBeginAddr.setText(myOrderBeanList.get(pos).getClientaddrAddr1());
-        holdView.tvMyOrderContentTabVPWaitToPayItemRVItemEndAddr.setText(myOrderBeanList.get(pos).getClientaddrAddr());
+        holdView.tvMyOrderContentTabVPWaitToPayItemRVItemBeginAddr.setText(myOrderBeanList.get(pos).getClientaddrAddr());
+        holdView.tvMyOrderContentTabVPWaitToPayItemRVItemEndAddr.setText(myOrderBeanList.get(pos).getClientaddrAddr1());
         holdView.tvMyOrderContentTabVPWaitToPayItemRVItemOrderNo.setText(myOrderBeanList.get(pos).getOrderNo());
         holdView.pos = pos;
         holdView.tvMyOrderContentTabVPWaitToPayItemRVItemOrderTime.setText(myOrderBeanList.get(pos).getOrderOrdertime());
