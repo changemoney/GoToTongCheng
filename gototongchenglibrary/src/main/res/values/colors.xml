@@ -364,4 +364,8 @@
     <!--main login thirdlogin tel identify-->
     <color name="color_activity_main_login_thirdlogin_tel_identify_submit_green_bg">#befa00</color>
     <!--main login thirdlogin tel identify-->
+
+    <!--baidumap overly-->
+    <color name="baidumap_overly_gray_bg">#DCDCDC</color>
+    <!--baidumap overly-->
 </resources>

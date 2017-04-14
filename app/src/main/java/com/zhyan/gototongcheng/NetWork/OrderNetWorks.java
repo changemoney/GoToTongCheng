@@ -4,6 +4,7 @@ import com.zhyan.gototongcheng.NetWork.Base.BaseNetWork;
 
 import java.util.List;
 
+import gototongcheng.zhyan.com.library.Bean.AngelAnidLocBean;
 import gototongcheng.zhyan.com.library.Bean.BaseBean;
 import gototongcheng.zhyan.com.library.Bean.MyOrderBean;
 import gototongcheng.zhyan.com.library.Bean.MyOrderOrderStatusBean;
@@ -42,6 +43,10 @@ public class OrderNetWorks extends BaseNetWork {
         Observable<List<MyOrderOrderStatusBean>> getOrderStatusFromNet(@Query("userUsid")String userUsid,@Query("orderNo")String orderNo);
         /*用户订单详情*/
 
+        /*获取跑腿员经纬度*/
+        @GET("staffll/findstaffll.do")
+        Observable<List<AngelAnidLocBean>> getAngelAnidLocFromNet(@Query("angelAnid") String angelAnid);
+
   /*      //用户登录
         @GET("users/applogin.do")
         Observable<UserLogin> userLogin(@Query("userName") String tel, @Query("userPassword") String pass);
@@ -61,12 +66,18 @@ public class OrderNetWorks extends BaseNetWork {
         setSubscribe(service.deleteOrder(userUsid,orderNo,orderCarriage),observer);
     }
     /*删除订单*/
+    /*用户订单详情*/
     public void getOrderStatusFromNet(String userUsid,String orderNo, Observer<List<MyOrderOrderStatusBean>> observer){
         setSubscribe(service.getOrderStatusFromNet(userUsid,orderNo),observer);
     }
     /*用户订单详情*/
 
-    /*用户订单详情*/
+    /*获取跑腿员经纬度*/
+    public void getAngelAnidLocFromNet(String angelAnid,Observer<List<AngelAnidLocBean>> observer){
+        setSubscribe(service.getAngelAnidLocFromNet(angelAnid),observer);
+    }
+    /*获取跑腿员经纬度*/
+
 /*
     public  void userLoginToNet(String userName, String userPassword, Observer<UserLogin> observer){
         setSubscribe(service.userLogin(userName, userPassword),observer);

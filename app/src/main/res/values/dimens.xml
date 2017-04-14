@@ -412,6 +412,13 @@
     <dimen name="activity_main_myorder_orderstatus_content_rvitem_second_item_peisongxinxi_item_content_word_size">10sp</dimen>
     <dimen name="activity_main_myorder_orderstatus_content_rvitem_second_item_peisongxinxi_item_content_split_line_margin_left_size">25dp</dimen>
     <dimen name="activity_main_myorder_orderstatus_content_rvitem_second_item_peisongxinxi_item_margin_bottom_size">30dp</dimen>
+
+
+
+    <dimen name="activity_main_myorder_orderstatus_content_gps_loc_mark_width">30dp</dimen>
+    <dimen name="activity_main_myorder_orderstatus_content_gps_loc_mark_height">30dp</dimen>
+    <dimen name="activity_main_myorder_orderstatus_content_gps_loc_mark_margin_right_size">10dp</dimen>
+    <dimen name="activity_main_myorder_orderstatus_content_gps_loc_mark_margin_top_size">10dp</dimen>
 <!--    <dimen name="activity_main_myorder_orderstatus_content_rvitem_second_item"
     <dimen name="activity_main_myorder_orderstatus_content_rvitem_second_item"
     <dimen name="activity_main_myorder_orderstatus_content_rvitem_second_item"-->

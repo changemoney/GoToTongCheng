@@ -112,7 +112,7 @@ public class MyOrderListCompleteRVAdapter extends RecyclerView.Adapter<MyOrderLi
                             XCCacheSavename xcCacheSavename = new XCCacheSavename();
                             xcCacheManager.writeCache(xcCacheSavename.myOrderOrderStatusOrderNo,tvMyOrderContentTabVPItemRVCompleteItemOrderNo.getText().toString());
                             Intent intent = new Intent(context, OrderStatusActivity.class);
-                           /* context.startActivity(intent);*/
+                         /*   context.startActivity(intent);*/
                             /*Toast.makeText(context,"i'm click",Toast.LENGTH_SHORT).show();*/
                         }
                         break;

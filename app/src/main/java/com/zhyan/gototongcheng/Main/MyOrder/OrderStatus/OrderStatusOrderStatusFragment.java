@@ -38,4 +38,9 @@ public class OrderStatusOrderStatusFragment extends Fragment {
         /*Toast.makeText(view.getContext(),"this is onResume",Toast.LENGTH_LONG).show();*/
         orderStatusOrderStatusController.onResume();
     }
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        orderStatusOrderStatusController.onDestroy();
+    }
 }

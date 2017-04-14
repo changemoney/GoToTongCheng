@@ -148,6 +148,7 @@ public class MainFragment extends Fragment {
     private View view ;
     /*InitLoop initLoop;*/
     private AutoPlayManager mAutoPlayManager;
+    private LoopViewPage loopViewPage;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -207,7 +208,7 @@ public class MainFragment extends Fragment {
 
     private void initView() {
    /*     LoopViewPage loopViewPage = new LoopViewPage(view.getContext());*/
-        LoopViewPage loopViewPage = new LoopViewPage(view.getContext(),vpMainContent,llyMainContentPoints);
+        loopViewPage = new LoopViewPage(view.getContext(),vpMainContent,llyMainContentPoints);
     }
 
 }

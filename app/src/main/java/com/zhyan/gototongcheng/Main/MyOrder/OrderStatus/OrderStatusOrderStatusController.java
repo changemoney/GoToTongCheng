@@ -1,6 +1,7 @@
 package com.zhyan.gototongcheng.Main.MyOrder.OrderStatus;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,7 +55,7 @@ public class OrderStatusOrderStatusController extends BaseController {
     TextView tvMainMyOrderOrderStatusContentVPItemFirstOrderFinishTime;
 
     /*首页控件*/
-
+    private InitOrderStatusOrderStatusBaiduMap orderStatusBaiduMap;
     public OrderStatusOrderStatusController(View view1){
         view = view1;
         /*Toast.makeText(view.getContext(),"this is orderstatus:1",Toast.LENGTH_SHORT).show();*/
@@ -67,31 +68,19 @@ public class OrderStatusOrderStatusController extends BaseController {
         /*tvMainMyOrderOrderStatusContentVPItemFirstMiles.setText("fffffffffffffffffffff");*/
         /*Toast.makeText(view.getContext(),"this is orderstatus:2",Toast.LENGTH_SHORT).show();*/
         getOrderStatusFromNet();
+
         /*Toast.makeText(view.getContext(),"this is orderstatus:3",Toast.LENGTH_SHORT).show();*/
     }
 
     /*初始化订单状态*/
     private void getOrderStatusFromNet(){
-        XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
-        XCCacheSavename xcCacheSavename = new XCCacheSavename();
+        final XCCacheManager xcCacheManager = XCCacheManager.getInstance(activity);
+        final XCCacheSavename xcCacheSavename = new XCCacheSavename();
         String orderNo = xcCacheManager.readCache(xcCacheSavename.myOrderOrderStatusOrderNo);
         String userUsid = xcCacheManager.readCache(xcCacheSavename.usid);
         if((orderNo != null)&&(userUsid != null)){
             OrderNetWorks orderNetWorks = new OrderNetWorks();
             /*Toast.makeText(view.getContext(),"this is orderstatus:4",Toast.LENGTH_SHORT).show();*/
-            System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
-            System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
-            System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
-            System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
-            System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
-            System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
-            System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
-            System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
-            System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
-            System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
-            System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
-            System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
-            System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
             System.out.println("\nuserUsid:"+userUsid+ " orderNo:"+orderNo);
             orderNetWorks.getOrderStatusFromNet(userUsid, orderNo, new Observer<List<MyOrderOrderStatusBean>>() {
                 @Override
@@ -106,11 +95,13 @@ public class OrderStatusOrderStatusController extends BaseController {
 
                 @Override
                 public void onNext(List<MyOrderOrderStatusBean> myOrderOrderStatusBeen) {
-                    Toast.makeText(view.getContext(),"this is orderstatus:"+myOrderOrderStatusBeen.get(0).getOrderstatusOrderstatus(),Toast.LENGTH_SHORT).show();
+                    /*Toast.makeText(view.getContext(),"this is orderstatus:"+myOrderOrderStatusBeen.get(0).getOrderstatusOrderstatus(),Toast.LENGTH_SHORT).show();*/
                     if(myOrderOrderStatusBeen == null){
                         return;
                     }
                     initOrderStatus(myOrderOrderStatusBeen);
+                    orderStatusBaiduMap = new InitOrderStatusOrderStatusBaiduMap(view,myOrderOrderStatusBeen.get(0));
+                    xcCacheManager.writeCache(xcCacheSavename.myOrderOrderStatusAngelId,myOrderOrderStatusBeen.get(0).getAngelAnid());
                 }
             });
         }
@@ -126,9 +117,18 @@ public class OrderStatusOrderStatusController extends BaseController {
         tvMainMyOrderOrderStatusContentVPItemFirstBikerStatus.setText(""+myOrderOrderStatusBean.get(0).getTransportationBeginstatus());
         tvMainMyOrderOrderStatusContentVPItemFirstBikerTime.setText(""+myOrderOrderStatusBean.get(0).getTransportationBegintime());
         tvMainMyOrderOrderStatusContentVPItemFirstBikerTel.setText(""+myOrderOrderStatusBean.get(0).getLientaddr1Tel());
+        System.out.print("\nangelid:"+myOrderOrderStatusBean.get(0).getAngelAnid());
+        Log.i("angelid",myOrderOrderStatusBean.get(0).getAngelAnid());
     }
 
     public void onResume(){
         getOrderStatusFromNet();
+    }
+
+
+    public void onDestroy(){
+
+        orderStatusBaiduMap.onDestroy();
+        orderStatusBaiduMap = null;
     }
 }

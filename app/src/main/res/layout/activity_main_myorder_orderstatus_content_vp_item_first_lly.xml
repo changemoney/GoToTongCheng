@@ -22,12 +22,27 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 >
-                <com.baidu.mapapi.map.MapView
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_main_myorder_orderstatus_mapview_height">
+                <com.baidu.mapapi.map.MapView
+                    android:id="@+id/mv_main_myorder_orderstatus_content_loc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
                 </com.baidu.mapapi.map.MapView>
                 <!--项目1 无数据-->
+                    <ImageButton
+                        android:id="@+id/ib_main_myorder_orderstatus_contetn_gps_loc"
+                        android:layout_width="@dimen/activity_main_myorder_orderstatus_content_gps_loc_mark_width"
+                        android:layout_height="@dimen/activity_main_myorder_orderstatus_content_gps_loc_mark_height"
 
+                        android:background="@drawable/gps_loc"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/activity_main_myorder_orderstatus_content_gps_loc_mark_margin_right_size"
+                        android:layout_marginBottom="@dimen/activity_main_myorder_orderstatus_content_gps_loc_mark_margin_top_size"
+                        />
+                </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_main_myorder_orderstatus_status_item_height"
